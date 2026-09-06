@@ -1,0 +1,99 @@
+/* =====================================================
+   EVENTS.CSS
+   Seção "Oque rolou por aqui" - grid de eventos e torneios
+   ===================================================== */
+
+.events {
+  background-color: var(--color-dark);
+  padding: 80px 0;
+}
+
+.events__divider {
+  width: 100%;
+  height: 2px;
+  margin: 24px 0 40px;
+  background-image: radial-gradient(circle, var(--color-green) 2px, transparent 2px);
+  background-size: 14px 2px;
+  background-repeat: repeat-x;
+}
+
+.events__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.event-card {
+  background-color: var(--color-white);
+  min-width: 0; /* evita overflow do grid (min-content) */
+}
+
+.event-card__media {
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tag "Vídeo" no canto superior esquerdo, presente em alguns cards */
+.event-card__video-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+}
+
+/* Ícone de play centralizado sobre a mídia com vídeo */
+.event-card__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.event-card__body {
+  padding: 20px;
+}
+
+.event-card__meta {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-green);
+  margin-bottom: 10px;
+}
+
+.event-card__meta span:last-child {
+  color: var(--color-text-muted);
+}
+
+.event-card__title {
+  font-size: 1.05rem;
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+.event-card__text {
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+}
+
+.events__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}

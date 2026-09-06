@@ -1,0 +1,112 @@
+/* =====================================================
+   TEAM.CSS
+   Seção "Quem toca a arena" - lista + foto + biografia
+   ===================================================== */
+
+.team {
+  background-color: var(--color-bg-light);
+  padding: 80px 0 120px;
+}
+
+.team__panel {
+  background-color: var(--color-dark);
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr 1.3fr;
+  margin-top: 16px;
+}
+
+.team__panel > * {
+  min-width: 0; /* evita overflow do grid (min-content) */
+}
+
+/* ---------- Lista numerada da equipe ---------- */
+.team__list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.team__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex: 1;
+}
+
+.team__item.is-active {
+  background-color: var(--color-green);
+}
+
+.team__number {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.team__item.is-active .team__number {
+  color: var(--color-white);
+}
+
+.team__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.team__info strong {
+  font-family: var(--font-heading);
+  color: var(--color-white);
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.team__info small {
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/* ---------- Foto do membro em destaque ---------- */
+.team__photo {
+  min-height: 320px;
+}
+
+/* ---------- Biografia ---------- */
+.team__bio {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.team__bio-number {
+  font-family: var(--font-heading);
+  color: var(--color-green);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.team__bio-name {
+  font-size: 1.9rem;
+  color: var(--color-white);
+  margin-bottom: 10px;
+}
+
+.team__bio-role {
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.team__bio-text {
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  line-height: 1.7;
+}

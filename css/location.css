@@ -1,0 +1,146 @@
+/* =====================================================
+   LOCATION.CSS
+   Seção "Escolha sua unidade" - abas, mapa e informações
+   ===================================================== */
+
+.location {
+  background-color: var(--color-dark);
+  padding: 80px 0;
+}
+
+/* ---------- Abas Unidade 1 / Unidade 2 ---------- */
+.location__tabs {
+  display: inline-flex;
+  border: 1px solid var(--color-white);
+  margin-top: 9px;
+  margin-bottom: 15px;
+}
+
+.location__tab {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  padding: 12px 48px;
+  background-color: transparent;
+}
+
+.location__tab.is-active {
+  background-color: var(--color-green);
+}
+
+/* ---------- Grid: mapa + informações ---------- */
+.location__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.location__grid > * {
+  min-width: 0; /* evita overflow do grid (min-content) */
+}
+
+/* Placeholder amarelo no lugar do Google Maps */
+.location__map {
+  width: 100%;
+  aspect-ratio: 4 / 3.5;
+}
+
+/* ---------- Card de informações da unidade ---------- */
+.location__unit-name {
+  color: var(--color-green);
+  font-size: 2.3rem;
+  margin-bottom: 6px;
+}
+
+.location__address {
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  margin-bottom: 7px;
+}
+
+.location__courts-label {
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.location__courts {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 12px;
+}
+
+.location__courts li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--color-white);
+  font-family: var(--font-body);
+}
+
+.location__courts li:last-child {
+  border-bottom: none;
+}
+
+.location__courts strong {
+  color: var(--color-green);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+}
+
+.location__extra {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 10px;
+  font-family: var(--font-body);
+  color: var(--color-white);
+  font-size: 0.9rem;
+}
+
+.location__extra li {
+  margin-bottom: 6px;
+  padding-left: 14px;
+  position: relative;
+}
+
+.location__extra li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+
+.location__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.location__hours-label {
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+.location__hours{
+  margin-bottom: 15px;
+}
+.location__hours li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}

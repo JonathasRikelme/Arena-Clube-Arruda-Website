@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arena Clube Arruda | Vôlei, Futevôlei e Futebol Society</title>
+
+<!-- Fontes: Oswald para títulos / Barlow para textos gerais -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- CSS separado por seção/componente -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/sports.css">
+<link rel="stylesheet" href="css/location.css">
+<link rel="stylesheet" href="css/spaces.css">
+<link rel="stylesheet" href="css/team.css">
+<link rel="stylesheet" href="css/events.css">
+<link rel="stylesheet" href="css/podium.css">
+<link rel="stylesheet" href="css/testimonials.css">
+<link rel="stylesheet" href="css/cta.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="header__inner">
+    <a href="#topo" class="brand">
+      <span class="brand__logo" aria-hidden="true">
+        <img src="Assets/Images/Logo-arena-200px.png" alt="Logo da Arena Clube Arruda">
+      </span>
+      <span class="brand__name">ARENA CLUBE ARRUDA</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><!--Botão de hamburguer que aparece depois que a tela fica muito pequena-->
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav"><!--nav principal que ficará aparecendo caso tenha espaço suficiente-->
+      <ul class="main-nav__list">
+        <li><a href="#esportes">Esportes</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+        <li><a href="#espaco">Espaços</a></li>
+        <li><a href="#equipe">Equipe</a></li>
+        <li><a href="#eventos">Eventos e Destaques</a></li>
+      </ul>
+    </nav>
+    <a href="#cta" class="btn btn--primary main-nav__cta">Reservar</a>
+
+  </div>
+</header>
+
+<main id="topo">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero__background" aria-hidden="true"></div>
+    <div class="container hero__content">
+      <p class="hero__eyebrow">
+        <span>Desde 2024</span>
+        <span class="dot">•</span>
+        <span>Quadra Coberta</span>
+        <span class="dot">•</span>
+        <span>Aulas Com Profissionais</span>
+      </p>
+      <h1 class="hero__title">
+        Faça chuva ou faça sol
+        <span class="hero__title--accent">A quadra tá aberta</span>
+      </h1>
+      <p class="hero__text">
+        Vôlei, futevôlei e futebol society com grama sintética,
+        quadra coberta pra jogar na sombra ou na chuva.
+        Lanchonete no local, aulas com professor e reserva direto
+        pelo WhatsApp sem aplicativo, sem cadastro.
+      </p>
+      <div class="hero__actions">
+        <a href="#cta" class="btn btn--primary">Reservar Quadra</a>
+        <a href="#localizacao" class="btn btn--outline-light">Ver as Unidades</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ESPORTES ===================== -->
+  <section class="sports" id="esportes">
+    <div class="container">
+      <h2 class="section-title">Três esportes, um lugar.</h2>
+      <p class="section-subtitle">Venha jogar um deles com a gente!</p>
+
+      <div class="sports__grid">
+        <article class="sport-card">
+          <div class="sport-card__media">
+            <img src="Assets/Images/Sports-Volei.png" alt="Imagem representativa de volei na arena"><!-- Imagem backgound do card de volei -->
+          </div>
+          <div class="sport-card__body">
+            <h3 class="sport-card__title">Treine, evolua<br>e viva o esporte em equipe.</h3>
+            <p class="sport-card__text">Quadras de areia e rede de qualidade, com aulas pra crianças e adultos pratique com os amigos ou treine com os melhores professores.</p>
+          </div>
+        </article>
+
+        <article class="sport-card">
+          <div class="sport-card__media">
+            <img src="Assets/Images/Sports-Society.png" alt="Imagem representativa de futebol society na arena"><!-- Imagem backgound do card de society -->
+          </div>
+          <div class="sport-card__body">
+            <h3 class="sport-card__title">Toda semana<br>bola rolando com a galera.</h3>
+            <p class="sport-card__text">Quadra de grama sintética pronta pra resenha com os amigos ou pro treino sério, com aulas pra crianças e adultos.</p>
+          </div>
+        </article>
+
+        <article class="sport-card">
+          <div class="sport-card__media">
+            <img src="Assets/Images/Sports-Futevolei.png" alt="Imagem representativa de futevôlei na arena"><!-- Imagem backgound do card de futevôlei -->
+          </div>
+          <div class="sport-card__body">
+            <h3 class="sport-card__title">Técnica de futebol<br>reflexo de vôlei.</h3>
+            <p class="sport-card__text">Quadras de areia de qualidade e aulas pra crianças e adultos, do primeiro toque até o jogo em dupla.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LOCALIZAÇÃO ===================== -->
+  <section class="location" id="localizacao">
+  <div class="container">
+    <p class="section-eyebrow section-eyebrow--light">Onde Jogar?</p>
+    <h2 class="section-title section-title--light">Escolha sua unidade.</h2>
+
+    <div class="location__content">
+      <div class="location__tabs" role="tablist">
+        <button class="location__tab is-active" role="tab" aria-selected="true" data-unit="1">Unidade 1</button>
+        <button class="location__tab" role="tab" aria-selected="false" data-unit="2">Unidade 2</button>
+      </div>
+
+      <div class="location__grid">
+        <!-- id adicionado: o innerHTML deste div é trocado pelo JS -->
+        <div class="location__map" id="locationMap" aria-label="Mapa do Google Maps"></div>
+
+        <div class="location__info">
+          <h3 class="location__unit-name" id="locationUnitName">Unidade Rua do Machado</h3>
+          <p class="location__address" id="locationAddress">R. do Machado, 312 - Arruda, Recife - PE</p>
+
+          <h4 class="location__courts-label">Quadras:</h4>
+          <ul class="location__courts" id="locationCourts">
+            <li><span>Vôlei / Futevôlei</span><strong>3</strong></li>
+            <li><span>Futebol Socity</span><strong>1</strong></li>
+          </ul>
+
+          <h4 class="location__hours-label">Horários:</h4>
+          <ul class="location__hours" id="locationHours">
+            <li><span>Seg - Sex</span><strong>06:00 - 23:00</strong></li>
+            <li><span>Sábado</span><strong>07:00 - 00:00</strong></li>
+            <li><span>Domingo</span><strong>08:00 - 16:00</strong></li>
+          </ul>
+
+          <div class="location__extra">
+            <ul class="location__amenities" id="locationAmenities">
+              <li>Vestiarios com chuveiros</li>
+              <li>Lanchonete</li>
+              <li>Espaço para lazer</li>
+            </ul>
+            <ul class="location__app" id="locationApp">
+              <li><strong>APP:</strong> Recplay</li>
+              <li>Quadra 1 - 018187c</li>
+              <li>Quadra 2 - 018453b</li>
+              <li>Quadra 3 - 019452a</li>
+            </ul>
+          </div>
+          <div class="location__buttons">
+            <a href="#cta" class="btn btn--primary btn--loc">Reservar Nesta Unidade</a>
+            <a href="#" id="locationDirectionsBtn" class="btn btn--outline-light">Como Chegar?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ===================== POR DENTRO DA ARENA ===================== -->
+  <section class="spaces" id="espaco">
+    <div class="container">
+      <h2 class="section-title">Por dentro da arena.</h2>
+      <p class="section-subtitle">Conheça o nosso espaço.</p>
+
+      <div class="spaces__grid">
+        <article class="space-card">
+          <div class="space-card__media placeholder-img"></div>
+          <div class="space-card__tag">
+            <h3>Quadra Coberta</h3>
+            <p>Chova ou faça sol, o jogo não para. Estrutura coberta com iluminação de LED, pronta pra qualquer horário e qualquer clima.</p>
+          </div>
+        </article>
+
+        <article class="space-card">
+          <div class="space-card__media placeholder-img"></div>
+          <div class="space-card__tag">
+            <h3>Society</h3>
+            <p>Quadra de grama sintética no tamanho ideal pra reunir o time e rolar a bola em qualquer dia da semana.</p>
+          </div>
+        </article>
+
+        <article class="space-card">
+          <div class="space-card__media placeholder-img"></div>
+          <div class="space-card__tag">
+            <h3>Lanchonete e Espaço de Lazer</h3>
+            <p>Pra matar a fome depois do jogo ou esperar sua vez com conforto — um cantinho pra socializar antes, durante e depois da partida.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EQUIPE ===================== -->
+  <section class="team" id="equipe">
+    <div class="container">
+      <h2 class="section-title">Quem toca a arena?</h2>
+      <p class="section-subtitle">Descubra quem faz parte da arena.</p>
+
+      <div class="team__panel">
+        <ul class="team__list">
+          <li class="team__item is-active" data-member="1">
+            <span class="team__number">01</span>
+            <span class="team__info">
+              <strong>Bruno Eduardo</strong>
+              <small>Sócio Administrador — Fundador</small>
+            </span>
+          </li>
+          <li class="team__item" data-member="2">
+            <span class="team__number">07</span>
+            <span class="team__info">
+              <strong>Renata Queiroz</strong>
+              <small>Gerente — Líder</small>
+            </span>
+          </li>
+          <li class="team__item" data-member="3">
+            <span class="team__number">09</span>
+            <span class="team__info">
+              <strong>Celso Murilo</strong>
+              <small>Professor — Vôlei</small>
+            </span>
+          </li>
+        </ul>
+
+        <div class="team__photo placeholder-img" aria-hidden="true"></div>
+
+        <div class="team__bio">
+          <span class="team__bio-number">01</span>
+          <h3 class="team__bio-name">Bruno Eduardo</h3>
+          <p class="team__bio-role">Sócio Administrador &nbsp;•&nbsp; Fundador</p>
+          <p class="team__bio-text">
+            Bruno Eduardo criou a Arena Clube Arruda em 2024 movido por uma paixão
+            simples: futevôlei. Jogador ele mesmo, sabe exatamente o que faz uma
+            quadra boa e o que faz a galera voltar toda semana. É conhecido por
+            receber cada cliente como se fosse da casa.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EVENTOS ===================== -->
+  <section class="events" id="eventos">
+    <div class="container">
+      <!-- Wrapper para permitir a inversão eyebrow/título apenas no
+           mobile (conforme wireframe de celular), via flexbox order -->
+      <div class="events__header">
+        <p class="section-eyebrow section-eyebrow--green">Ultimos Eventos e Torneios</p>
+        <h2 class="section-title section-title--light">Oque rolou por aqui.</h2>
+      </div>
+      <div class="events__divider" aria-hidden="true"></div>
+
+      <div class="events__grid">
+        <article class="event-card">
+          <div class="event-card__media placeholder-img"></div>
+          <div class="event-card__body">
+            <p class="event-card__meta"><span>16 de Fev 2026</span> / <span>Unidade Rua do Machado</span></p>
+            <h3 class="event-card__title">Torneio de Vôlei - Etapa de Fevereiro</h3>
+            <p class="event-card__text">Times de quatro, dois dias de jogos e a Arena Clube Arruda lotada no sábado.</p>
+          </div>
+        </article>
+
+        <article class="event-card event-card--video">
+          <div class="event-card__media placeholder-img">
+            <span class="event-card__video-tag">Vídeo</span>
+            <span class="event-card__play" aria-hidden="true">&#9658;</span>
+          </div>
+          <div class="event-card__body">
+            <p class="event-card__meta"><span>24 de Ago 2026</span> / <span>Unidade Rua da Regeneração</span></p>
+            <h3 class="event-card__title">Amistoso - Volei de Lua x Sharks</h3>
+            <p class="event-card__text">Dois times que treinam na Arena Clube Arruda se enfrentaram em um amistoso acirrado.</p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-card__media placeholder-img"></div>
+          <div class="event-card__body">
+            <p class="event-card__meta"><span>10 de Jan 2026</span> / <span>Unidade Rua do Machado</span></p>
+            <h3 class="event-card__title">Mini Torneio Infantil - Alunos x Alunos</h3>
+            <p class="event-card__text">Mini torneio para as nossas crianças, com premiação em medalhas e destaque da partida.</p>
+          </div>
+        </article>
+
+        <article class="event-card event-card--video">
+          <div class="event-card__media placeholder-img">
+            <span class="event-card__video-tag">Vídeo</span>
+            <span class="event-card__play" aria-hidden="true">&#9658;</span>
+          </div>
+          <div class="event-card__body">
+            <p class="event-card__meta"><span>05 de Set 2025</span> / <span>Unidade Rua do Machado</span></p>
+            <h3 class="event-card__title">Copa Vôlei Misto</h3>
+            <p class="event-card__text">Churrasco na quadra 3, jogo misto e sorteio de duas mensalidades.</p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-card__media placeholder-img"></div>
+          <div class="event-card__body">
+            <p class="event-card__meta"><span>11 de Jun 2025</span> / <span>Unidade Rua do Machado</span></p>
+            <h3 class="event-card__title">Aula Especifica com Nossos Professores</h3>
+            <p class="event-card__text">Três horas de fundamento com os professores das duas unidades.</p>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-card__media placeholder-img"></div>
+          <div class="event-card__body">
+            <p class="event-card__meta"><span>30 de Nov 2025</span> / <span>Unidade Rua do Machado</span></p>
+            <h3 class="event-card__title">1° Torneio de Futevôlei</h3>
+            <p class="event-card__text">Nosso primeiro torneio de futevôlei na Arena Clube, com direito a churrasco no final.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="events__cta">
+        <a href="#" class="btn btn--primary">
+          <span class="events__cta-text--desktop">Quero Ver Todos os Eventos</span>
+          <span class="events__cta-text--mobile">Veja Todos os Eventos</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PÓDIO ===================== -->
+  <section class="podium">
+    <div class="container">
+      <p class="section-eyebrow section-eyebrow--green">Pódio</p>
+      <h2 class="section-title section-title--light">Campeões dos últimos torneios.</h2>
+
+      <div class="podium__grid">
+        <article class="podium-card">
+          <div class="podium-card__media placeholder-img"></div>
+          <p class="podium-card__meta">Campeão • Futevôlei</p>
+          <h3 class="podium-card__title">Dupla Léo &amp; Rafa</h3>
+          <p class="podium-card__text">Virada na final contra a dupla Bruno &amp; Kadu.</p>
+          <p class="podium-card__date">31 de Novembro de 2025</p>
+        </article>
+
+        <article class="podium-card">
+          <div class="podium-card__media placeholder-img"></div>
+          <p class="podium-card__meta">Campeão • Vôlei</p>
+          <h3 class="podium-card__title">Time Vôlei de Lua</h3>
+          <p class="podium-card__text">Campeãs invictas nos dois dias de competição.</p>
+          <p class="podium-card__date">09 de Janeiro de 2026</p>
+        </article>
+
+        <article class="podium-card">
+          <div class="podium-card__media placeholder-img"></div>
+          <p class="podium-card__meta">Campeão • Futebol Society</p>
+          <h3 class="podium-card__title">Time ACA FC</h3>
+          <p class="podium-card__text">Campeão nos pênaltis, com o goleiro João pegando duas.</p>
+          <p class="podium-card__date">28 de Março de 2025</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DEPOIMENTOS ===================== -->
+  <section class="testimonials">
+    <div class="container">
+      <p class="section-eyebrow section-eyebrow--green">Quem Joga Aqui?</p>
+      <h2 class="section-title">Recado dos alunos.</h2>
+
+      <div class="testimonials__wrapper">
+        <button class="testimonials__arrow testimonials__arrow--prev" aria-label="Depoimento anterior">&#10094;</button>
+
+        <div class="testimonials__track" id="testimonialsTrack">
+          <article class="testimonial-card">
+            <div class="testimonial-card__top">
+              <span class="testimonial-card__quote">&#10077;</span>
+              <span class="testimonial-card__stars" aria-label="4 de 5 estrelas">&#9734;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+            <p class="testimonial-card__text">Muito bom o gramado iluminação acústica espaça e tudo mais adorei</p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar placeholder-img" aria-hidden="true"></span>
+              <span>
+                <strong>Pedro Henrique</strong>
+                <small>pedrin244@gmail.com</small>
+              </span>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__top">
+              <span class="testimonial-card__quote">&#10077;</span>
+              <span class="testimonial-card__stars" aria-label="5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+            <p class="testimonial-card__text">Local Excelente para toda a família, festas, confras e muito lazer.</p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar placeholder-img" aria-hidden="true"></span>
+              <span>
+                <strong>Celso Murilo</strong>
+                <small>celso_murilo@gmail.com</small>
+              </span>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__top">
+              <span class="testimonial-card__quote">&#10077;</span>
+              <span class="testimonial-card__stars" aria-label="2 de 5 estrelas">&#9734;&#9734;&#9734;&#9733;&#9733;</span>
+            </div>
+            <p class="testimonial-card__text">Excelente lugar para praticar vôlei, Futevolei, futebol, uma quadra coberta muito boa, Ambiente super agradável, limpos, estrutura excelente e professores maravilhosos.</p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar placeholder-img" aria-hidden="true"></span>
+              <span>
+                <strong>Clóvis Malta</strong>
+                <small>ClóvisMalta21@gmail.com</small>
+              </span>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__top">
+              <span class="testimonial-card__quote">&#10077;</span>
+              <span class="testimonial-card__stars" aria-label="5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+            <p class="testimonial-card__text">Quando cheguei, Fiquei impressionada quando vi a estrutura do lugar! Achei incrivél.</p>
+            <div class="testimonial-card__author">
+              <span class="testimonial-card__avatar placeholder-img" aria-hidden="true"></span>
+              <span>
+                <strong>Eduarda Campelo</strong>
+                <small>Eduardacamp@gmaul.com</small>
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <button class="testimonials__arrow testimonials__arrow--next" aria-label="Próximo depoimento">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="cta" id="cta">
+    <div class="container">
+      <h2 class="cta__title">Manda mensagem<br>e a quadra é sua.</h2>
+      <p class="cta__text">Responde na hora comercial, normalmente em minutos. Diga o dia, o horário e a unidade a gente confirma e pronto.</p>
+      <div class="cta__buttons">
+        <a href="#" class="btn btn--bright">Falar no Whatsapp</a>
+        <a href="tel:+5581976438476" class="btn btn--outline-light">(81) 9 7643-8476</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container footer__top">
+    <div class="footer__brand">
+      <span class="brand__logo" aria-hidden="true">
+        <span class="brand__logo-text">AC</span>
+      </span>
+      <div>
+        <p class="footer__brand-name">Arena Clube Arruda</p>
+        <p class="footer__brand-text">Grama artificial, Redes de qualidade, refletor aceso e fazendo seu lazer desde 2024.</p>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h3>Unidades</h3>
+      <ul>
+        <li>R. do Machado, 312 &nbsp;Arruda - 4 quadras.</li>
+        <li>R. da Regeneração, 1241 - 2 quadras.</li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h3>Contato</h3>
+      <ul>
+        <li>Tel: (81) 9 7643-8476</li>
+        <li>Instagram: @arenaclubearruda</li>
+        <li>E-mail: arenaclubearruda@gmail.com</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__divider"></div>
+
+  <div class="container footer__bottom">
+    <p>2026 - Arena Clube Arruda</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+/* =====================================================
+   SPACES.CSS
+   Seção "Por dentro da arena" - fotos com tag verde sobreposta
+   ===================================================== */
+
+.spaces {
+  background-color: var(--color-bg-light);
+  padding: 80px 0 120px;
+}
+
+.spaces__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.space-card {
+  position: relative;
+  min-width: 0; /* evita overflow do grid (min-content) */
+}
+
+.space-card__media {
+  aspect-ratio: 3 / 4;
+}
+
+/* Tag verde sobreposta na parte inferior da foto, com borda
+   irregular (efeito "papel rasgado") feita via clip-path,
+   igual ao selo verde do wireframe. */
+.space-card__tag {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: -40px;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  padding: 24px 20px 20px;
+  clip-path: polygon(
+    0% 6%, 4% 3%, 8% 6%, 12% 2%, 16% 5%, 20% 1%, 24% 5%, 28% 2%, 32% 6%,
+    36% 3%, 40% 6%, 44% 2%, 48% 5%, 52% 1%, 56% 5%, 60% 2%, 64% 6%,
+    68% 3%, 72% 6%, 76% 2%, 80% 5%, 84% 1%, 88% 5%, 92% 2%, 96% 6%, 100% 3%,
+    100% 96%, 96% 99%, 92% 96%, 88% 100%, 84% 97%, 80% 100%, 76% 96%,
+    72% 99%, 68% 96%, 64% 100%, 60% 97%, 56% 100%, 52% 96%, 48% 99%,
+    44% 96%, 40% 100%, 36% 97%, 32% 100%, 28% 96%, 24% 99%, 20% 96%,
+    16% 100%, 12% 97%, 8% 100%, 4% 96%, 0% 99%
+  );
+}
+
+.space-card__tag h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.space-card__tag p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}

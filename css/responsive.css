@@ -1,0 +1,496 @@
+/* =====================================================
+   RESPONSIVE.CSS
+   Regras de responsividade - tablet, celular e telas maiores que HD.
+   ===================================================== */
+
+/* =========================================================
+   TABLET (até 1024px)
+   ========================================================= */
+@media (max-width: 1024px) {
+  .sports__grid,
+  .spaces__grid,
+  .podium__grid,
+  .events__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .location__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team__panel {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .team__list {
+    grid-column: 1 / -1;
+  }
+
+  .testimonials__track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+  }
+
+  /* ---------- Header ----------
+     O menu completo (todos os links + botão) não cabe mais
+     numa única linha então uso o mesmo
+     menu hamburguer do mobile também no tablet. */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-dark);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 20px 20px;
+    display: none;
+    transform: none;/*Se isso não existir, ele vai tentar corrigir colocando no celular
+     a nav para a esquerda e isso vai quebrar o botão hambuhuer*/
+  }
+  .main-nav__cta{ /*Botão desapareçe depois que diminui muito a tela*/
+    display: none;
+  }
+
+  .main-nav.is-open {
+    display: flex;
+  }
+
+  .main-nav__list {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .main-nav__list li:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .main-nav__list a {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .main-nav__cta {
+    margin-top: 16px;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   MOBILE (até 640px)
+   ========================================================= */
+@media (max-width: 640px) {
+
+  :root {
+    --container-padding: 20px;
+  }
+
+  h1, h2 { letter-spacing: 0.2px; }
+
+  /* Header: regras específicas do hamburguer já aplicadas
+     a partir do breakpoint de tablet (ver acima). */
+
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero__content {
+    padding-top: 48px;
+    padding-left: 0px;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 20px;
+  }
+
+  .hero__eyebrow {
+    flex-wrap: wrap;
+    row-gap: 6px;
+    font-size: 0.85rem;
+  }
+  /*RESPONSIVIDADE PARA CELULAREWS RIIIIIIDIIICULOSSS QUE SÓ EXISTEM PARA ME ATASANAR*/
+  @media (max-width: 390px) {
+    .hero__eyebrow {
+      font-size: 0.75rem;
+    }
+    .hero__title {
+      font-size: clamp(1.9rem, 5.5vw, 4.7rem);
+    }
+  }
+  @media (max-width: 360px) {
+    .hero__eyebrow {
+      font-size: 0.65rem;
+    }
+    .hero__title {
+      font-size: clamp(2rem, 5.5vw, 4.7rem);
+    }
+  }
+  /*ô VONTADE DE DESTRUIR TODO CELULAR COM - DE 400PX DE LARGURA*/
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    text-align: center;
+    padding: 9px 24px;
+  }
+
+  /* ---------- Seções: paddings gerais ---------- */
+  .sports,
+  .location,
+  .spaces,
+  .team,
+  .events,
+  .podium,
+  .testimonials,
+  .cta {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  /* ---------- Esportes: 1 coluna ---------- */
+  .sports__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  /*Tamnho do subtitle reduzido*/
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  /* ---------- Localização ---------- */
+  .section-eyebrow{
+    font-size: 1rem;
+  }
+  .location__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .location__tabs {
+    order: 2;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    width: 100%;
+  }
+
+  .location__tab {
+    flex: 1;
+    text-align: center;
+  }
+
+  .location__grid {
+    display: contents;
+  }
+  .location__courts {
+    margin-bottom: 20px;
+  }
+  .location__map {
+    order: 1;
+    aspect-ratio: 3 / 4;
+  }
+
+  .location__info {
+    order: 3;
+  }
+
+  .location__extra {
+    gap: 16px;
+  }
+
+  .location__buttons {
+    flex-direction: column;
+  }
+
+  .location__buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ---------- Por dentro da arena: 1 coluna ---------- */
+  .spaces {
+    padding-bottom: 96px;
+  }
+
+  .spaces__grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .space-card__tag {
+    bottom: -32px;
+  }
+
+  /* ---------- Equipe: empilhado, foto acima da bio ---------- */
+  .team__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .team__photo {
+    min-height: 340px;
+  }
+
+  .team__bio {
+    padding: 28px 20px;
+  }
+
+  /* ---------- Eventos ---------- */
+
+  /* Inverte a ordem visual: título em destaque acima do eyebrow,
+     exatamente como no wireframe de celular. */
+  .events__header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .events__header .section-title {
+    order: 1;
+    margin-bottom: 6px;
+  }
+
+  .events__header .section-eyebrow {
+    order: 2;
+    margin-bottom: 0;
+  }
+
+  .events__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* O wireframe mobile mostra apenas 3 dos 6 eventos
+     (o 1º, o 2º com vídeo, e o último). */
+  .event-card:nth-child(3),
+  .event-card:nth-child(4),
+  .event-card:nth-child(5) {
+    display: none;
+  }
+
+  .events__cta .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .events__cta-text--desktop {
+    display: none;
+  }
+
+  /* ---------- Pódio: 1 coluna ---------- */
+  .podium__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* ---------- Depoimentos ---------- */
+  .testimonials__track {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .testimonials__arrow {
+    display: none;
+  }
+
+  /* ---------- CTA: texto e botões centralizados ---------- */
+  .cta__title,
+  .cta__text {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta__buttons {
+    flex-direction: column;
+  }
+
+  .cta__buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer__brand {
+    flex-direction: row;
+  }
+}
+
+/* Esconde o texto do botão de eventos alternativo em telas maiores */
+@media (min-width: 641px) {
+  .events__cta-text--mobile {
+    display: none;
+  }
+}
+
+/* Escala os botões do hero para monitores de alta resolução */
+@media (min-width: 1920px) { /*Full HD*/
+    /*Hero*/
+  .hero__actions .btn {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+  }
+  /*Mudando as regras gerais de base.css para que fique proporcional a tela atual*/
+  .container{
+    max-width: 90rem;
+  }
+  .section-subtitle {
+    font-size: 1.6rem;
+  }
+  .sport-card__title {
+    font-size: 1.45rem;
+  }
+  .sport-card__text {
+    font-size: 1.3rem;
+  }
+/*=================LOCALIZAÇÃO=================*/
+  .section-eyebrow {
+    font-size: 1.6rem;
+  }
+  .location__unit-name { font-size: 2.9rem; margin-bottom: 6px; }/*Titulo/Nome da unidade*/
+  .location__address { font-size: 1.4rem; margin-bottom: 7px; }/*Endereço/cep da unidade*/
+
+  .location__courts-label { font-size: 1.25rem; margin-bottom: 12px; }/*Nome "Quadra" para definir quantidade de quadras da undiade*/
+  .location__courts { margin-bottom: 12px; }/*Lista que envolve a quantidade de quadras da unidade */
+  .location__courts li { padding: 6px 20px; font-size: 1.2rem; }/*Cada elemento da lista de quadras*/
+  .location__courts strong { font-size: 1.6rem; }/*Numero de quadras 3, 2, 1, 10*/
+
+  .location__hours-label { font-size: 1.25rem; margin-bottom: 0; }/*Nome "Horário" para definir os horários da unidade*/
+  .location__hours { margin-bottom: 15px; }/*Lista que envolve os horários da unidade*/
+  .location__hours li { padding: 10px 0; font-size: 1.1rem; }/*cada elemento da lista de horários*/
+
+  .location__extra {margin-bottom: 15px;}/*Div que envolve os destaques da unidade + o appd de replay*/
+  .location__extra li { margin-bottom: 6px; padding-left: 14px; font-size: 1.2rem; }/*Cada elemento da lista de destaques + app de replay*/
+  
+  .location__buttons { gap: 16px; margin-bottom: 32px; }/*div que envolve os Botoês cta e levar para a rota*/
+  .btn--loc, .btn--outline-light {/*Botões*/
+    letter-spacing: 0.5px;
+    font-size: 1.3rem;
+    padding: 16px 28px;
+  }
+  .location__tab {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    padding: 12px 48px;
+  }
+  
+}
+
+@media (min-width: 2560px) {/*2k*/
+  .hero__actions .btn {
+    padding: 1.25rem 2.5rem;
+    font-size: 2rem;
+  }
+  /*Mudando as regras gerais de base.css para que fique proporcional a tela atual*/
+  .container {
+    max-width: 120rem;
+  }
+  .section-subtitle {
+    font-size: 2.2rem;
+  }
+  .sport-card__title {
+    font-size: 1.8rem;
+  }
+  .sport-card__text {
+    font-size: 1.6rem;
+  }
+/*=================LOCALIZAÇÃO=================*/
+  .section-eyebrow {
+    font-size: 2.2rem;
+  }
+  .location__unit-name { font-size: 3.8rem; margin-bottom: 8px; }/*Titulo/Nome da unidade*/
+  .location__address { font-size: 1.7rem; margin-bottom: 25px; }/*Endereço/cep da unidade*/
+
+  .location__courts-label { font-size: 1.5rem; margin-bottom: 14px; }/*Nome "Quadra" para definir quantidade de quadras da undiade*/
+  .location__courts { margin-bottom: 32px; }/*Lista que envolve a quantidade de quadras da unidade */
+  .location__courts li { padding: 8px 34px; font-size: 1.5rem; }/*Cada elemento da lista de quadras*/
+  .location__courts strong { font-size: 2rem; }/*Numero de quadras 3, 2, 1, 10*/
+
+  .location__hours-label { font-size: 1.5rem; margin-bottom: 8px; }/*Nome "Horário" para definir os horários da unidade*/
+  .location__hours { margin-bottom: 25px; }/*Lista que envolve os horários da unidade*/
+  .location__hours li { padding: 12px 0; font-size: 1.3rem; }/*cada elemento da lista de horários*/
+
+  .location__extra {margin-bottom: 15px;}/*Div que envolve os destaques da unidade + o appd de replay*/
+  .location__extra li { margin-bottom: 5px; padding-left: 16px; font-size: 1.5rem; }/*Cada elemento da lista de destaques + app de replay*/
+
+  .location__buttons { gap: 20px; margin-bottom: 40px; }/*div que envolve os Botoês cta e levar para a rota*/
+  .btn--loc, .btn--outline-light { letter-spacing: 0.7px; font-size: 1.7rem; padding: 20px 32px; }/*Botões*/
+
+  .location__tab { /*Botões de Selecionar as unidades la em cima*/
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    padding: 15px 53px;
+  }
+}
+
+@media (min-width: 3840px) {/*4k*/
+  .hero__actions .btn {
+    padding: 2rem 4rem;
+    font-size: 2.9rem;
+  }
+  /*Mudando as regras gerais de base.css para que fique proporcional a tela atual*/
+  .container{
+    max-width: 180rem;
+  }
+  .section-subtitle {
+    font-size: 3rem;
+  }
+  .sport-card__title {
+    font-size: 3rem;
+    margin-bottom: 24px;
+  }
+  .sport-card__text {
+    font-size: 2.8rem;
+  }
+  .sport-card__body {
+    padding: 48px;
+  }
+/*=================LOCALIZAÇÃO=================*/
+  .section-eyebrow {
+    font-size: 3rem;
+  }
+  .location__unit-name { font-size: 5.5rem; margin-bottom: 10px; } /*Titulo/Nome da unidade*/
+  .location__address { font-size: 2.6rem; margin-bottom: 30px; } /*Endereço/cep da unidade*/
+
+  .location__courts-label { font-size: 2.4rem; margin-bottom: 16px; } /*Nome "Quadra" para definir quantidade de quadras da undiade*/
+  .location__courts { margin-bottom: 30px; }/*Lista que envolve a quantidade de quadras da unidade */
+  .location__courts li { padding: 15px 28px; font-size: 2.2rem; }/*Cada elemento da lista de quadras*/
+  .location__courts strong { font-size: 3rem; }/*Numero de quadras 3, 2, 1, 10*/
+
+  .location__hours-label { font-size: 2.4rem; margin-bottom: 10px; }/*Nome "Horário" para definir os horários da unidade*/
+  .location__hours { margin-bottom: 44px; }/*Lista que envolve os horários da unidade*/
+  .location__hours li { padding: 15px 0; font-size: 2.2rem; } /*cada elemento da lista de horários*/
+
+  .location__extra {margin-bottom: 30px;}/*Div que envolve os destaques da unidade + o appd de replay*/
+  .location__extra li { margin-bottom: 10px; padding-left: 20px; font-size: 2.4rem; } /*Cada elemento da lista de destaques + app de replay*/
+
+  .location__buttons { gap: 24px; margin-bottom: 48px; } /*div que envolve os Botoês cta e levar para a rota*/
+  .btn--loc, .btn--outline-light { letter-spacing: 1.7px; font-size: 2.7rem; padding: 33px 38px; } /*Botões*/
+
+  .location__tab { /*Botões de Selecionar as unidades la em cima*/
+    font-size: 2.5rem;
+    letter-spacing: 6px;
+    padding: 22px 70px;
+  }
+}

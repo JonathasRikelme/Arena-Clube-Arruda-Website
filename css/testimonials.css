@@ -1,0 +1,113 @@
+/* =====================================================
+   TESTIMONIALS.CSS
+   Seção "Recado dos alunos" - carrossel de depoimentos
+   ===================================================== */
+
+.testimonials {
+  background-color: var(--color-bg-light);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.testimonials__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.testimonials__track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Card escuro com borda irregular verde (efeito "papel rasgado"),
+   igual ao selo da seção "Por dentro da arena". */
+.testimonial-card {
+  background-color: var(--color-dark);
+  border: 2px solid var(--color-green);
+  clip-path: polygon(
+    0% 4%, 5% 1%, 10% 4%, 15% 1%, 20% 4%, 25% 1%, 30% 4%, 35% 1%, 40% 4%,
+    45% 1%, 50% 4%, 55% 1%, 60% 4%, 65% 1%, 70% 4%, 75% 1%, 80% 4%,
+    85% 1%, 90% 4%, 95% 1%, 100% 4%,
+    100% 96%, 95% 99%, 90% 96%, 85% 99%, 80% 96%, 75% 99%, 70% 96%,
+    65% 99%, 60% 96%, 55% 99%, 50% 96%, 45% 99%, 40% 96%, 35% 99%,
+    30% 96%, 25% 99%, 20% 96%, 15% 99%, 10% 96%, 5% 99%, 0% 96%
+  );
+  padding: 28px 22px 22px;
+  min-height: 280px;
+  min-width: 0; /* evita overflow do grid (min-content) */
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.testimonial-card__quote {
+  font-family: var(--font-heading);
+  color: var(--color-green);
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.testimonial-card__stars {
+  color: var(--color-green);
+  letter-spacing: 2px;
+}
+
+.testimonial-card__text {
+  font-family: var(--font-body);
+  color: var(--color-white);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--color-white);
+  margin: 20px -22px -22px;
+  padding: 14px 22px;
+  border-top-right-radius: 40px;
+}
+
+.testimonial-card__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--color-green);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.testimonial-card__author strong {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-dark);
+}
+
+.testimonial-card__author small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Setas de navegação ---------- */
+.testimonials__arrow {
+  font-size: 1.2rem;
+  color: var(--color-green);
+  flex-shrink: 0;
+}

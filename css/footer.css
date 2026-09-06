@@ -1,0 +1,79 @@
+/* =====================================================
+   FOOTER.CSS
+   Rodapé do site
+   ===================================================== */
+
+.site-footer {
+  background-color: var(--color-dark);
+  padding-top: 56px;
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 32px;
+}
+
+.footer__top > * {
+  min-width: 0; /* evita overflow do grid (min-content) */
+}
+
+.footer__brand {
+  display: flex;
+  gap: 14px;
+}
+
+.footer__brand-name {
+  font-family: var(--font-heading);
+  color: var(--color-white);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.footer__brand-text {
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.88rem;
+  max-width: 320px;
+}
+
+.footer__col h3 {
+  color: var(--color-green);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.footer__col ul li {
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.footer__divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin-top: 40px;
+}
+
+.footer__bottom {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.footer__bottom p {
+  font-family: var(--font-heading);
+  color: var(--color-white);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.brand__logo-text { /*Texto da pequena descrição no footer, consulte o html que vc entende*/
+  font-family: var(--font-heading);
+  color: var(--color-white);
+  font-size: clamp(0.9rem, 0.75vw, 1.9rem);
+  font-weight: 700;
+}

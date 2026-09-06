@@ -1,0 +1,103 @@
+/* =====================================================
+   HERO.CSS
+   Seção de destaque principal (topo da página)
+   ===================================================== */
+
+.hero { /*Background do hero e tamanho do hero*/
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero__background {/*Ajeitando a imagem de fundo do hero*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(/assets/images/Background-hero.png) no-repeat center center/cover;
+  z-index: 0;
+}
+
+.hero__media::after { /*Efeito de "sombra" sobre a imagem de fundo*/
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.45) 45%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+}
+
+.hero__content { /*Div de abrange todo o conteudo do hero*/
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 80px); /*Realizo um calculo entre a largura total e a margem esquerda*/
+  max-width: clamp(950px, 62vw, 2400px); /*largura sempre proporcional*/
+  margin-left: clamp(40px, 4vw, 120px);/*Margem esquerda proporcional para que cacule ela e a largura ali em cima*/
+}
+
+.hero__eyebrow {/*Div que fica os "destaques" como "desde 2024"*/
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.2vw, 3rem);
+  font-weight: 500;
+}
+
+.hero__eyebrow .dot { /*Ponto branco separando os destaques do hero*/
+  color: var(--color-white);
+}
+
+.hero__title { /*Título do hero*/
+  font-size: clamp(2.4rem, 4.6vw, 12rem);
+  color: var(--color-white);
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.19;
+}
+
+.hero__title--accent {
+  display: block;
+  color: var(--color-green);
+}
+
+.hero__text {
+  font-family: var(--font-body);
+  color: var(--color-white);
+  font-size: clamp(1rem, 1.3vw, 4rem);
+  max-width: clamp(520px, 41vw, 1800px);
+  margin-bottom: clamp(24px, 2vw, 48px);
+}
+
+.hero__actions {
+  display: flex;
+  gap: clamp(12px, 1vw, 24px);
+  flex-wrap: wrap;
+}
+
+.hero__actions .btn {
+  font-size: clamp(1rem, 1vw, 3rem);
+  padding: 12px 24px;
+}
+
+.hero__actions .btn--primary:hover {
+  scale: 1.05;
+  transition: scale 0.4s ease-in-out;
+  background-color: var(--color-green-hover);
+}
+
+.hero__actions .btn--outline-light:hover {
+  scale: 1.05;
+  transition: scale 0.4s ease-in-out;
+  background-color: var(--color-dark);
+}

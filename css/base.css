@@ -1,0 +1,178 @@
+/* =====================================================
+   BASE.CSS
+   Reset, variáveis, tipografia global e classes utilitárias
+   ===================================================== */
+
+/* ---------- Reset básico ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+/* ---------- Variáveis CSS (identidade visual) ---------- */
+:root {
+  /* Cores principais do wireframe */
+  --color-bg-light: #D9D9D9;      /* fundo claro principal */
+  --color-white: #FFFFFF;         /* branco */
+  --color-dark: #18181B;          /* preto / fundo escuro */
+  --color-dark-soft: #212124;     /* variação do escuro para cards/hover */
+  --color-green: #2B6E45;         /* verde principal */
+  --color-green-dark: #1F4F33;    /* variação mais escura do verde */
+  --color-green-hover:#2da35a;    /* verde para hover do botão principal */
+  --color-green-bright: #22D66C;  /* verde vivo - botão whatsapp / destaques */
+
+  /* Placeholders (substituir depois pelas imagens/mapa reais) */
+  --color-placeholder: #7B2CBF;   /* placeholder roxo para fotos */
+  --color-map-placeholder: #FFD700; /* placeholder amarelo para o mapa */
+
+  /* Auxiliares */
+  --color-text-muted: #55555a;
+  --color-border: #cfcfcf;
+
+  /* Tipografia */
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+
+  /* Layout */
+  --container-width: 1200px;
+  --container-padding: 24px;
+}
+
+/* ---------- Tipografia global ---------- */
+body {
+  font-family: var(--font-body);
+  color: var(--color-dark);
+  background-color: var(--color-bg-light);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: 0.3px;
+}
+
+/* ---------- Classes reutilizáveis ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.3rem;
+  color: var(--color-dark);
+  margin-bottom: 8px;
+}
+
+.section-eyebrow--light {
+  color: var(--color-white);
+}
+
+.section-eyebrow--green {
+  color: var(--color-green);
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 8rem);
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 8px;
+}
+
+.section-title--light {
+  color: var(--color-white);
+}
+
+.section-subtitle {
+  font-family: var(--font-body);
+  color: var(--color-green);
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+}
+
+/* Placeholder de imagem: cor sólida roxa, organizado para fácil substituição futura.
+   Observação: não define "height", pois os containers que usam essa classe
+   já controlam a própria altura (aspect-ratio, min-height ou width/height
+   fixos). Definir height:100% aqui entraria em conflito com aspect-ratio
+   em containers de grid/flex e causaria alturas incorretas. */
+.placeholder-img {
+  background-color: var(--color-placeholder);
+  width: 100%;
+  position: relative;
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  padding: 16px 28px;
+  border: 2px solid transparent;
+  transition: none;
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.btn--bright {
+  background-color: var(--color-green-bright);
+  color: var(--color-dark);
+}
+
+.btn--outline-light {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.btn--outline-dark {
+  background-color: transparent;
+  color: var(--color-dark);
+  border-color: var(--color-dark);
+}

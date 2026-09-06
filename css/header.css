@@ -1,0 +1,107 @@
+﻿/* =====================================================
+   HEADER.CSS
+   Cabeçalho fixo com logo, navegação e botão de reserva
+   ===================================================== */
+
+.site-header { /*HEADER PAI defino as regras gerais*/
+  background-color: var(--color-dark); /*Essas variaveis de cor e fonte estão todas na base.css*/
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
+
+.header__inner { /*Div que encobre todo o header, aqui defino coisas como o espaço entre os elementos */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: clamp(10px, 0.8vw, 40px) clamp(30px, 1.7vw, 56px); /* Padding proporcional à da tela */
+  width: 100%;
+  position: relative;
+}
+
+/* ---------- Logo / marca ---------- */
+.brand { /*O "link" que "encobre" o texto do nome da arena e o logo, pro usuario poder clicar e voltar para o hero*/
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 0.8vw, 40px);
+}
+
+.brand__logo { /*Tamanho e caracteristicas da imagem de logo*/
+  width: clamp(32px, 3vw, 128px);
+  height: clamp(32px, 3vw, 128px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand__name { /*Texto "ARENA CLUBE ARRUDA"*/
+  font-family: var(--font-heading);
+  color: var(--color-white);
+  font-size: clamp(1rem, 1.1vw, 4rem);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ---------- Navegação ---------- */
+.main-nav {
+  position: absolute;
+  left: 50%;                    /*Basicamewnte aqui eu centralizo o navbar*/
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.main-nav__list {
+  display: flex;
+}
+
+.main-nav__list li:not(:last-child) {
+  margin-right: clamp(16px, 1.46vw, 56px);
+}
+
+.main-nav__list a { /*Aqui é o estilo para os links da navegação*/
+  font-family: var(--font-heading);
+  color: var(--color-white);
+  font-size: clamp(1rem, 1vw, 3rem); /*Aqui eu altero também o tamanho do texto para ficar proporcional a tela*/
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.main-nav__list a:hover {
+  transition: all 0.2s ease;
+  color: var(--color-green);
+}
+
+.main-nav__cta { /*Botão para reservar verde*/
+  padding: clamp(5px, 0.35vw, 14px) clamp(20px, 2vw, 80px);
+  font-size: clamp(0.8rem, 1vw, 3rem);
+  color: var(--color-dark);
+}
+.main-nav__cta:hover{
+  background-color: #2da35a;
+  transition: all 0.9s ease;
+  scale: 1.01;
+}
+
+/* ---------- Botão hamburguer (mobile) ---------- */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-green);
+  flex-shrink: 0;
+}
+
+.nav-toggle__bar {
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-white);
+}
