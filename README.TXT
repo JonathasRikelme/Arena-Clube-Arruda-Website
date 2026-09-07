@@ -36,16 +36,14 @@ Branco
 #FFFFFF
 Preto / escuro	
 #18181B
-Placeholder foto	
-#7B2CBF (roxo)
-Placeholder mapa	
-#FFD700 (amarelo)
 Fonte de título	Oswald
 Fonte de texto	Barlow
 
 Todos os locais que teriam fotografias reais (hero, cards de esporte, "por dentro da arena", equipe, eventos, pódio, avatares) estão marcados com a classe .placeholder-img (roxo), prontos para receber as imagens definitivas. O mapa usa um placeholder amarelo até a integração real com o Google Maps.
 
+
 -------------- Funcionalidades já implementadas em JS --------------
+
 Menu mobile: abre/fecha o menu hamburguer (ativo também no tablet).
 Abas de unidade (Unidade 1 / Unidade 2): trocam dinamicamente nome, endereço, mapa (iframe), quadras, comodidades, app e horários, a partir de um objeto de dados (unitsData) em main.js.
 Lista da equipe: clique em um membro atualiza o destaque visual.
