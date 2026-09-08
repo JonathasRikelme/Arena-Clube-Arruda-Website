@@ -1,0 +1,216 @@
+/* =====================================================
+   FEEDBACKS.CSS
+   Seção "Recado dos alunos" - carrossel de depoimentos
+   ===================================================== */
+
+.Feedback {
+  background-color: var(--color-bg-light);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.FeedBack__wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  margin-top: 16px;
+}
+
+.FeedBack__track {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Card escuro com borda irregular verde (efeito "papel rasgado"),
+   igual ao selo da seção "Por dentro da arena". */
+.testimonial-card {
+  background-color: var(--color-dark);
+  border: 2px solid var(--color-green);
+  padding: 28px 22px 22px;
+  min-height: 280px;
+  min-width: 0; /* evita overflow do grid (min-content) */
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.testimonial-card__quote {
+  font-family: var(--font-heading);
+  color: var(--color-green);
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.testimonial-card__stars {
+  color: var(--color-green);
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.testimonial-card__text {
+  font-family: var(--font-body);
+  color: var(--color-white);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--color-white);
+  margin: 20px -22px -22px;
+  padding: 14px 22px;
+  border-top-right-radius: 40px;
+}
+
+.testimonial-card__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--color-green);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.testimonial-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-card__author strong {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-dark);
+}
+
+.testimonial-card__author small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Setas de navegação ---------- */
+.FeedBack__arrow {
+  font-size: 2.2rem;
+  color: var(--color-green);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ---------- Navegação inferior ---------- */
+.FeedBack__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.FeedBack__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.FeedBack__dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid var(--color-green);
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0.55;
+  cursor: pointer;
+  transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
+}
+
+.FeedBack__dot.is-active {
+  background-color: var(--color-green);
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+.FeedBack__dot:hover,
+.FeedBack__dot:focus-visible {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* ---------- Estrutura do carrossel infinito ---------- */
+.FeedBack__track {
+  overflow: hidden;
+}
+
+.FeedBack__rail {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.FeedBack__rail .testimonial-card {
+  flex: 0 0 calc((var(--feedback-track-width, 100%) - 48px) / 3);
+}
+
+/* O trilho recebe a largura real do viewport via JS, mas este fallback
+   mantém os cards proporcionais caso o JS ainda esteja inicializando. */
+.FeedBack__track {
+  --feedback-track-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .FeedBack__rail {
+    gap: 32px;
+  }
+
+  .FeedBack__rail .testimonial-card {
+    flex-basis: calc((var(--feedback-track-width, 100%) - 32px) / 2);
+  }
+}
+
+@media (max-width: 640px) {
+  .FeedBack__rail {
+    gap: 40px;
+  }
+
+  .FeedBack__rail .testimonial-card {
+    flex-basis: var(--feedback-track-width, 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .FeedBack__rail {
+    transition-duration: 0.01ms;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .FeedBack__controls {
+    margin-top: 22px;
+  }
+
+  .FeedBack__controls .FeedBack__arrow {
+    display: none;
+  }
+}
