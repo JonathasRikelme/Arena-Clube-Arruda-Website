@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arena Clube Arruda | Vôlei, Futevôlei e Futebol Society</title>
+<!-- favicons do site -->
+<link rel="icon" type="image/x-icon" href="Assets/Favicons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="Assets/Favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="Assets/Favicons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="Assets/Favicons/apple-touch-icon.png">
+<link rel="manifest" href="Assets/Favicons/site.webmanifest">
+<meta name="theme-color" content="#18181B">
 
 <!-- Fontes: Oswald para títulos / Barlow para textos gerais -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -248,13 +255,13 @@
           </li>
         </ul>
 
-        <div class="team__photo placeholder-img" aria-hidden="true"></div>
+        <div class="team__photo placeholder-img" aria-hidden="true" id="teamPhoto"></div>
 
         <div class="team__bio">
-          <span class="team__bio-number">01</span>
-          <h3 class="team__bio-name">Bruno Eduardo</h3>
-          <p class="team__bio-role">Sócio Administrador &nbsp;•&nbsp; Fundador</p>
-          <p class="team__bio-text">
+          <span class="team__bio-number" id="teamBioNumber">01</span>
+          <h3 class="team__bio-name" id="teamBioName">Bruno Eduardo</h3>
+          <p class="team__bio-role" id="teamBioRole">Sócio Administrador &nbsp;•&nbsp; Fundador</p>
+          <p class="team__bio-text" id="teamBioText">
             Bruno Eduardo criou a Arena Clube Arruda em 2024 movido por uma paixão
             simples: futevôlei. Jogador ele mesmo, sabe exatamente o que faz uma
             quadra boa e o que faz a galera voltar toda semana. É conhecido por
@@ -268,8 +275,6 @@
   <!-- ===================== EVENTOS ===================== -->
   <section class="events" id="eventos">
     <div class="container">
-      <!-- Wrapper para permitir a inversão eyebrow/título apenas no
-           mobile (conforme wireframe de celular), via flexbox order -->
       <div class="events__header">
         <p class="section-eyebrow section-eyebrow--green">Ultimos Eventos e Torneios</p>
         <h2 class="section-title section-title--light">Oque rolou por aqui.</h2>
@@ -278,7 +283,7 @@
 
       <div class="events__grid">
         <article class="event-card">
-          <div class="event-card__media placeholder-img"></div>
+          <div class="event-card__media"><img src="Assets/Images/image 14.png" alt=""></div>
           <div class="event-card__body">
             <p class="event-card__meta"><span>16 de Fev 2026</span> / <span>Unidade Rua do Machado</span></p>
             <h3 class="event-card__title">Torneio de Vôlei - Etapa de Fevereiro</h3>
@@ -287,14 +292,15 @@
         </article>
 
         <article class="event-card event-card--video">
-          <div class="event-card__media placeholder-img">
+          <div class="event-card__media" data-video="Assets/Videos/Video2.mp4">
+            <img src="Assets/Images/Capa-Video.png" alt="Capa do vídeo">
             <span class="event-card__video-tag">Vídeo</span>
             <span class="event-card__play" aria-hidden="true">&#9658;</span>
           </div>
           <div class="event-card__body">
-            <p class="event-card__meta"><span>24 de Ago 2026</span> / <span>Unidade Rua da Regeneração</span></p>
-            <h3 class="event-card__title">Amistoso - Volei de Lua x Sharks</h3>
-            <p class="event-card__text">Dois times que treinam na Arena Clube Arruda se enfrentaram em um amistoso acirrado.</p>
+            <p class="event-card__meta"><span>18 de Abril 2025</span> / <span>Unidade Rua do Machado</span></p>
+            <h3 class="event-card__title">Copa L6S Cup</h3>
+            <p class="event-card__text">Um torneio feito por e para as mulheres que amam o futvôlei. Incentivando, fortalecendo e mostrando que lugar de mulher é onde ela quiser, inclusive na areia!</p>
           </div>
         </article>
 
@@ -476,7 +482,7 @@
   <div class="container footer__top">
     <div class="footer__brand">
       <span class="brand__logo" aria-hidden="true">
-        <span class="brand__logo-text">AC</span>
+        <span class="brand__logo-text"><img src="Assets/Images/Logo-arena-200px.png" alt=""></span>
       </span>
       <div>
         <p class="footer__brand-name">Arena Clube Arruda</p>
@@ -505,7 +511,8 @@
   <div class="footer__divider"></div>
 
   <div class="container footer__bottom">
-    <p>2026 - Arena Clube Arruda</p>
+    <p>&copy; 2026 - Arena Clube Arruda</p>
+    <p id="credit-jhon">Desenvolvido por Jonathas Rikelme.</p>
   </div>
 </footer>
 

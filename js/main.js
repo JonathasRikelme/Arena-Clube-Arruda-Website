@@ -129,19 +129,7 @@ unitTabs.forEach(function (tab) {
 // Garante que a Unidade 1 já apareça renderizada ao carregar a página
 renderUnit('1');
 
-  /* ---------- Lista da equipe (troca o membro em destaque) ---------- */
-  var teamItems = document.querySelectorAll('.team__item');
 
-  teamItems.forEach(function (item) {
-    item.addEventListener('click', function () {
-      teamItems.forEach(function (i) {
-        i.classList.remove('is-active');
-      });
-      item.classList.add('is-active');
-      // Observação: aqui futuramente pode-se atualizar a foto
-      // e a biografia de acordo com o membro selecionado.
-    });
-  });
 
   /* ---------- Setas do carrossel de depoimentos ---------- */
   var track = document.getElementById('testimonialsTrack');
@@ -160,4 +148,117 @@ renderUnit('1');
     });
   }
 
+});
+
+/*====================================================
+    Aqui começa o JS da parte de equipes, segue o mesmo padrão do código acima, mas com algumas alterações
+    ====================================================*/
+
+    var teamData = {
+  1: {
+    number: '01',
+    name: 'Bruno Eduardo',
+    role: 'Sócio Administrador &nbsp;•&nbsp; Fundador',
+    bio: 'Bruno Eduardo criou a Arena Clube Arruda em 2024 movido por uma paixão simples: futevôlei. Jogador ele mesmo, sabe exatamente o que faz uma quadra boa e o que faz a galera voltar toda semana. É conhecido por receber cada cliente como se fosse da casa.',
+    photo: 'Assets/Images/retrato-homem.png' 
+  },
+  2: {
+    number: '07',
+    name: 'Renata Queiroz',
+    role: 'Gerente &nbsp;•&nbsp; Líder',
+    bio: 'Renata atua como gerente da Arena Clube Arruda, cuidando de perto da organização e do funcionamento do espaço. Atenta a cada detalhe, busca garantir que jogadores e clientes tenham uma experiência confortável e bem atendida. Seu jeito acolhedor e organizado ajuda a manter a Arena sempre pronta para receber a galera.', 
+    photo: 'Assets/Images/retrato-mulher.png' 
+  },
+  3: {
+    number: '09',
+    name: 'Celso Murilo',
+    role: 'Professor &nbsp;•&nbsp; Vôlei',
+    bio: 'Celso é professor de vôlei na Arena Clube Arruda e transforma sua experiência com o esporte em aprendizado dentro da quadra. Apaixonado pelo vôlei, acompanha de perto a evolução de cada aluno, trabalhando técnica, disciplina e, principalmente, o prazer de jogar. Para ele, cada treino é uma oportunidade de evoluir e se divertir.', 
+    photo: 'Assets/Images/retrato-homem-negro.png' // TODO: quando tiver a foto real, colocar aqui a url() dela
+  }
+};
+
+function renderTeamMember(memberId) {
+  var data = teamData[memberId];
+  if (!data) return; // proteção: id inexistente não quebra o site
+
+  document.getElementById('teamBioNumber').textContent = data.number;
+  document.getElementById('teamBioName').textContent = data.name;
+  document.getElementById('teamBioRole').innerHTML = data.role;
+
+  // Texto de fallback caso a bio ainda não tenha sido preenchida
+  document.getElementById('teamBioText').textContent =
+    data.bio || 'Em breve mais informações sobre esse integrante da equipe.';
+
+  var photoEl = document.getElementById('teamPhoto');
+  if (data.photo) {
+    // Se já existir uma foto real cadastrada, troca o fundo pra ela
+    photoEl.style.backgroundImage = 'url(' + data.photo + ')';
+    photoEl.style.backgroundSize = 'cover';
+    photoEl.style.backgroundPosition = 'center';
+  } else {
+    // Sem foto cadastrada ainda: volta pro placeholder roxo padrão
+    photoEl.style.backgroundImage = '';
+  }
+}
+
+/* ---------- Lista da equipe (clique troca foto + bio) ---------- */
+var teamItems = document.querySelectorAll('.team__item');
+
+teamItems.forEach(function (item) {
+  item.addEventListener('click', function () {
+    teamItems.forEach(function (i) {
+      i.classList.remove('is-active');
+    });
+    item.classList.add('is-active');
+
+    // Atualiza a foto e o texto de bio com os dados da pessoa clicada
+    renderTeamMember(item.dataset.member);
+  });
+});
+
+// Garante que o Bruno Eduardo já apareça correto ao carregar a página
+renderTeamMember('1');
+
+/* ---------- Vídeos dos cards de eventos (lazy load no clique) ---------- */
+//Cada card com vídeo só carrega o arquivo de vídeo de verdade quando
+//o usuário clica na capa , só a imagem de capa (leve)
+//é exibida. Isso evita baixar todos os vídeos só por carregar a página.
+var videoMediaBoxes = document.querySelectorAll('.event-card--video .event-card__media');
+
+videoMediaBoxes.forEach(function (mediaBox) {
+  mediaBox.addEventListener('click', function () {
+    var videoSrc = mediaBox.dataset.video;
+    if (!videoSrc) return; // proteção: sem caminho de vídeo, não faz nada
+
+    // Pausa qualquer outro vídeo que já esteja tocando, pra não ter audio duplicado de dois videos rodando
+    document.querySelectorAll('.event-card__media video').forEach(function (v) {
+      v.pause();
+    });
+
+    // Cria o elemento <video> de verdade e substitui a capa por ele.
+    // Usamos duas <source>: mp4 (compatibilidade universal, essencial
+    // pro Safari/iOS, que não entende webm) e webm (arquivo menor,
+    // usado pelos navegadores que suportam). O navegador escolhe
+    // sozinho qual consegue tocar — se um formato não existir, ele
+    // simplesmente ignora e tenta o próximo, sem quebrar nada.
+    var video = document.createElement('video');
+    video.controls = true;
+    video.autoplay = true;
+    video.playsInline = true; // evita abrir em tela cheia sozinho no iOS
+
+    var sourceMp4 = document.createElement('source');
+    sourceMp4.src = videoSrc;
+    sourceMp4.type = 'video/mp4';
+    video.appendChild(sourceMp4);
+
+    var sourceWebm = document.createElement('source');
+    sourceWebm.src = videoSrc.replace(/\.mp4$/i, '.webm');
+    sourceWebm.type = 'video/webm';
+    video.appendChild(sourceWebm);
+
+    mediaBox.innerHTML = ''; // remove a imagem de capa, a tag "Vídeo" e o botão de play
+    mediaBox.appendChild(video);
+    video.play();
+  });
 });

@@ -110,7 +110,7 @@ h1, h2, h3, h4 {
 }
 
 .section-title {
-  font-size: clamp(1.8rem, 3.5vw, 8rem);
+  font-size: clamp(2.5rem, 3.5vw, 8rem);
   font-weight: 700;
   color: var(--color-dark);
   margin-bottom: 8px;
