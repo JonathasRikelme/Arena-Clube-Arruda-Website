@@ -160,21 +160,21 @@ renderUnit('1');
     name: 'Bruno Eduardo',
     role: 'Sócio Administrador &nbsp;•&nbsp; Fundador',
     bio: 'Bruno Eduardo criou a Arena Clube Arruda em 2024 movido por uma paixão simples: futevôlei. Jogador ele mesmo, sabe exatamente o que faz uma quadra boa e o que faz a galera voltar toda semana. É conhecido por receber cada cliente como se fosse da casa.',
-    photo: 'Assets/Images/retrato-homem.png' 
+    photo: 'Assets/Images/Equipe/retrato-homem.png' 
   },
   2: {
     number: '07',
     name: 'Renata Queiroz',
     role: 'Gerente &nbsp;•&nbsp; Líder',
     bio: 'Renata atua como gerente da Arena Clube Arruda, cuidando de perto da organização e do funcionamento do espaço. Atenta a cada detalhe, busca garantir que jogadores e clientes tenham uma experiência confortável e bem atendida. Seu jeito acolhedor e organizado ajuda a manter a Arena sempre pronta para receber a galera.', 
-    photo: 'Assets/Images/retrato-mulher.png' 
+    photo: 'Assets/Images/Equipe/retrato-mulher.png' 
   },
   3: {
     number: '09',
     name: 'Celso Murilo',
     role: 'Professor &nbsp;•&nbsp; Vôlei',
     bio: 'Celso é professor de vôlei na Arena Clube Arruda e transforma sua experiência com o esporte em aprendizado dentro da quadra. Apaixonado pelo vôlei, acompanha de perto a evolução de cada aluno, trabalhando técnica, disciplina e, principalmente, o prazer de jogar. Para ele, cada treino é uma oportunidade de evoluir e se divertir.', 
-    photo: 'Assets/Images/retrato-homem-negro.png' // TODO: quando tiver a foto real, colocar aqui a url() dela
+    photo: 'Assets/Images/Equipe/retrato-homem-negro.png' // TODO: quando tiver a foto real, colocar aqui a url() dela
   }
 };
 

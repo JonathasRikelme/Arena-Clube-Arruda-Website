@@ -49,6 +49,9 @@
   object-fit: cover;
   display: block;
 }
+.event-card__media video:fullscreen {
+  object-fit: contain;
+}
 
 /* Tag "Vídeo" no canto superior esquerdo, presente em alguns cards */
 .event-card__video-tag {
