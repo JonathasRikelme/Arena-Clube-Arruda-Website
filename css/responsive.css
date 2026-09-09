@@ -546,14 +546,14 @@
     margin-bottom: 28px;
   }
   .testimonial-card__quote {
-    font-size: 3.1rem;
+    font-size: 4rem;
   }
   .testimonial-card__stars {
-    font-size: 1.3rem;
+    font-size: 2.2rem;
     letter-spacing: 3px;
   }
   .testimonial-card__text {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     line-height: 1.65;
   }
   .testimonial-card__author {
@@ -568,10 +568,10 @@
     border-width: 3px;
   }
   .testimonial-card__author strong {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   .testimonial-card__author small {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .FeedBack__arrow {
     font-size: 1.6rem;
@@ -818,14 +818,14 @@
     margin-bottom: 34px;
   }
   .testimonial-card__quote {
-    font-size: 3.6rem;
+    font-size: 3.95rem;
   }
   .testimonial-card__stars {
-    font-size: 1.6rem;
+    font-size: 2.5rem;
     letter-spacing: 4px;
   }
   .testimonial-card__text {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     line-height: 1.7;
   }
   .testimonial-card__author {
@@ -835,15 +835,15 @@
     border-top-right-radius: 60px;
   }
   .testimonial-card__avatar {
-    width: 64px;
-    height: 64px;
+    width: 74px;
+    height: 74px;
     border-width: 3px;
   }
   .testimonial-card__author strong {
-    font-size: 1.45rem;
+    font-size: 1.65rem;
   }
   .testimonial-card__author small {
-    font-size: 1.2rem;
+    font-size: 1.45rem;
   }
   .FeedBack__arrow {
     font-size: 2rem;
@@ -1097,14 +1097,14 @@
     margin-bottom: 38px;
   }
   .testimonial-card__quote {
-    font-size: 4.4rem;
+    font-size: 5.4rem;
   }
   .testimonial-card__stars {
-    font-size: 2rem;
+    font-size: 3.8rem;
     letter-spacing: 5px;
   }
   .testimonial-card__text {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
     line-height: 1.65;
   }
   .testimonial-card__author {
@@ -1114,15 +1114,15 @@
     border-top-right-radius: 70px;
   }
   .testimonial-card__avatar {
-    width: 76px;
-    height: 76px;
+    width: 106px;
+    height: 106px;
     border-width: 3px;
   }
   .testimonial-card__author strong {
-    font-size: 1.7rem;
+    font-size: 2.4rem;
   }
   .testimonial-card__author small {
-    font-size: 1.35rem;
+    font-size: 2.3rem;
   }
   .FeedBack__controls {
     gap: 26px;
