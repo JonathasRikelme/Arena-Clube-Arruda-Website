@@ -18,6 +18,22 @@
 .space-card {
   position: relative;
   min-width: 0; /* evita overflow do grid (min-content) */
+  /* opacity entra aqui só pra não sobrescrever a transição que o .reveal
+     (base.css) já declara nesse mesmo elemento — mesma especificidade,
+     e este arquivo carrega depois, então venceria sem o opacity aqui */
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-base) var(--ease-out);
+}
+
+/* Sobe o card inteiro no hover. Não aplicamos zoom só na imagem aqui
+   porque o box-shadow do wireframe já está direto na <img> (abaixo);
+   um overflow:hidden no container pra conter o zoom cortaria essa
+   sombra. Mover o card inteiro dá o mesmo efeito de destaque sem
+   esse conflito. */
+@media (hover: hover) {
+  .space-card:hover {
+    transform: translateY(-8px);
+  }
 }
 
 .space-card__media {
@@ -38,7 +54,7 @@
   max-width: clamp(280px, 18vw, 420px);
   height: 100%;
   max-height: clamp(230px, 15vw, 360px);
-  background: url(/Assets/Images/Card-verde.png) no-repeat center center;
+  background: url(../Assets/Images/Card-verde.png) no-repeat center center;
   background-size: cover;
   padding: 30px;
   z-index: 0;

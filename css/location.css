@@ -11,6 +11,7 @@
 /* ---------- Abas Unidade 1 / Unidade 2 ---------- */
 .location__tabs {
   display: inline-flex;
+  position: relative; /* referência pro indicador (pill) posicionado abaixo */
   border: 1px solid var(--color-white);
   margin-top: 9px;
   margin-bottom: 15px;
@@ -25,10 +26,30 @@
   color: var(--color-white);
   padding: 12px 48px;
   background-color: transparent;
+  position: relative;
+  z-index: 1; /* fica acima do indicador que desliza por baixo */
+  transition: color var(--dur-base) var(--ease-out);
 }
 
+/* O fundo verde sólido de antes foi substituído pelo indicador
+   deslizante (.location__tab-indicator, criado e posicionado via
+   JS em main.js). Mantemos a classe .is-active só pra acessibilidade
+   (aria-selected) e como fallback caso o JS não carregue. */
 .location__tab.is-active {
+  background-color: transparent;
+}
+
+/* Indicador (pill) que desliza de uma aba pra outra. Criado uma
+   única vez pelo JS e reposicionado (left/width) a cada clique. */
+.location__tab-indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
   background-color: var(--color-green);
+  transition: transform var(--dur-base) var(--ease-out),
+              width var(--dur-base) var(--ease-out);
+  z-index: 0;
 }
 
 /* ---------- Grid: mapa + informações ---------- */
@@ -41,6 +62,26 @@
 
 .location__grid > * {
   min-width: 0; /* evita overflow do grid (min-content) */
+}
+
+/* Crossfade do conteúdo ao trocar de unidade: o JS (main.js) adiciona
+   .is-fading nos dois blocos (mapa + informações) antes de trocar o
+   texto, espera essa transição terminar, troca o innerHTML, e então
+   remove a classe pra tudo voltar a aparecer.
+   Observação: como esses elementos também têm a classe .reveal (que
+   já declara "transition" em base.css), precisamos repetir o
+   "transform" aqui — do contrário essa regra (mesma especificidade,
+   carregada depois) apagaria a transição de transform do .reveal e
+   a entrada com slide ficaria seca. */
+.location__map,
+.location__info {
+  transition: opacity var(--dur-base) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+}
+
+.location__map.is-fading,
+.location__info.is-fading {
+  opacity: 0;
 }
 
 /* Placeholder amarelo no lugar do Google Maps */

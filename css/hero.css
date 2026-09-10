@@ -17,7 +17,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: url(/Assets/Images/Background-hero.png) no-repeat center center/cover;
+  background: url(../Assets/Images/Background-hero.png) no-repeat center center/cover;
   z-index: 0;
 }
 
@@ -101,3 +101,25 @@
   transition: scale 0.4s ease-in-out;
   background-color: var(--color-dark);
 }
+
+/* ---------- Entrada em cascata do hero ----------
+   Cada bloco (eyebrow -> título -> texto -> botões) entra em
+   sequência assim que a página carrega, com "fill-mode: both"
+   pra já nascer invisível (opacity:0) antes da animação começar,
+   sem precisar de nenhuma classe adicionada por JS. */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero__eyebrow,
+.hero__title,
+.hero__text,
+.hero__actions {
+  animation: heroFadeUp var(--dur-slow) var(--ease-out) both;
+}
+
+.hero__eyebrow { animation-delay: 0.1s; }
+.hero__title   { animation-delay: 0.25s; }
+.hero__text    { animation-delay: 0.4s; }
+.hero__actions { animation-delay: 0.55s; }

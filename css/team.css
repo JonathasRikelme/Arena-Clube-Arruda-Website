@@ -25,6 +25,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative; /* referência para o indicador vertical */
 }
 
 .team__item {
@@ -33,11 +34,39 @@
   gap: 16px;
   padding: 22px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
+  cursor: pointer;
+  position: relative;
+  z-index: 1; /* conteúdo fica acima do indicador verde */
+  transition: color var(--dur-base) var(--ease-out);
 }
 
 .team__item.is-active {
+  background-color: transparent;
+}
+
+/* Mesmo conceito do indicador das abas de Unidade, mas em movimento vertical.
+   O JS ajusta a altura e desloca o indicador até o item ativo. */
+.team__list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--team-indicator-height, 0px);
   background-color: var(--color-green);
+  transform: translateY(var(--team-indicator-y, 0px));
+  transition: transform var(--dur-base) var(--ease-out),
+              height var(--dur-base) var(--ease-out);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Hover discreto nos itens que não estão selecionados, só pra deixar
+   claro que são clicáveis (o item ativo já tem o próprio destaque verde) */
+@media (hover: hover) {
+  .team__item:not(.is-active):hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
 }
 
 .team__number {
@@ -73,6 +102,7 @@
 /* ---------- Foto do membro em destaque ---------- */
 .team__photo {
   min-height: 320px;
+  transition: opacity var(--dur-base) var(--ease-out);
 }
 
 /* ---------- Biografia ---------- */
@@ -83,6 +113,14 @@
   justify-content: center;
   height: 100%;       /* ocupa exatamente a altura fixa do painel */
   overflow-y: auto;    /* bio muito longa rola por dentro, não estica o painel */
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+/* Aplicado pelo JS (main.js) por uma fração de segundo antes de
+   trocar a foto/nome/texto pelos dados do próximo membro clicado */
+.team__photo.is-fading,
+.team__bio.is-fading {
+  opacity: 0;
 }
 
 .team__bio-number {

@@ -109,6 +109,17 @@ function renderUnit(unitId) {
 
 /* ---------- Abas "Unidade 1 / Unidade 2" ---------- */
 var unitTabs = document.querySelectorAll('.location__tab');
+var unitTabIndicator = document.getElementById('locationTabIndicator');
+var locationMapEl = document.getElementById('locationMap');
+var locationInfoEl = document.querySelector('.location__info');
+var UNIT_FADE_MS = 200; // precisa bater com --dur-base (300ms) só um pouco mais rápido, pra não deixar "vácuo" antes do fade-in
+
+/* ---------- Move o indicador (pill) verde até a aba ativa ---------- */
+function moveUnitIndicator(activeTab) {
+  if (!unitTabIndicator || !activeTab) return;
+  unitTabIndicator.style.width = activeTab.offsetWidth + 'px';
+  unitTabIndicator.style.transform = 'translateX(' + activeTab.offsetLeft + 'px)';
+}
 
 unitTabs.forEach(function (tab) {
   tab.addEventListener('click', function () {
@@ -120,14 +131,41 @@ unitTabs.forEach(function (tab) {
 
     tab.classList.add('is-active');
     tab.setAttribute('aria-selected', 'true');
+    moveUnitIndicator(tab);
 
-    // Atualiza toda a seção com os dados da unidade selecionada
-    renderUnit(tab.dataset.unit);
+    // Crossfade: esconde mapa + informações, troca os dados por baixo
+    // do fade, e revela de novo — evita a troca "seca" de conteúdo
+    if (locationMapEl) locationMapEl.classList.add('is-fading');
+    if (locationInfoEl) locationInfoEl.classList.add('is-fading');
+
+    setTimeout(function () {
+      renderUnit(tab.dataset.unit);
+      if (locationMapEl) locationMapEl.classList.remove('is-fading');
+      if (locationInfoEl) locationInfoEl.classList.remove('is-fading');
+    }, UNIT_FADE_MS);
   });
 });
 
 // Garante que a Unidade 1 já apareça renderizada ao carregar a página
 renderUnit('1');
+
+// Posiciona o indicador embaixo da aba ativa inicial. Um pequeno atraso
+// garante que a fonte Oswald (que muda a largura do texto) já carregou
+// e o offsetWidth calculado está correto — sem isso, o indicador podia
+// nascer com a largura errada se a fonte ainda não tivesse aplicado.
+window.addEventListener('load', function () {
+  moveUnitIndicator(document.querySelector('.location__tab.is-active'));
+});
+
+// Reposiciona o indicador se a tela for redimensionada (o padding das
+// abas é proporcional/clamp, então a largura muda com o viewport)
+var unitIndicatorResizeTimer;
+window.addEventListener('resize', function () {
+  clearTimeout(unitIndicatorResizeTimer);
+  unitIndicatorResizeTimer = setTimeout(function () {
+    moveUnitIndicator(document.querySelector('.location__tab.is-active'));
+  }, 150);
+});
 
 
 
@@ -392,6 +430,68 @@ renderUnit('1');
 });
 
 /*====================================================
+    Header: encolhe e ganha sombra depois de rolar a página
+    ====================================================*/
+var siteHeaderEl = document.querySelector('.site-header');
+var HEADER_SCROLL_THRESHOLD = 80; // pixels rolados até o header "encolher"
+
+if (siteHeaderEl) {
+  var headerScrollTicking = false; // evita empilhar vários requestAnimationFrame por scroll
+
+  function updateHeaderScrollState() {
+    siteHeaderEl.classList.toggle('is-scrolled', window.scrollY > HEADER_SCROLL_THRESHOLD);
+    headerScrollTicking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (headerScrollTicking) return; // já tem um frame agendado, não precisa agendar outro
+    headerScrollTicking = true;
+    window.requestAnimationFrame(updateHeaderScrollState);
+  });
+
+  // Estado correto já na primeira renderização (ex: usuário recarrega a
+  // página no meio do scroll, ou volta com o botão "voltar" do navegador)
+  updateHeaderScrollState();
+}
+
+/*====================================================
+    Reveal on scroll: anima a entrada de qualquer elemento
+    com a classe .reveal quando ele aparece na tela.
+    Usado nos cards de esporte, "por dentro da arena", equipe,
+    eventos, pódio, depoimentos e CTA.
+    ====================================================*/
+var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var revealElements = document.querySelectorAll('.reveal');
+
+if (prefersReducedMotion) {
+  // Quem prefere menos animação não deveria ficar esperando um scroll
+  // pra ver o conteúdo: mostra tudo de uma vez, sem transição (o CSS
+  // já zera a duração das transições nesse caso também).
+  revealElements.forEach(function (el) {
+    el.classList.add('is-visible');
+  });
+} else if ('IntersectionObserver' in window) {
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target); // anima só uma vez por elemento
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  revealElements.forEach(function (el) {
+    revealObserver.observe(el);
+  });
+} else {
+  // Navegador muito antigo sem suporte a IntersectionObserver: melhor
+  // mostrar o conteúdo direto do que arriscar ele ficar invisível pra sempre
+  revealElements.forEach(function (el) {
+    el.classList.add('is-visible');
+  });
+}
+
+/*====================================================
     Aqui começa o JS da parte de equipes, segue o mesmo padrão do código acima, mas com algumas alterações
     ====================================================*/
 
@@ -445,20 +545,54 @@ function renderTeamMember(memberId) {
 
 /* ---------- Lista da equipe (clique troca foto + bio) ---------- */
 var teamItems = document.querySelectorAll('.team__item');
+var teamPhotoEl = document.getElementById('teamPhoto');
+var teamBioEl = document.querySelector('.team__bio');
+var TEAM_FADE_MS = 200; // mesmo raciocínio do UNIT_FADE_MS: um pouco mais rápido que --dur-base
+
+/* ---------- Move o indicador verde até o membro ativo ---------- */
+function moveTeamIndicator(activeItem) {
+  if (!activeItem || !activeItem.parentElement) return;
+  activeItem.parentElement.style.setProperty('--team-indicator-height', activeItem.offsetHeight + 'px');
+  activeItem.parentElement.style.setProperty('--team-indicator-y', activeItem.offsetTop + 'px');
+}
 
 teamItems.forEach(function (item) {
   item.addEventListener('click', function () {
+    // Evita refazer o crossfade se a pessoa clicar em quem já está ativo
+    if (item.classList.contains('is-active')) return;
+
     teamItems.forEach(function (i) {
       i.classList.remove('is-active');
     });
     item.classList.add('is-active');
+    moveTeamIndicator(item);
 
-    // Atualiza a foto e o texto de bio com os dados da pessoa clicada
-    renderTeamMember(item.dataset.member);
+    // Crossfade: some com a foto/bio atuais, troca os dados por baixo
+    // do fade, e revela de novo — evita a troca seca de antes
+    if (teamPhotoEl) teamPhotoEl.classList.add('is-fading');
+    if (teamBioEl) teamBioEl.classList.add('is-fading');
+
+    setTimeout(function () {
+      renderTeamMember(item.dataset.member);
+      if (teamPhotoEl) teamPhotoEl.classList.remove('is-fading');
+      if (teamBioEl) teamBioEl.classList.remove('is-fading');
+    }, TEAM_FADE_MS);
   });
 });
 
 // Garante que o Bruno Eduardo já apareça correto ao carregar a página
+if (teamItems.length) {
+  moveTeamIndicator(document.querySelector('.team__item.is-active') || teamItems[0]);
+}
+
+// Reposiciona o indicador quando a largura/altura da lista mudar em um resize
+var teamIndicatorResizeTimer;
+window.addEventListener('resize', function () {
+  clearTimeout(teamIndicatorResizeTimer);
+  teamIndicatorResizeTimer = setTimeout(function () {
+    moveTeamIndicator(document.querySelector('.team__item.is-active'));
+  }, 150);
+});
 renderTeamMember('1');
 
 /* ---------- Vídeos dos cards de eventos (lazy load no clique) ---------- */

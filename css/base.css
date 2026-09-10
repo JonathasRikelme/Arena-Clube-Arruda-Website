@@ -50,10 +50,6 @@ button {
   --color-green-hover:#2da35a;    /* verde para hover do botão principal */
   --color-green-bright: #22D66C;  /* verde vivo - botão whatsapp / destaques */
 
-  /* Placeholders (substituir depois pelas imagens/mapa reais) */
-  --color-placeholder: #7B2CBF;   /* placeholder roxo para fotos */
-  --color-map-placeholder: #FFD700; /* placeholder amarelo para o mapa */
-
   /* Auxiliares */
   --color-text-muted: #55555a;
   --color-border: #cfcfcf;
@@ -65,6 +61,16 @@ button {
   /* Layout */
   --container-width: 1200px;
   --container-padding: 24px;
+
+  /* ---------- Timing e easing das animações ----------
+     Centralizado aqui pra manter toda animação do site com a
+     mesma "assinatura" de movimento. Se quiser deixar tudo mais
+     rápido ou mais lento no futuro, mexe só aqui. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);   /* saída suave, usada na maioria das transições */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1); /* leve "overshoot", usada no pódio (efeito comemorativo) */
+  --dur-fast: 200ms;  /* micro-interações (hover de link, dot) */
+  --dur-base: 300ms;  /* hover de botões e cards */
+  --dur-slow: 500ms;  /* reveals de seção e entrada do hero */
 }
 
 /* ---------- Tipografia global ---------- */
@@ -128,17 +134,6 @@ h1, h2, h3, h4 {
   margin-bottom: 40px;
 }
 
-/* Placeholder de imagem: cor sólida roxa, organizado para fácil substituição futura.
-   Observação: não define "height", pois os containers que usam essa classe
-   já controlam a própria altura (aspect-ratio, min-height ou width/height
-   fixos). Definir height:100% aqui entraria em conflito com aspect-ratio
-   em containers de grid/flex e causaria alturas incorretas. */
-.placeholder-img {
-  background-color: var(--color-placeholder);
-  width: 100%;
-  position: relative;
-}
-
 /* ---------- Botões ---------- */
 .btn {
   display: inline-flex;
@@ -151,8 +146,27 @@ h1, h2, h3, h4 {
   font-size: 0.9rem;
   padding: 16px 28px;
   border: 2px solid transparent;
-  transition: none;
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out),
+              background-color var(--dur-base) var(--ease-out);
   white-space: nowrap;
+}
+
+/* Hover padrão pra QUALQUER botão do site (mesmo os que ainda não
+   tinham um hover próprio definido, como os de "Como Chegar?" e
+   "Reservar Nesta Unidade"). Onde já existe um hover mais específico
+   (ex: .hero__actions .btn--primary:hover em hero.css), ele continua
+   valendo por cima disso, já que scale é uma propriedade separada
+   de transform e os dois efeitos somam. */
+@media (hover: hover) {
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  }
+}
+
+.btn:active {
+  transform: translateY(-1px);
 }
 
 .btn--primary {
@@ -175,4 +189,65 @@ h1, h2, h3, h4 {
   background-color: transparent;
   color: var(--color-dark);
   border-color: var(--color-dark);
+}
+
+/* =====================================================
+   REVEAL ON SCROLL
+   Motor genérico de animação de entrada usado em várias seções.
+   Basta adicionar a classe .reveal em qualquer elemento do HTML.
+   O main.js observa a tela (IntersectionObserver) e adiciona
+   .is-visible quando o elemento aparece — uma única vez.
+   ===================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-slow) var(--ease-out);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variações de direção, usadas em conteúdo lado a lado com imagem */
+.reveal--left {
+  transform: translateX(-32px);
+}
+.reveal--left.is-visible {
+  transform: translateX(0);
+}
+
+.reveal--right {
+  transform: translateX(32px);
+}
+.reveal--right.is-visible {
+  transform: translateX(0);
+}
+
+/* Cascata (stagger): cada item de um grid entra um pouco depois do anterior */
+.sports__grid .reveal:nth-child(2) { transition-delay: 0.12s; }
+.sports__grid .reveal:nth-child(3) { transition-delay: 0.24s; }
+
+.spaces__grid .reveal:nth-child(2) { transition-delay: 0.12s; }
+.spaces__grid .reveal:nth-child(3) { transition-delay: 0.24s; }
+
+.events__grid .reveal:nth-child(2) { transition-delay: 0.08s; }
+.events__grid .reveal:nth-child(3) { transition-delay: 0.16s; }
+.events__grid .reveal:nth-child(4) { transition-delay: 0.24s; }
+.events__grid .reveal:nth-child(5) { transition-delay: 0.32s; }
+.events__grid .reveal:nth-child(6) { transition-delay: 0.4s; }
+
+.podium__grid .reveal:nth-child(2) { transition-delay: 0.12s; }
+.podium__grid .reveal:nth-child(3) { transition-delay: 0.24s; }
+
+/* ---------- Acessibilidade: respeita quem prefere menos animação ----------
+   Vale pra qualquer animação/transição do site inteiro, não só o reveal. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

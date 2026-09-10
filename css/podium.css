@@ -20,6 +20,28 @@
   background-color: var(--color-white);
   padding: 16px;
   min-width: 0; /* evita overflow do grid (min-content) */
+  /* opacity entra aqui só pra não sobrescrever a transição que o .reveal
+     (base.css) já declara nesse mesmo elemento — mesma especificidade,
+     e este arquivo carrega depois, então venceria sem o opacity aqui */
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* Essa seção é a única que usa --ease-bounce em vez de --ease-out:
+   como é a seção de "campeões", o leve overshoot na entrada (o
+   card "passa" um pouco do lugar final e volta) reforça a ideia
+   de comemoração, diferente do reveal mais "sóbrio" do resto do site. */
+.podium__grid .reveal {
+  transition-timing-function: var(--ease-bounce);
+  transition-duration: 600ms;
+}
+
+@media (hover: hover) {
+  .podium-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+  }
 }
 
 /* Foto com moldura pontilhada branca, conforme wireframe */

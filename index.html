@@ -101,7 +101,7 @@
       <p class="section-subtitle">Venha jogar um deles com a gente!</p>
 
       <div class="sports__grid">
-        <article class="sport-card">
+        <article class="sport-card reveal">
           <div class="sport-card__media">
             <img src="Assets/Images/Sports/Sports-Volei.png" alt="Imagem representativa de volei na arena"><!-- Imagem backgound do card de volei -->
           </div>
@@ -111,7 +111,7 @@
           </div>
         </article>
 
-        <article class="sport-card">
+        <article class="sport-card reveal">
           <div class="sport-card__media">
             <img src="Assets/Images/Sports/Sports-Society.png" alt="Imagem representativa de futebol society na arena"><!-- Imagem backgound do card de society -->
           </div>
@@ -121,7 +121,7 @@
           </div>
         </article>
 
-        <article class="sport-card">
+        <article class="sport-card reveal">
           <div class="sport-card__media">
             <img src="Assets/Images/Sports/Sports-Futevolei.png" alt="Imagem representativa de futevôlei na arena"><!-- Imagem backgound do card de futevôlei -->
           </div>
@@ -144,13 +144,15 @@
       <div class="location__tabs" role="tablist">
         <button class="location__tab is-active" role="tab" aria-selected="true" data-unit="1">Unidade 1</button>
         <button class="location__tab" role="tab" aria-selected="false" data-unit="2">Unidade 2</button>
+        <!-- Pill verde criada/posicionada pelo JS (main.js), desliza entre as abas -->
+        <span class="location__tab-indicator" id="locationTabIndicator" aria-hidden="true"></span>
       </div>
 
       <div class="location__grid">
         <!-- id adicionado: o innerHTML deste div é trocado pelo JS -->
-        <div class="location__map" id="locationMap" aria-label="Mapa do Google Maps"></div>
+        <div class="location__map reveal reveal--left" id="locationMap" aria-label="Mapa do Google Maps"></div>
 
-        <div class="location__info">
+        <div class="location__info reveal reveal--right">
           <h3 class="location__unit-name" id="locationUnitName">Unidade Rua do Machado</h3>
           <p class="location__address" id="locationAddress">R. do Machado, 312 - Arruda, Recife - PE</p>
 
@@ -197,7 +199,7 @@
       <p class="section-subtitle">Conheça o nosso espaço.</p>
 
       <div class="spaces__grid">
-        <article class="space-card">
+        <article class="space-card reveal">
           <div class="space-card__media"><img src="Assets/Images/Spaces/Quadra-Coberta.png" alt="Quadra Coberta"></div>
           <div class="space-card__tag">
             <h3>Quadra Coberta</h3>
@@ -205,7 +207,7 @@
           </div>
         </article>
 
-        <article class="space-card">
+        <article class="space-card reveal">
           <div class="space-card__media"><img src="Assets/Images/Spaces/Espaço-Society.png" alt="Society"></div>
           <div class="space-card__tag">
             <h3>Society</h3>
@@ -213,7 +215,7 @@
           </div>
         </article>
 
-        <article class="space-card">
+        <article class="space-card reveal">
           <div class="space-card__media"><img src="Assets/Images/Spaces/Lazer-Lanchonete.png" alt="Lanchonete e Espaço de Lazer"></div>
           <div class="space-card__tag">
             <h3>Lanchonete e Espaço de Lazer</h3>
@@ -230,7 +232,7 @@
       <h2 class="section-title">Quem toca a arena?</h2>
       <p class="section-subtitle">Descubra quem faz parte da arena.</p>
 
-      <div class="team__panel">
+      <div class="team__panel reveal">
         <ul class="team__list">
           <li class="team__item is-active" data-member="1">
             <span class="team__number">01</span>
@@ -255,7 +257,7 @@
           </li>
         </ul>
 
-        <div class="team__photo placeholder-img" aria-hidden="true" id="teamPhoto"></div>
+        <div class="team__photo" aria-hidden="true" id="teamPhoto"></div>
 
         <div class="team__bio">
           <span class="team__bio-number" id="teamBioNumber">01</span>
@@ -282,7 +284,7 @@
       <div class="events__divider" aria-hidden="true"></div>
 
       <div class="events__grid">
-        <article class="event-card">
+        <article class="event-card reveal">
           <div class="event-card__media"><img src="Assets/Images/Eventos/Events-Volei1.png" alt=""></div>
           <div class="event-card__body">
             <p class="event-card__meta"><span>16 de Fev 2026</span> / <span>Unidade Rua do Machado</span></p>
@@ -291,7 +293,7 @@
           </div>
         </article>
 
-        <article class="event-card event-card--video">
+        <article class="event-card event-card--video reveal">
           <div class="event-card__media" data-video="Assets/Videos/Video2.mp4">
             <img src="Assets/Images/Capas De Videos/Capa-Video.png" alt="Capa do vídeo">
             <span class="event-card__video-tag">Vídeo</span>
@@ -304,7 +306,7 @@
           </div>
         </article>
 
-        <article class="event-card">
+        <article class="event-card reveal">
           <div class="event-card__media"><img src="Assets/Images/Eventos/Events-Society1.png" alt=""></div>
           <div class="event-card__body">
             <p class="event-card__meta"><span>10 de Jan 2026</span> / <span>Unidade Rua do Machado</span></p>
@@ -313,7 +315,7 @@
           </div>
         </article>
 
-        <article class="event-card event-card--video">
+        <article class="event-card event-card--video reveal">
           <div class="event-card__media" data-video="Assets/Videos/Video1.mp4">
             <img src="Assets/Images/Capas De Videos/Capa-Video-Society.png" alt="Capa de video do torneio infantil">
             <span class="event-card__video-tag">Vídeo</span>
@@ -326,7 +328,7 @@
           </div>
         </article>
 
-        <article class="event-card">
+        <article class="event-card reveal">
           <div class="event-card__media"><img src="Assets/Images/Eventos/Events-Society2.png" alt=""></div>
           <div class="event-card__body">
             <p class="event-card__meta"><span>11 de Jun 2025</span> / <span>Unidade Rua do Machado</span></p>
@@ -335,7 +337,7 @@
           </div>
         </article>
 
-        <article class="event-card">
+        <article class="event-card reveal">
           <div class="event-card__media"><img src="Assets/Images/Eventos/Events-Torneio-Futevôlei.png" alt=""></div>
           <div class="event-card__body">
             <p class="event-card__meta"><span>30 de Nov 2025</span> / <span>Unidade Rua do Machado</span></p>
@@ -361,7 +363,7 @@
       <h2 class="section-title section-title--light">Campeões dos últimos torneios.</h2>
 
       <div class="podium__grid">
-        <article class="podium-card">
+        <article class="podium-card reveal">
           <div class="podium-card__media"><img src="Assets/Images/Podium/Podium-Futevôlei.png" alt="Campeão do torneio de futevôlei"></div>
           <p class="podium-card__meta">Campeão • Futevôlei</p>
           <h3 class="podium-card__title">Dupla Léo &amp; Rafa</h3>
@@ -369,7 +371,7 @@
           <p class="podium-card__date">31 de Novembro de 2025</p>
         </article>
 
-        <article class="podium-card">
+        <article class="podium-card reveal">
           <div class="podium-card__media"><img src="Assets/Images/Podium/Podium-Vôlei.png" alt="Campeão do torneio de vôlei"></div>
           <p class="podium-card__meta">Campeão • Vôlei</p>
           <h3 class="podium-card__title">Time Vôlei de Lua</h3>
@@ -377,7 +379,7 @@
           <p class="podium-card__date">09 de Janeiro de 2026</p>
         </article>
 
-        <article class="podium-card">
+        <article class="podium-card reveal">
           <div class="podium-card__media"><img src="Assets/Images/Podium/Podium-Society.png" alt="Campeão do torneio de futebol society"></div>
           <p class="podium-card__meta">Campeão • Futebol Society</p>
           <h3 class="podium-card__title">Time ACA FC</h3>
@@ -394,7 +396,7 @@
       <p class="section-eyebrow section-eyebrow--green">Quem Joga Aqui?</p>
       <h2 class="section-title">Recado dos alunos.</h2>
 
-      <div class="FeedBack__wrapper">
+      <div class="FeedBack__wrapper reveal">
         <div class="FeedBack__track" id="FeedBackTrack">
           <div class="FeedBack__rail">
           <article class="testimonial-card">
@@ -509,7 +511,7 @@
 
   <!-- ===================== CTA ===================== -->
   <section class="cta" id="cta">
-    <div class="container" id="cta-container">
+    <div class="container reveal" id="cta-container">
       <h2 class="cta__title">Manda mensagem<br>e a quadra é sua.</h2>
       <p class="cta__text">Responde na hora comercial, normalmente em minutos. Diga o dia, o horário e a unidade a gente confirma e pronto.</p>
       <div class="cta__buttons">

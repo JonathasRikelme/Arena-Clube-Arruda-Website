@@ -26,6 +26,12 @@
 .event-card {
   background-color: var(--color-white);
   min-width: 0; /* evita overflow do grid (min-content) */
+  /* opacity entra aqui só pra não sobrescrever a transição que o .reveal
+     (base.css) já declara nesse mesmo elemento — mesma especificidade,
+     e este arquivo carrega depois, então venceria sem o opacity aqui */
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
 }
 
 .event-card__media {
@@ -39,6 +45,18 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .event-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+  }
+
+  .event-card:hover .event-card__media img {
+    transform: scale(1.08);
+  }
 }
 
 /* O <video> é criado via JS só quando o usuário clica em play —
@@ -86,6 +104,20 @@
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
+  animation: eventPlayPulse 2.4s ease-in-out infinite;
+}
+
+/* Pulso sutil de escala + sombra, só pra chamar o olho pro play
+   sem virar uma distração (por isso a escala é bem discreta) */
+@keyframes eventPlayPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(43, 110, 69, 0.45);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow: 0 0 0 10px rgba(43, 110, 69, 0);
+  }
 }
 
 .event-card__body {

@@ -20,6 +20,12 @@
      crescer além do espaço disponível (comportamento padrão
      do CSS Grid é usar min-content como largura mínima). */
   min-width: 0;
+  /* opacity entra aqui só pra não sobrescrever a transição que o .reveal
+     (base.css) já declara nesse mesmo elemento — mesma especificidade,
+     e este arquivo carrega depois, então venceria sem o opacity aqui */
+  transition: opacity var(--dur-slow) var(--ease-out),
+              transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
 }
 
 .sport-card__media {
@@ -34,6 +40,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+/* Card levanta levemente e a imagem dá um zoom sutil no hover.
+   O overflow:hidden do .sport-card__media (acima) garante que o
+   zoom da imagem não vaze pra fora do card. */
+@media (hover: hover) {
+  .sport-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  .sport-card:hover .sport-card__media img {
+    transform: scale(1.08);
+  }
 }
 
 .sport-card__body {

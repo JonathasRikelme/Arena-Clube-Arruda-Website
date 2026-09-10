@@ -49,6 +49,28 @@ Abas de unidade (Unidade 1 / Unidade 2): trocam dinamicamente nome, endereço, m
 Lista da equipe: clique em um membro atualiza o destaque visual.
 Carrossel de depoimentos: setas de navegação (anterior/próximo).
 
+-------------- Animações --------------
+
+Header: encolhe e ganha sombra depois de ~80px de scroll (classe .is-scrolled, aplicada via JS com throttle por requestAnimationFrame). Logo diminui junto. Links do menu ganham um underline animado no hover.
+
+Hero: eyebrow, título, texto e botões entram em cascata (fade + slide) assim que a página carrega, via CSS puro (@keyframes + animation-delay), sem depender de JS.
+
+Reveal on scroll: classe utilitária .reveal (+ variações .reveal--left / .reveal--right) aplicada nos cards de esporte, "por dentro da arena", equipe, eventos, pódio, depoimentos e CTA. Um único IntersectionObserver em main.js adiciona .is-visible quando o elemento entra na tela (uma vez só, com pequeno atraso em cascata nos grids via nth-child). Se prefers-reduced-motion estiver ativo no sistema do usuário, o JS pula o observer e mostra tudo direto, sem esperar o scroll.
+
+Hovers: zoom sutil na imagem + elevação nos cards de esporte e evento; elevação simples nos cards de "por dentro da arena" e pódio; todo botão do site (.btn) ganhou elevação + sombra no hover, mesmo os que antes não tinham nenhum feedback. Todos os hovers "decorativos" (zoom, elevação de card) são protegidos por @media (hover: hover), pra não ficarem "grudados" depois de um toque no celular.
+
+Abas de unidade: o fundo verde sólido da aba ativa virou um indicador (pill) que desliza suavemente entre as abas (.location__tab-indicator, posicionado via JS). Trocar de unidade agora faz um crossfade no mapa e nas informações (fade-out -> troca os dados -> fade-in) em vez da troca seca de antes.
+
+Equipe: mesma lógica de crossfade ao clicar em outro membro (fade-out da foto/bio -> troca os dados -> fade-in).
+
+Pódio: usa uma curva de easing com leve "overshoot" (--ease-bounce) na entrada, diferente do restante do site, reforçando a sensação de comemoração.
+
+Eventos: ícone de play com um pulse contínuo e discreto, chamando atenção pros cards de vídeo.
+
+CTA final: botão de WhatsApp com pulse contínuo e sutil (pausa no hover).
+
+Todas as durações/curvas de easing ficam centralizadas em variáveis CSS no topo de base.css (--dur-fast/base/slow, --ease-out, --ease-bounce) — pra ajustar a velocidade das animações do site inteiro, basta mexer ali.
+
 -------------- Como rodar localmente --------------
 
 Não há build nem dependências é só abrir o index.html no navegador, ou servir a pasta com qualquer servidor estático:

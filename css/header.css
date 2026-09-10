@@ -9,6 +9,15 @@
   width: 100%;
   top: 0;
   z-index: 100;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* base "invisível" pra poder animar a sombra depois */
+  transition: box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* Estado adicionado pelo JS (main.js) quando o usuário rola a página
+   além de ~80px: o header ganha uma sombra sutil pra se destacar
+   do conteúdo, reforçando que ele "flutua" por cima da página. */
+.site-header.is-scrolled {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .header__inner { /*Div que encobre todo o header, aqui defino coisas como o espaço entre os elementos */
@@ -19,6 +28,14 @@
   padding: clamp(10px, 0.8vw, 40px) clamp(30px, 1.7vw, 56px); /* Padding proporcional à da tela */
   width: 100%;
   position: relative;
+  transition: padding var(--dur-base) var(--ease-out);
+}
+
+/* Com o scroll, o header encolhe um pouco (menos padding vertical),
+   ganhando mais espaço útil de tela pro conteúdo */
+.site-header.is-scrolled .header__inner {
+  padding-top: clamp(6px, 0.5vw, 20px);
+  padding-bottom: clamp(6px, 0.5vw, 20px);
 }
 
 /* ---------- Logo / marca ---------- */
@@ -35,6 +52,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.site-header.is-scrolled .brand__logo {
+  transform: scale(0.85);
 }
 
 .brand__name { /*Texto "ARENA CLUBE ARRUDA"*/
@@ -69,11 +91,32 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  position: relative; /* necessário pra posicionar o underline (::after) abaixo */
+  padding-bottom: 4px;
+  transition: color var(--dur-fast) ease;
+}
+
+/* Linha que "cresce" da esquerda pra direita no hover, em vez de
+   simplesmente trocar a cor do link */
+.main-nav__list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out);
 }
 
 .main-nav__list a:hover {
-  transition: all 0.2s ease;
   color: var(--color-green);
+}
+
+.main-nav__list a:hover::after {
+  transform: scaleX(1);
 }
 
 .main-nav__cta { /*Botão para reservar verde*/
