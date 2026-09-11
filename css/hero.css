@@ -17,7 +17,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: url(../Assets/Images/Background-hero.png) no-repeat center center/cover;
+  background: url(../Assets/Images/Background-hero.webp) no-repeat center center/cover;
   z-index: 0;
 }
 
@@ -118,8 +118,8 @@
 .hero__actions {
   animation: heroFadeUp var(--dur-slow) var(--ease-out) both;
 }
-
-.hero__eyebrow { animation-delay: 0.1s; }
-.hero__title   { animation-delay: 0.25s; }
-.hero__text    { animation-delay: 0.4s; }
-.hero__actions { animation-delay: 0.55s; }
+/*Aqui se altera o tempo de cada texto do hero, o tempo que cada um aparece individualmente*/
+.hero__eyebrow { animation-delay: 0.6s; }
+.hero__title   { animation-delay: 0.3s; }
+.hero__text    { animation-delay: 0.5s; }
+.hero__actions { animation-delay: 0.8s; }

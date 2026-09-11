@@ -70,7 +70,7 @@ button {
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1); /* leve "overshoot", usada no pódio (efeito comemorativo) */
   --dur-fast: 200ms;  /* micro-interações (hover de link, dot) */
   --dur-base: 300ms;  /* hover de botões e cards */
-  --dur-slow: 500ms;  /* reveals de seção e entrada do hero */
+  --dur-slow: 2000ms;  /* reveals de seção e entrada do hero */
 }
 
 /* ---------- Tipografia global ---------- */
