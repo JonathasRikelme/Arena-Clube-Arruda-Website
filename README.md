@@ -1,60 +1,36 @@
 # Arena Clube Arruda
 
-Website institucional da **Arena Clube Arruda**, desenvolvido para apresentar a estrutura da arena, esportes, unidades, equipe, eventos, depoimentos e canais de contato.
+Website institucional da **Arena Clube Arruda**, desenvolvido com foco em apresentação comercial, experiência do usuário, responsividade e microinterações.
 
-O projeto foi desenvolvido com foco em uma experiência visual moderna, responsiva e com microinterações suaves, mantendo a identidade visual da Arena.
+O projeto é um **Front-End sem framework**, utilizando HTML5, CSS3 e JavaScript Vanilla.
 
----
+## Tecnologias
 
-## Sobre o projeto
-
-A proposta do site é funcionar como uma apresentação digital da Arena Clube Arruda, permitindo que o visitante:
-
-- conheça os esportes oferecidos;
-- visualize as unidades e suas informações;
-- conheça os espaços da arena;
-- conheça a equipe;
-- acompanhe eventos e torneios;
-- veja depoimentos de alunos;
-- entre em contato para reservar uma quadra.
-
-O projeto utiliza uma estrutura **Front-End sem framework**, com HTML, CSS e JavaScript.
-
----
-
-## Tecnologias utilizadas
-
-- **HTML5**
-- **CSS3**
-- **JavaScript (Vanilla JS)**
-- **Google Fonts**
-  - Oswald
-  - Barlow
-- **Google Maps Embed**
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
 - CSS Grid e Flexbox
 - Media Queries
 - Intersection Observer API
 - Pointer Events API
+- Google Fonts (Oswald e Barlow)
+- Google Maps Embed
 
----
-
-## Estrutura do projeto
+## Estrutura
 
 ```text
 Arena-Clube-Arruda/
-│
 ├── Assets/
 │   ├── Favicons/
 │   ├── Images/
 │   │   ├── Capas De Videos/
-│   │   ├── Equipe/
 │   │   ├── Eventos/
 │   │   ├── FeedBack/
+│   │   ├── Hamburguers/
 │   │   ├── Podium/
 │   │   ├── Spaces/
 │   │   └── Sports/
 │   └── Videos/
-│
 ├── css/
 │   ├── base.css
 │   ├── header.css
@@ -62,149 +38,102 @@ Arena-Clube-Arruda/
 │   ├── sports.css
 │   ├── location.css
 │   ├── spaces.css
-│   ├── team.css
+│   ├── hamburgueria.css
 │   ├── events.css
 │   ├── podium.css
 │   ├── FeedBacks.css
 │   ├── cta.css
 │   ├── footer.css
 │   └── responsive.css
-│
 ├── js/
 │   └── main.js
-│
 ├── index.html
 └── README.md
 ```
 
----
-
-## Seções do site:
+## Seções
 
 ### Hero
 
-Seção principal de apresentação da Arena, com imagem de fundo, chamada principal e botões de ação.
+Apresentação principal da Arena, com chamada, descrição e ações de reserva.
 
 ### Esportes
 
-Apresenta os principais esportes disponíveis na Arena:
-
-- Vôlei
-- Futebol Society
-- Futevôlei
+Apresentação das modalidades oferecidas pela Arena, incluindo Vôlei, Futebol Society, Futevôlei e Beach Tennis.
 
 ### Localização / Unidades
 
-Permite alternar entre as unidades da Arena.
+Sistema de seleção entre as duas unidades. Os dados ficam centralizados em `unitsData` no `main.js`, incluindo endereço, mapa, quadras, comodidades, horários, aplicativo de replay e link de direções.
 
-Cada unidade possui seus próprios dados, armazenados no `main.js`, incluindo:
-
-- nome;
-- endereço;
-- mapa;
-- quantidade de quadras;
-- comodidades;
-- aplicativo de replay;
-- horários;
-- link para obter direções.
-
-A troca entre unidades possui **crossfade** para evitar uma mudança brusca de conteúdo.
+A troca de unidade utiliza crossfade e o indicador verde acompanha a aba ativa.
 
 ### Espaços
 
-Apresenta visualmente os espaços da Arena através de cards com imagens e informações sobre cada ambiente.
+Cards apresentando os principais ambientes da Arena.
 
-### Equipe
+### Hamburgueria Taias
 
-Apresenta os integrantes da equipe com:
+Seção comercial da **Hamburgueria Taias**, localizada dentro da Unidade 2 da Arena.
 
-- número;
-- nome;
-- função;
-- foto;
-- biografia.
+O conteúdo apresenta os produtos na seguinte ordem:
 
-A lista possui um **indicador verde deslizante vertical**, inspirado no comportamento do indicador utilizado na seção de unidades.
+1. X-Tudo
+2. Duplo
+3. Cheddar
+4. Bacon
+5. Calabresa
+6. Sertanejo
+7. Burger
 
-A troca de integrante também utiliza um **crossfade** entre foto e biografia.
+A seção utiliza um carrossel com:
 
-### Eventos e torneios
+- navegação por setas;
+- indicadores (dots);
+- autoplay a cada 7 segundos;
+- reset do temporizador após interação;
+- swipe/drag;
+- loop infinito sem salto visual;
+- sincronização entre imagem, nome, descrição e preço.
 
-Exibe eventos realizados pela Arena.
+Os dados dos produtos ficam centralizados no `main.js`, facilitando futuras alterações.
 
-Os cards podem conter imagens ou vídeos.
+O botão **Comprar** possui um `TODO` diretamente no HTML para inserção manual do link externo de vendas da Taias. O botão **Localização** reutiliza o link da Unidade 2 já existente em `unitsData`.
 
-Os vídeos são carregados somente quando o usuário interage com o card, evitando o carregamento de todos os arquivos pesados logo na abertura da página.
+As imagens dos hambúrgueres utilizadas no carrossel foram convertidas para **WebP** e redimensionadas para reduzir o peso dos assets e melhorar o carregamento.
 
-Em tela cheia, os vídeos utilizam `object-fit: contain` para que o conteúdo completo fique visível.
+### Eventos e Torneios
+
+Cards com eventos e torneios da Arena. Os cards de vídeo carregam o vídeo somente após a interação do usuário, mantendo apenas a capa inicialmente.
 
 ### Pódio
 
-Seção destinada aos destaques e resultados de eventos/torneios.
+Destaques dos campeões dos torneios apresentados no site.
 
 ### Feedback / Recado dos alunos
 
-Carrossel de depoimentos com:
+Carrossel infinito de depoimentos com navegação por setas e dots, autoplay, reset após interação, drag/swipe e quantidade de cards adaptada ao tamanho da tela.
 
-- 6 comentários;
-- 3 cards visíveis no desktop convencional;
-- 4 cards em telas 2K e 4K;
-- 2 cards em tablet;
-- 1 card em mobile;
-- navegação por setas;
-- navegação por indicadores;
-- autoplay após 5 segundos sem interação;
-- reset do contador após interação;
-- suporte a arraste com mouse/toque;
-- loop infinito real;
-- transição horizontal suave.
+### CTA e Footer
 
-O carrossel utiliza clones internos para manter a continuidade visual e impedir aquele salto perceptível ao passar do último depoimento para o primeiro.
+Área final de contato/reserva e informações institucionais da Arena.
 
-### CTA
+## Responsividade
 
-Chamada final para contato e reserva.
+A responsividade é centralizada principalmente em `css/responsive.css`.
 
-### Footer
+Breakpoints utilizados no projeto:
 
-Contém informações da Arena, unidades, contatos e crédito de desenvolvimento.
+- até `1024px` — tablet;
+- até `640px` — mobile;
+- a partir de `1920px` — Full HD;
+- a partir de `2560px` — 2K;
+- a partir de `3840px` — 4K.
 
----
+As regras de telas grandes possuem ajustes específicos de tipografia, containers, espaçamentos, cards e componentes. As regras mobile permanecem separadas para evitar interferência entre os diferentes formatos.
 
-## Sistema de responsividade
+## Animações
 
-A responsividade é organizada principalmente no arquivo:
-
-```text
-css/responsive.css
-```
-
-A estrutura possui breakpoints específicos para:
-
-- Tablet: até `1024px`
-- Mobile: até `640px`
-- Full HD: a partir de `1920px`
-- 2K: a partir de `2560px`
-- 4K: a partir de `3840px`
-
-As telas grandes possuem ajustes específicos de:
-
-- largura dos containers;
-- tipografia;
-- espaçamentos;
-- tamanho dos cards;
-- botões;
-- grids;
-- conteúdo das seções;
-- carrossel de feedback.
-
-O comportamento mobile é mantido separado para evitar que ajustes destinados a monitores grandes prejudiquem smartphones.
-
----
-
-## Sistema de animações
-
-As animações do projeto utilizam variáveis centralizadas no `base.css`:
+As animações utilizam variáveis centralizadas em `base.css`:
 
 ```css
 --ease-out
@@ -214,195 +143,72 @@ As animações do projeto utilizam variáveis centralizadas no `base.css`:
 --dur-slow
 ```
 
-Isso mantém uma identidade consistente entre as microinterações.
+O projeto possui, entre outros recursos:
 
-### Reveal on Scroll
-
-Elementos com a classe:
-
-```html
-class="reveal"
-```
-
-entram na tela utilizando o `IntersectionObserver` do JavaScript.
-
-Também existem variações:
-
-```html
-reveal--left
-reveal--right
-```
-
-para entradas laterais.
-
-Alguns grids possuem efeito de **stagger**, fazendo cada elemento aparecer com um pequeno atraso em relação ao anterior.
-
-### Indicador das unidades
-
-O indicador verde das abas de unidades é movimentado pelo JavaScript utilizando a posição e largura reais da aba ativa.
-
-### Indicador da equipe
-
-A equipe utiliza o mesmo conceito visual, porém com movimento **vertical**.
-
-O JavaScript calcula:
-
-- altura do item ativo;
-- posição vertical;
-- reposicionamento durante resize.
-
-### Hover dos cards
-
-Cards de diferentes seções possuem microinterações de elevação e/ou zoom suave.
-
-### Acessibilidade de movimento
-
-O projeto respeita:
-
-```css
-@media (prefers-reduced-motion: reduce)
-```
-
-reduzindo animações e transições quando o usuário prefere menos movimento.
-
----
+- reveal on scroll com `IntersectionObserver`;
+- microinterações de botões e cards;
+- crossfade na troca de unidades;
+- indicador deslizante das unidades;
+- carrossel infinito de feedback;
+- carrossel infinito da Hamburgueria Taias;
+- suporte a `prefers-reduced-motion`.
 
 ## JavaScript
 
-O arquivo principal é:
-
-```text
-js/main.js
-```
-
-Ele centraliza a lógica interativa da página.
+O `js/main.js` centraliza a lógica interativa da página e é organizado por blocos de comentários, mantendo a estrutura existente do projeto.
 
 Entre suas responsabilidades estão:
 
 - menu mobile;
 - dados e troca de unidades;
 - indicador das unidades;
-- crossfade da localização;
-- carrossel infinito de feedback;
-- autoplay dos depoimentos;
-- navegação por setas;
-- navegação por dots;
-- drag/swipe dos depoimentos;
-- indicador vertical da equipe;
-- troca de integrantes;
-- crossfade da equipe;
-- reveal on scroll;
+- crossfade;
+- carrossel de feedback;
+- autoplay e interação dos feedbacks;
+- carrossel da Hamburgueria Taias;
+- autoplay e swipe da Taias;
+- sincronização dos dados dos produtos;
+- localização da Taias baseada na Unidade 2;
 - lazy load dos vídeos de eventos;
-- reprodução dos vídeos.
+- reprodução dos vídeos;
+- reveal on scroll.
 
-O código é organizado por blocos de comentários para facilitar futuras manutenções.
+## Boas práticas
 
----
+- Separação de responsabilidades entre HTML, CSS e JavaScript.
+- Dados dinâmicos centralizados em estruturas JavaScript.
+- Reutilização de dados existentes, evitando duplicação.
+- Uso de `loading="lazy"` em imagens apropriadas.
+- Uso de WebP para imagens pesadas da Hamburgueria Taias.
+- Uso de `decoding="async"` nas imagens do carrossel.
+- `rel="noopener noreferrer"` em links externos abertos com `target="_blank"`.
+- Proteções no JavaScript para evitar erros quando elementos ou dados não existem.
+- Suporte a acessibilidade e redução de movimento.
 
-## Carrossel de feedback
+## Execução local
 
-O carrossel possui uma lógica de loop baseada em clones dos cards originais.
+O projeto não exige Node.js ou framework para funcionar.
 
-A quantidade de cards visíveis é definida dinamicamente:
+A maneira recomendada é abrir o projeto através de um servidor local, como o **Live Server** do VS Code.
 
-```text
-Mobile       → 1
-Tablet       → 2
-Desktop      → 3
-2K / 4K      → 4
-```
-
-O usuário pode interagir através de:
-
-- seta anterior;
-- seta próxima;
-- dots;
-- arraste horizontal.
-
-Qualquer interação reinicia o temporizador de 5 segundos.
-
-Se não houver interação, o próximo depoimento é exibido automaticamente.
-
----
-
-## Organização do CSS
-
-Cada seção possui seu próprio arquivo para facilitar manutenção:
-
-| Arquivo | Responsabilidade |
-|---|---|
-| `base.css` | Reset, variáveis, tipografia, botões e animações genéricas |
-| `header.css` | Cabeçalho e navegação |
-| `hero.css` | Hero |
-| `sports.css` | Esportes |
-| `location.css` | Unidades e localização |
-| `spaces.css` | Espaços da Arena |
-| `team.css` | Equipe |
-| `events.css` | Eventos e vídeos |
-| `podium.css` | Pódio |
-| `FeedBacks.css` | Depoimentos e carrossel |
-| `cta.css` | CTA final |
-| `footer.css` | Rodapé |
-| `responsive.css` | Responsividade geral |
-
----
-
-## Como executar localmente
-
-Como o projeto é composto por HTML, CSS e JavaScript puro, não existe dependência de Node.js ou framework para executar a página.
-
-### Opção 1 — Live Server
-
-Abra o projeto no VS Code e utilize a extensão **Live Server**.
-
-Depois abra o endereço fornecido pelo Live Server.
-
-### Opção 2 — Servidor local
-
-Também é possível utilizar qualquer servidor HTTP local.
-
-Por exemplo, com Python:
+Também é possível utilizar Python:
 
 ```bash
 python -m http.server
 ```
 
-Depois acesse:
+Depois, acessar:
 
 ```text
 http://localhost:8000
 ```
 
-É recomendado utilizar um servidor local em vez de abrir o `index.html` diretamente pelo navegador, especialmente por causa de recursos externos e comportamento de alguns navegadores.
-
----
-
-## Desenvolvimento
-
-O projeto foi desenvolvido para a **Arena Clube Arruda** como um projeto comercial real, com foco em:
-
-- apresentação profissional;
-- responsividade;
-- experiência do usuário;
-- microinterações;
-- organização do código;
-- facilidade de manutenção;
-- adaptação para diferentes resoluções.
-
----
-
 ## Desenvolvedor
 
 **Jonathas Rikelme**
 
-Desenvolvedor Front-End / Estudante de Análise e Desenvolvimento de Sistemas.
-
 GitHub: `github.com/JonathasRikelme`
-
----
 
 ## Status
 
-**Em desenvolvimento / evolução contínua.**
-
-O projeto pode receber novas informações, imagens, eventos, integrantes, unidades e ajustes visuais conforme as necessidades da Arena Clube Arruda.
+Projeto em desenvolvimento/evolução contínua para a **Arena Clube Arruda**.

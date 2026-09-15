@@ -457,8 +457,8 @@ if (siteHeaderEl) {
 /*====================================================
     Reveal on scroll: anima a entrada de qualquer elemento
     com a classe .reveal quando ele aparece na tela.
-    Usado nos cards de esporte, "por dentro da arena", equipe,
-    eventos, pódio, depoimentos e CTA.
+    Usado nos cards de esporte, "por dentro da arena",
+    hamburgueria, eventos, pódio, depoimentos e CTA.
     ====================================================*/
 var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var revealElements = document.querySelectorAll('.reveal');
@@ -492,108 +492,242 @@ if (prefersReducedMotion) {
 }
 
 /*====================================================
-    Aqui começa o JS da parte de equipes, segue o mesmo padrão do código acima, mas com algumas alterações
+    Hamburgueria Taias
+    Dados, carrossel, autoplay e sincronização do produto
     ====================================================*/
 
-    var teamData = {
-  1: {
-    number: '01',
-    name: 'Bruno Eduardo',
-    role: 'Sócio Administrador &nbsp;•&nbsp; Fundador',
-    bio: 'Bruno Eduardo criou a Arena Clube Arruda em 2024 movido por uma paixão simples: futevôlei. Jogador ele mesmo, sabe exatamente o que faz uma quadra boa e o que faz a galera voltar toda semana. É conhecido por receber cada cliente como se fosse da casa.',
-    photo: 'Assets/Images/Equipe/retrato-homem.webp' 
+var taiasProducts = [
+  {
+    name: 'X-Tudo',
+    description: 'Pão macio, hambúrguer artesanal, queijo, presunto, ovo, bacon, calabresa, salada e molho da casa.',
+    price: 'R$ 28,90',
+    image: 'Assets/Images/Hamburguers/hamburguer-taias-x-tudo.webp'
   },
-  2: {
-    number: '07',
-    name: 'Renata Queiroz',
-    role: 'Gerente &nbsp;•&nbsp; Líder',
-    bio: 'Renata atua como gerente da Arena Clube Arruda, cuidando de perto da organização e do funcionamento do espaço. Atenta a cada detalhe, busca garantir que jogadores e clientes tenham uma experiência confortável e bem atendida. Seu jeito acolhedor e organizado ajuda a manter a Arena sempre pronta para receber a galera.', 
-    photo: 'Assets/Images/Equipe/retrato-mulher.webp' 
+  {
+    name: 'Duplo',
+    description: 'Dois hambúrgueres artesanais, queijo derretido, cebola, salada e molho especial no pão macio.',
+    price: 'R$ 31,90',
+    image: 'Assets/Images/Hamburguers/hamburguer-taias-duplo.webp'
   },
-  3: {
-    number: '09',
-    name: 'Celso Murilo',
-    role: 'Professor &nbsp;•&nbsp; Vôlei',
-    bio: 'Celso é professor de vôlei na Arena Clube Arruda e transforma sua experiência com o esporte em aprendizado dentro da quadra. Apaixonado pelo vôlei, acompanha de perto a evolução de cada aluno, trabalhando técnica, disciplina e, principalmente, o prazer de jogar. Para ele, cada treino é uma oportunidade de evoluir e se divertir.', 
-    photo: 'Assets/Images/Equipe/retrato-homem-negro.webp' // TODO: quando tiver a foto real, colocar aqui a url() dela
+  {
+    name: 'Cheddar',
+    description: 'Hambúrguer artesanal coberto com cheddar cremoso, cebola caramelizada e molho da casa.',
+    price: 'R$ 27,90',
+    image: 'Assets/Images/Hamburguers/hamburguer-taias-cheddar.webp'
+  },
+  {
+    name: 'Bacon',
+    description: 'Hambúrguer artesanal, queijo, bacon crocante, salada fresca e molho especial.',
+    price: 'R$ 29,90',
+    image: 'Assets/Images/Hamburguers/hamburguer-taias-bacon.webp'
+  },
+  {
+    name: 'Calabresa',
+    description: 'Hambúrguer artesanal com calabresa dourada, queijo, cebola, salada e molho da casa.',
+    price: 'R$ 28,90',
+    image: 'Assets/Images/Hamburguers/hamburguer-taias-calabresa.webp'
+  },
+  {
+    name: 'Sertanejo',
+    description: 'Hambúrguer artesanal com queijo, bacon, cebola caramelizada e um molho especial da casa.',
+    price: 'R$ 30,90',
+    image: 'Assets/Images/Hamburguers/hamburguer-taias-sertanejo.webp'
+  },
+  {
+    name: 'Burger',
+    description: 'O clássico para quem prefere o essencial: hambúrguer artesanal, queijo, salada e molho da casa.',
+    price: 'R$ 24,90',
+    image: 'Assets/Images/Hamburguers/hamburguer-taias-burger.webp'
   }
-};
+];
 
-function renderTeamMember(memberId) {
-  var data = teamData[memberId];
-  if (!data) return; // proteção: id inexistente não quebra o site
+var taiasTrack = document.getElementById('taiasTrack');
+var taiasPrev = document.getElementById('taiasPrev');
+var taiasNext = document.getElementById('taiasNext');
+var taiasDots = document.getElementById('taiasDots');
+var taiasName = document.getElementById('taiasProductName');
+var taiasNumber = document.getElementById('taiasProductNumber');
+var taiasDescription = document.getElementById('taiasProductDescription');
+var taiasPrice = document.getElementById('taiasProductPrice');
+var taiasLocationBtn = document.getElementById('taiasLocationBtn');
 
-  document.getElementById('teamBioNumber').textContent = data.number;
-  document.getElementById('teamBioName').textContent = data.name;
-  document.getElementById('teamBioRole').innerHTML = data.role;
+if (taiasTrack && taiasProducts.length) {
+  var taiasIndex = 0;
+  var taiasPhysicalIndex = 1; // primeiro produto real; índice 0 é o clone do último
+  var taiasTimer = null;
+  var taiasTransitionMs = 550;
+  var taiasAnimating = false;
+  var taiasDragStartX = 0;
+  var taiasDragCurrentX = 0;
+  var taiasDragging = false;
 
-  // Texto de fallback caso a bio ainda não tenha sido preenchida
-  document.getElementById('teamBioText').textContent =
-    data.bio || 'Em breve mais informações sobre esse integrante da equipe.';
+  /* ---------- Cria os slides usando os assets reais ---------- */
+  function buildTaiasTrack() {
+    taiasTrack.innerHTML = '';
 
-  var photoEl = document.getElementById('teamPhoto');
-  if (data.photo) {
-    // Se já existir uma foto real cadastrada, troca o fundo pra ela
-    photoEl.style.backgroundImage = 'url(' + data.photo + ')';
-    photoEl.style.backgroundSize = 'cover';
-    photoEl.style.backgroundPosition = 'center';
-  } else {
-    // Sem foto cadastrada ainda: volta pro placeholder roxo padrão
-    photoEl.style.backgroundImage = '';
-  }
-}
+    var slides = [taiasProducts[taiasProducts.length - 1]].concat(taiasProducts, [taiasProducts[0]]);
+    slides.forEach(function (product, slideIndex) {
+      var slide = document.createElement('div');
+      slide.className = 'taias__slide';
+      slide.setAttribute('aria-hidden', slideIndex === 1 ? 'false' : 'true');
 
-/* ---------- Lista da equipe (clique troca foto + bio) ---------- */
-var teamItems = document.querySelectorAll('.team__item');
-var teamPhotoEl = document.getElementById('teamPhoto');
-var teamBioEl = document.querySelector('.team__bio');
-var TEAM_FADE_MS = 200; // mesmo raciocínio do UNIT_FADE_MS: um pouco mais rápido que --dur-base
+      var image = document.createElement('img');
+      image.src = product.image;
+      image.alt = product.name + ' da Hamburgueria Taias';
+      image.loading = slideIndex === 1 ? 'eager' : 'lazy';
+      image.decoding = 'async';
+      image.draggable = false;
 
-/* ---------- Move o indicador verde até o membro ativo ---------- */
-function moveTeamIndicator(activeItem) {
-  if (!activeItem || !activeItem.parentElement) return;
-  activeItem.parentElement.style.setProperty('--team-indicator-height', activeItem.offsetHeight + 'px');
-  activeItem.parentElement.style.setProperty('--team-indicator-y', activeItem.offsetTop + 'px');
-}
-
-teamItems.forEach(function (item) {
-  item.addEventListener('click', function () {
-    // Evita refazer o crossfade se a pessoa clicar em quem já está ativo
-    if (item.classList.contains('is-active')) return;
-
-    teamItems.forEach(function (i) {
-      i.classList.remove('is-active');
+      slide.appendChild(image);
+      taiasTrack.appendChild(slide);
     });
-    item.classList.add('is-active');
-    moveTeamIndicator(item);
 
-    // Crossfade: some com a foto/bio atuais, troca os dados por baixo
-    // do fade, e revela de novo — evita a troca seca de antes
-    if (teamPhotoEl) teamPhotoEl.classList.add('is-fading');
-    if (teamBioEl) teamBioEl.classList.add('is-fading');
+    taiasPhysicalIndex = 1;
+    taiasTrack.style.transition = 'none';
+    taiasTrack.style.transform = 'translate3d(-100%, 0, 0)';
+  }
 
-    setTimeout(function () {
-      renderTeamMember(item.dataset.member);
-      if (teamPhotoEl) teamPhotoEl.classList.remove('is-fading');
-      if (teamBioEl) teamBioEl.classList.remove('is-fading');
-    }, TEAM_FADE_MS);
+  /* ---------- Atualiza o conteúdo textual do produto ativo ---------- */
+  function renderTaiasProduct() {
+    var product = taiasProducts[taiasIndex];
+    if (!product) return;
+
+    taiasNumber.textContent = String(taiasIndex + 1).padStart(2, '0');
+    taiasName.textContent = product.name;
+    taiasDescription.textContent = product.description;
+    taiasPrice.textContent = product.price;
+
+    var dots = taiasDots.querySelectorAll('.taias__dot');
+    dots.forEach(function (dot, index) {
+      var active = index === taiasIndex;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+  }
+
+  /* ---------- Cria os indicadores ---------- */
+  function buildTaiasDots() {
+    taiasProducts.forEach(function (product, index) {
+      var dot = document.createElement('button');
+      dot.className = 'taias__dot' + (index === 0 ? ' is-active' : '');
+      dot.type = 'button';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Ir para ' + product.name);
+      dot.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+      dot.addEventListener('click', function () {
+        goToTaias(index, true);
+      });
+      taiasDots.appendChild(dot);
+    });
+  }
+
+  /* ---------- Reinicia o autoplay após qualquer interação ---------- */
+  function resetTaiasTimer() {
+    clearInterval(taiasTimer);
+    taiasTimer = setInterval(function () {
+      if (!taiasDragging) goToTaias(taiasIndex + 1, false);
+    }, 7000);
+  }
+
+  /* ---------- Faz a troca horizontal do produto ---------- */
+  function goToTaias(targetIndex, manual) {
+    // Qualquer interação manual reinicia o contador, mesmo se uma transição
+    // anterior ainda estiver terminando.
+    if (manual) resetTaiasTimer();
+    if (taiasAnimating) return;
+
+    var total = taiasProducts.length;
+    var normalizedTarget = (targetIndex + total) % total;
+    var direction = normalizedTarget > taiasIndex ? 1 : -1;
+
+    if (normalizedTarget === taiasIndex) return;
+
+    // Dots podem apontar para qualquer produto. Nesse caso, posicionamos
+    // diretamente no slide físico correspondente; setas/autoplay continuam
+    // avançando apenas um item por vez.
+    if (Math.abs(targetIndex - taiasIndex) > 1 && Math.abs(targetIndex - taiasIndex) < total - 1) {
+      taiasIndex = normalizedTarget;
+      taiasPhysicalIndex = taiasIndex + 1;
+    } else if (targetIndex >= total) {
+      taiasIndex = 0;
+      taiasPhysicalIndex += 1;
+    } else if (targetIndex < 0) {
+      taiasIndex = total - 1;
+      taiasPhysicalIndex -= 1;
+    } else {
+      taiasIndex = normalizedTarget;
+      taiasPhysicalIndex += direction;
+    }
+
+    taiasAnimating = true;
+    renderTaiasProduct();
+    taiasTrack.style.transition = 'transform ' + taiasTransitionMs + 'ms cubic-bezier(0.16, 1, 0.3, 1)';
+    taiasTrack.style.transform = 'translate3d(-' + (taiasPhysicalIndex * 100) + '%, 0, 0)';
+
+    if (manual) resetTaiasTimer();
+  }
+
+  /* ---------- Corrige silenciosamente os clones nas extremidades ---------- */
+  taiasTrack.addEventListener('transitionend', function () {
+    taiasAnimating = false;
+
+    if (taiasPhysicalIndex === 0) {
+      taiasPhysicalIndex = taiasProducts.length;
+      taiasTrack.style.transition = 'none';
+      taiasTrack.style.transform = 'translate3d(-' + (taiasPhysicalIndex * 100) + '%, 0, 0)';
+    } else if (taiasPhysicalIndex === taiasProducts.length + 1) {
+      taiasPhysicalIndex = 1;
+      taiasTrack.style.transition = 'none';
+      taiasTrack.style.transform = 'translate3d(-100%, 0, 0)';
+    }
   });
-});
 
-// Garante que o Bruno Eduardo já apareça correto ao carregar a página
-if (teamItems.length) {
-  moveTeamIndicator(document.querySelector('.team__item.is-active') || teamItems[0]);
+  taiasNext.addEventListener('click', function () {
+    goToTaias(taiasIndex + 1, true);
+  });
+
+  taiasPrev.addEventListener('click', function () {
+    goToTaias(taiasIndex - 1, true);
+  });
+
+  /* ---------- Swipe/drag no carrossel ---------- */
+  taiasTrack.addEventListener('pointerdown', function (event) {
+    taiasDragging = true;
+    taiasDragStartX = event.clientX;
+    taiasDragCurrentX = event.clientX;
+    taiasTrack.setPointerCapture(event.pointerId);
+    taiasTrack.style.transition = 'none';
+  });
+
+  taiasTrack.addEventListener('pointermove', function (event) {
+    if (!taiasDragging) return;
+    taiasDragCurrentX = event.clientX;
+    var deltaX = taiasDragCurrentX - taiasDragStartX;
+    taiasTrack.style.transform = 'translate3d(calc(-' + (taiasPhysicalIndex * 100) + '% + ' + deltaX + 'px), 0, 0)';
+  });
+
+  function finishTaiasDrag() {
+    if (!taiasDragging) return;
+    var deltaX = taiasDragCurrentX - taiasDragStartX;
+    taiasDragging = false;
+
+    if (Math.abs(deltaX) > 50) {
+      goToTaias(taiasIndex + (deltaX < 0 ? 1 : -1), true);
+    } else {
+      taiasTrack.style.transition = 'transform ' + taiasTransitionMs + 'ms cubic-bezier(0.16, 1, 0.3, 1)';
+      taiasTrack.style.transform = 'translate3d(-' + (taiasPhysicalIndex * 100) + '%, 0, 0)';
+      resetTaiasTimer();
+    }
+  }
+
+  taiasTrack.addEventListener('pointerup', finishTaiasDrag);
+  taiasTrack.addEventListener('pointercancel', finishTaiasDrag);
+
+  buildTaiasTrack();
+  buildTaiasDots();
+  renderTaiasProduct();
+  resetTaiasTimer();
 }
-
-// Reposiciona o indicador quando a largura/altura da lista mudar em um resize
-var teamIndicatorResizeTimer;
-window.addEventListener('resize', function () {
-  clearTimeout(teamIndicatorResizeTimer);
-  teamIndicatorResizeTimer = setTimeout(function () {
-    moveTeamIndicator(document.querySelector('.team__item.is-active'));
-  }, 150);
-});
-renderTeamMember('1');
 
 /* ---------- Vídeos dos cards de eventos (lazy load no clique) ---------- */
 //Cada card com vídeo só carrega o arquivo de vídeo de verdade quando

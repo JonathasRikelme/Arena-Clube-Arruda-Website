@@ -18,16 +18,6 @@
     grid-template-columns: 1fr;
   }
 
-  .team__panel {
-    grid-template-columns: 1fr 1fr;
-    height: auto;
-    overflow: visible;
-  }
-
-  .team__list {
-    grid-column: 1 / -1;
-  }
-
   .footer__top {
     grid-template-columns: 1fr 1fr;
   }
@@ -161,7 +151,7 @@
   .sports,
   .location,
   .spaces,
-  .team,
+  .taias,
   .events,
   .podium,
   .Feedback,
@@ -252,19 +242,76 @@
     padding: 32px;
   }
 
-  /* ---------- Equipe: empilhado, foto acima da bio ---------- */
-  .team__panel {
-    grid-template-columns: 1fr;
-    height: auto;
-    overflow: visible;
+  /* ---------- Hamburgueria: empilhada em tablet e celular ----------*/
+  .taias {
+    padding-bottom: 96px;
   }
 
-  .team__photo {
-    min-height: 340px;
+  .taias__title {
+    font-size: clamp(2.4rem, 9vw, 4rem);
   }
 
-  .team__bio {
-    padding: 28px 20px;
+  .taias__subtitle {
+    font-size: 1rem;
+    margin-bottom: 26px;
+  }
+
+  .taias__product-name {
+    font-size: 2rem;
+  }
+
+  .taias__product-description {
+    font-size: 0.95rem;
+  }
+
+  .taias__actions {
+    flex-direction: column;
+  }
+
+  .taias__actions .btn {
+    width: 100%;
+  }
+
+  .taias__controls {
+    gap: 14px;
+  }
+/*-----------------------------------------------------------------------*/
+  .taias__panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 42px 28px 34px;
+  }
+
+  .taias__content {
+    display: contents;
+  }
+
+  .taias .section-eyebrow {
+    order: 1;
+  }
+
+  .taias__title {
+    order: 2;
+  }
+
+  .taias__subtitle {
+    order: 3;
+  }
+
+  .taias__carousel {
+    order: 4;
+    /* zerado na horizontal: o padding já vem do .taias__panel acima,
+       evita dobrar o respiro dos dois lados */
+    padding: 28px 0 30px;
+  }
+
+  .taias__product-info {
+    order: 5;
+  }
+
+  .taias__actions {
+    order: 6;
   }
 
   /* ---------- Eventos ---------- */
@@ -370,7 +417,7 @@
   }
   /*Mudando as regras gerais de base.css para que fique proporcional a tela atual*/
   .container{
-    max-width: 90rem;
+    max-width: 100rem;
   }
   .section-subtitle {
     font-size: 1.6rem;
@@ -428,40 +475,17 @@
     font-size: 1.45rem;
     margin-bottom: 6px;
   }
-  /*=================EQUIPE=================*/
-  .team__panel {
-    height: 560px; /*Aumenta o painel junto com o container, que também cresceu*/
-  }
-  .team__item {
-    padding: 28px 32px;
-  }/*Cada linha da lista (número + nome + cargo)*/
-  .team__number {
-    font-size: 1.9rem;
-  }/*Numeração 01, 07, 09...*/
-  .team__info strong {
-    font-size: 1.3rem;
-  }/*Nome da pessoa na lista*/
-  .team__info small {
-    font-size: 0.95rem;
-  }/*Cargo da pessoa na lista*/
-  .team__bio {
-    padding: 56px;
-  }
-  .team__bio-number {
-    font-size: 2.1rem;
-  }/*Numeração grande ao lado do nome em destaque*/
-  .team__bio-name {
-    font-size: 2.6rem;
-    margin-bottom: 14px;
-  }/*Nome em destaque*/
-  .team__bio-role {
-    font-size: 1.05rem;
-    margin-bottom: 26px;
-  }/*Cargo em destaque*/
-  .team__bio-text {
-    font-size: 1.3rem;
-    line-height: 1.7;
-  }/*Texto da biografia*/
+
+    /*=================HAMBURGUERIA TAIAS=================*/
+  .taias__panel { min-height: 720px; }
+  .taias__content { padding: 72px; }
+  .taias__subtitle { font-size: 1.45rem; }
+  .taias__product-number { font-size: 1.35rem; }
+  .taias__product-name { font-size: 3rem; }
+  .taias__product-description { font-size: 1.25rem; }
+  .taias__product-price { font-size: 2.1rem; }
+  .taias__carousel { padding: 52px; }
+  .taias__arrow { font-size: 2.3rem; }
   /*=================EVENTOS E TORNEIOS=================*/
   .events__divider {
     margin: 32px 0 56px;
@@ -642,7 +666,7 @@
   }
   /*Mudando as regras gerais de base.css para que fique proporcional a tela atual*/
   .container {
-    max-width: 120rem;
+    max-width: 130rem;
   }
   .section-subtitle {
     font-size: 2.2rem;
@@ -700,40 +724,17 @@
   .spaces__grid{
     gap: 48px;
   }
-  /*=================EQUIPE=================*/
-  .team__panel {
-    height: 680px;
-  }
-  .team__item {
-    padding: 34px 40px;
-  }
-  .team__number {
-    font-size: 2.3rem;
-  }
-  .team__info strong {
-    font-size: 1.6rem;
-  }
-  .team__info small {
-    font-size: 1.15rem;
-  }
-  .team__bio {
-    padding: 68px;
-  }
-  .team__bio-number {
-    font-size: 2.5rem;
-  }
-  .team__bio-name {
-    font-size: 3.3rem;
-    margin-bottom: 18px;
-  }
-  .team__bio-role {
-    font-size: 1.3rem;
-    margin-bottom: 32px;
-  }
-  .team__bio-text {
-    font-size: 1.6rem;
-    line-height: 1.75;
-  }
+
+    /*=================HAMBURGUERIA TAIAS=================*/
+  .taias__panel { min-height: 820px; }
+  .taias__content { padding: 86px; }
+  .taias__subtitle { font-size: 1.7rem; }
+  .taias__product-number { font-size: 1.5rem; }
+  .taias__product-name { font-size: 3.5rem; }
+  .taias__product-description { font-size: 1.45rem; }
+  .taias__product-price { font-size: 2.5rem; }
+  .taias__carousel { padding: 64px; }
+  .taias__arrow { font-size: 2.6rem; }
   /*=================EVENTOS E TORNEIOS=================*/
   .events__divider {
     margin: 40px 0 72px;
@@ -915,7 +916,7 @@
   }
   /*Mudando as regras gerais de base.css para que fique proporcional a tela atual*/
   .container{
-    max-width: 180rem;
+    max-width: 200rem;
   }
   .section-subtitle {
     font-size: 3rem;
@@ -977,40 +978,17 @@
   .spaces__grid{
     gap: 90px;
   }
-  /*=================EQUIPE=================*/
-  .team__panel {
-    height: 960px;
-  }
-  .team__item {
-    padding: 46px 54px;
-  }
-  .team__number {
-    font-size: 3.4rem;
-  }
-  .team__info strong {
-    font-size: 2.2rem;
-  }
-  .team__info small {
-    font-size: 1.6rem;
-  }
-  .team__bio {
-    padding: 90px;
-  }
-  .team__bio-number {
-    font-size: 3.4rem;
-  }
-  .team__bio-name {
-    font-size: 5rem;
-    margin-bottom: 26px;
-  }
-  .team__bio-role {
-    font-size: 1.9rem;
-    margin-bottom: 44px;
-  }
-  .team__bio-text {
-    font-size: 2.6rem;
-    line-height: 1.8;
-  }
+
+    /*=================HAMBURGUERIA TAIAS=================*/
+  .taias__panel { min-height: 980px; }
+  .taias__content { padding: 104px; }
+  .taias__subtitle { font-size: 2rem; }
+  .taias__product-number { font-size: 1.8rem; }
+  .taias__product-name { font-size: 4.4rem; }
+  .taias__product-description { font-size: 1.75rem; line-height: 1.7; }
+  .taias__product-price { font-size: 3rem; }
+  .taias__carousel { padding: 78px; }
+  .taias__arrow { font-size: 3rem; }
   /*=================EVENTOS E TORNEIOS=================*/
   .events__divider {
     margin: 56px 0 100px;

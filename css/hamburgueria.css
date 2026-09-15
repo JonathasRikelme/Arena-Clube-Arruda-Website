@@ -1,0 +1,205 @@
+/* =====================================================
+   HAMBURGUERIA.CSS
+   Seção Hamburgueria Taias
+   ===================================================== */
+
+.taias__container{
+  max-width: 1400px;
+}
+.taias {
+  background-color: var(--color-bg-light);
+  padding: 80px 0 120px;
+  overflow: hidden;
+}
+
+.taias__panel {
+  background-color: var(--color-dark);
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  min-height: 620px;
+  overflow: hidden;
+}
+
+.taias__content {
+  padding: 34px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.taias__title {
+  margin-bottom: 10px;
+}
+
+.taias__subtitle {
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  max-width: 520px;
+  margin-bottom: 34px;
+}
+.taias__title-highlight {
+  position: relative;
+  display: inline-block;
+  color: var(--color-green);
+  text-decoration: underline;
+  text-decoration-color: var(--color-green);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+  text-decoration-skip-ink: none;
+}
+
+.taias__product-info {
+  border-left: 3px solid var(--color-green);
+  padding-left: 20px;
+  margin-bottom: 34px;
+}
+
+.taias__product-number {
+  color: var(--color-green);
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.taias__product-name {
+  color: var(--color-white);
+  font-size: 2.5rem;
+  margin: 4px 0 10px;
+}
+
+.taias__product-description {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  line-height: 1.65;
+  max-width: 520px;
+  margin-bottom: 12px;
+}
+
+.taias__product-price {
+  color: var(--color-green);
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.taias__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.taias__carousel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 44px 94px 36px 94px;
+}
+
+.taias__viewport {
+  width: 100%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  background: #fff;
+  aspect-ratio: 1 / 1;
+  max-height: 480px;
+  max-width: 480px;
+  margin: 0 auto; /* mantém centralizado dentro da coluna do carrossel */
+}
+
+.taias__track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.taias__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.taias__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+.taias__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 22px;
+}
+
+.taias__arrow {
+  color: var(--color-green);
+  font-size: 2rem;
+  line-height: 1;
+  padding: 4px 8px;
+  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .taias__arrow:hover {
+    transform: scale(1.12);
+  }
+}
+
+.taias__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.taias__dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid var(--color-green);
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0.5;
+  transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
+}
+
+.taias__dot.is-active {
+  background-color: var(--color-green);
+  opacity: 1;
+  transform: scale(1.3);
+}
+#taiasBuyBtn{
+  font-size: 1.1rem;
+  padding: 10px 58px;
+}
+#taiasLocationBtn{
+  font-size: 1.1rem;
+  padding: 10px 18px;
+}
+
+.taias__dot:focus-visible,
+.taias__arrow:focus-visible,
+.taias__actions .btn:focus-visible {
+  outline: 2px solid var(--color-green-bright);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .taias__track {
+    transition-duration: 0.01ms !important;
+  }
+}
+
