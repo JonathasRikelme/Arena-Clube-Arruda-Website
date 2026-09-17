@@ -70,10 +70,103 @@ var unitsData = {
   }
 };
 
+/* ---------- Dados dos espaços de cada unidade ---------- */
+var spacesData = {
+  1: [
+    {
+      image: 'Assets/Images/Spaces/Unidade 1/Quadra-Coberta.webp',
+      alt: 'Quadra Coberta',
+      title: 'Quadra Coberta',
+      description: 'Chova ou faça sol, o jogo não para. Estrutura coberta com iluminação de LED, pronta pra qualquer horário e qualquer clima.'
+    },
+    {
+      image: 'Assets/Images/Spaces/Unidade 1/Espaço-Society.webp',
+      alt: 'Society',
+      title: 'Society',
+      description: 'Quadra de grama sintética no tamanho ideal pra reunir o time e rolar a bola em qualquer dia da semana.'
+    },
+    {
+      image: 'Assets/Images/Spaces/Unidade 1/Lazer-Lanchonete.webp',
+      alt: 'Lanchonete e Espaço de Lazer',
+      title: 'Lanchonete e Espaço de Lazer',
+      description: 'Pra matar a fome depois do jogo ou esperar sua vez com conforto, um cantinho pra socializar antes, durante e depois da partida.'
+    }
+  ],
+  2: [
+    {
+      image: 'Assets/Images/Spaces/Unidade 2/quadra-1-unindade2.png',
+      alt: 'Quadra 1 da Unidade 2',
+      title: 'Quadra 1',
+      description: 'Espaço de areia preparado para reunir a galera, treinar e aproveitar a partida com toda a estrutura da Unidade 2.'
+    },
+    {
+      image: 'Assets/Images/Spaces/Unidade 2/quadra-2-unidade2.png',
+      alt: 'Quadra 2 da Unidade 2',
+      title: 'Quadra 2',
+      description: 'Mais uma opção de quadra de areia para jogar, competir e curtir o esporte em um ambiente pensado para a sua experiência.'
+    },
+    {
+      image: 'Assets/Images/Spaces/Unidade 2/lanchonete-hamburgueria.png',
+      alt: 'Hamburgueria e Espaço de Lazer da Unidade 2',
+      title: 'Hamburgueria e Espaço de Lazer',
+      description: 'Depois da partida, é hora de relaxar, reunir a galera e aproveitar a hamburgueria, o bar e o espaço de lazer da Unidade 2.'
+    }
+  ]
+};
+
+/* ---------- Renderiza os espaços conforme a unidade selecionada ---------- */
+function renderSpaces(unitId) {
+  var spacesGrid = document.querySelector('.spaces__grid');
+  var spacesSubtitle = document.getElementById('spacesSubtitle');
+  var spaces = spacesData[unitId];
+
+  if (!spacesGrid || !spaces) return;
+
+  if (spacesSubtitle) {
+    spacesSubtitle.textContent = 'Conheça o nosso espaço da Unidade ' + unitId + '.';
+  }
+
+  spacesGrid.innerHTML = spaces.map(function (space) {
+    return '<article class="space-card reveal">' +
+      '<div class="space-card__media"><img src="' + space.image + '" loading="lazy" alt="' + space.alt + '"></div>' +
+      '<div class="space-card__tag">' +
+        '<h3>' + space.title + '</h3>' +
+        '<p>' + space.description + '</p>' +
+      '</div>' +
+    '</article>';
+  }).join('');
+
+  // Os cards são recriados ao trocar de unidade, então precisam ser
+  // registrados novamente no mesmo IntersectionObserver do restante do site.
+  var newRevealCards = spacesGrid.querySelectorAll('.reveal');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    newRevealCards.forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  } else if (typeof revealObserver !== 'undefined') {
+    newRevealCards.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    // Na renderização inicial, o observer é criado logo depois deste código.
+    // O próximo frame garante que os cards permaneçam disponíveis para observação.
+    window.requestAnimationFrame(function () {
+      if (typeof revealObserver === 'undefined') return;
+      spacesGrid.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
+        revealObserver.observe(el);
+      });
+    });
+  }
+}
+
 /* ---------- Renderiza os dados de uma unidade na tela ---------- */
 function renderUnit(unitId) {
   var data = unitsData[unitId];
   if (!data) return; // proteção: id inexistente não quebra o site
+
+  // Espaços e subtítulo da seção "Por dentro da arena"
+  renderSpaces(unitId);
 
   // Nome e endereço
   document.getElementById('locationUnitName').textContent = data.name;

@@ -84,6 +84,66 @@
   font-weight: 700;
 }
 
+.taias__price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.taias__socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.taias__social-link {
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-green-dark);
+  border-radius: 20%;
+  color: var(--color-green);
+  background: transparent;
+  transition: transform var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out),
+              background-color var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out);
+}
+
+.taias__social-link svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.taias__social-link .taias__social-icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+@media (hover: hover) {
+  .taias__social-link:hover {
+    transform: translateY(-3px) scale(1.05);
+    color: var(--color-white);
+    background-color: var(--color-green);
+    border-color: var(--color-green);
+  }
+}
+
+.taias__social-link:focus-visible {
+  outline: 2px solid var(--color-green-bright);
+  outline-offset: 4px;
+}
+
 .taias__actions {
   display: flex;
   flex-wrap: wrap;

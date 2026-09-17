@@ -195,7 +195,7 @@
           </div>
           <div class="location__buttons">
             <a href="https://wa.me/5581999867874?text=Ol%C3%A1%2C%20boa%20tarde%21%20Gostaria%20de%20reservar%20um%20hor%C3%A1rio%20com%20voc%C3%AAs%21" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--loc">Reservar Nesta Unidade</a>
-            <a href="#" id="locationDirectionsBtn" class="btn btn--outline-light">Como Chegar?</a>
+            <a href="#" id="locationDirectionsBtn" class="btn btn--outline-light" target="_blank" rel="noopener noreferrer">Como Chegar?</a>
           </div>
         </div>
       </div>
@@ -207,7 +207,7 @@
   <section class="spaces" id="espaco">
     <div class="container">
       <h2 class="section-title">Por dentro da arena.</h2>
-      <p class="section-subtitle">Conheça o nosso espaço.</p>
+      <p class="section-subtitle" id="spacesSubtitle">Conheça o nosso espaço da Unidade 1.</p>
 
       <div class="spaces__grid">
         <article class="space-card reveal">
@@ -250,7 +250,43 @@
             <span class="taias__product-number" id="taiasProductNumber">01</span>
             <h3 class="taias__product-name" id="taiasProductName">X-Tudo</h3>
             <p class="taias__product-description" id="taiasProductDescription">Pão macio, hambúrguer artesanal, queijo, presunto, ovo, bacon, calabresa, salada e molho da casa.</p>
-            <p class="taias__product-price" id="taiasProductPrice">R$ 28,90</p>
+
+            <div class="taias__price-row">
+              <p class="taias__product-price" id="taiasProductPrice">R$ 28,90</p>
+
+              <div class="taias__socials" aria-label="Links da Hamburgueria Taias">
+                <a
+                  href="https://www.instagram.com/taiasburger?stkn=ZjMyYWlqbnJhdjB6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="taias__social-link"
+                  aria-label="Instagram da Taias Burger"
+                  title="Instagram da Taias Burger"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <circle cx="17.3" cy="6.7" r="1.15" class="taias__social-icon-fill"></circle>
+                  </svg>
+                </a>
+
+                <a
+                  href="https://bio.pedigest.com.br/taias?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAUZGDxwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABpzcFx2QndCzHAGG7uOAwhSve-W152S-i9G9WahEeMM54zXmbFNTbRxpiMOa_aem_VLCWKwJV8ru67VdjetIY1g"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="taias__social-link"
+                  aria-label="Cardápio e pedidos da Taias"
+                  title="Cardápio e pedidos da Taias"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M5 6h2l1.4 8.2a2 2 0 0 0 2 1.7h5.8a2 2 0 0 0 1.9-1.4L20 9H8.1"></path>
+                    <circle cx="10.5" cy="19" r="1.4"></circle>
+                    <circle cx="17" cy="19" r="1.4"></circle>
+                    <path d="M14 5v5M11.5 7.5H16.5"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
 
           <div class="taias__actions">
@@ -402,14 +438,13 @@
           <article class="testimonial-card">
             <div class="testimonial-card__top">
               <span class="testimonial-card__quote">&#10077;</span>
-              <span class="testimonial-card__stars" aria-label="4 de 5 estrelas">&#9734;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="testimonial-card__stars" aria-label="5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
-            <p class="testimonial-card__text">Muito bom o gramado iluminação acústica espaça e tudo mais adorei</p>
+            <p class="testimonial-card__text">Na Arena Clube Arruda espaço é bem cuidado, organizado e com uma estrutura excelente para quem quer praticar esportes. A quadra coberta é um grande diferencial muito bem mantida e perfeita para jogar. Achei ótimo também ter uma lanchonete por perto, super conveniente. Os funcionários foram atenciosos e prestativos durante toda a visita. Com certeza, recomendo!</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/FeedBack1.png" loading="lazy" alt="Pedro Henrique"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Aryanna_Gonzaga.png" loading="lazy" alt="Aryanna Gonzaga"></span>
               <span>
-                <strong>Pedro Henrique</strong>
-                <small>pedrin244@gmail.com</small>
+                <strong>Aryanna Gonzaga</strong>
               </span>
             </div>
           </article>
@@ -419,12 +454,11 @@
               <span class="testimonial-card__quote">&#10077;</span>
               <span class="testimonial-card__stars" aria-label="5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
-            <p class="testimonial-card__text">Local Excelente para toda a família, festas, confras e muito lazer.</p>
+            <p class="testimonial-card__text">Recomendo demais!<br>Espaço limpo e agradável para a festa de meu filho.</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/FeedBack2.png" loading="lazy" alt="Celso Murilo"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Camila_Omayra.jpg" loading="lazy" alt="Camila Omayra"></span>
               <span>
-                <strong>Celso Murilo</strong>
-                <small>celso_murilo@gmail.com</small>
+                <strong>Camila Omayra</strong>
               </span>
             </div>
           </article>
@@ -432,14 +466,13 @@
           <article class="testimonial-card">
             <div class="testimonial-card__top">
               <span class="testimonial-card__quote">&#10077;</span>
-              <span class="testimonial-card__stars" aria-label="2 de 5 estrelas">&#9734;&#9734;&#9734;&#9733;&#9733;</span>
+              <span class="testimonial-card__stars" aria-label="5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="testimonial-card__text">Excelente lugar para praticar vôlei, Futevolei, futebol, uma quadra coberta muito boa, Ambiente super agradável, limpos, estrutura excelente e professores maravilhosos.</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/FeedBack3.png" loading="lazy" alt="Clóvis Malta"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Clovis_Malta.jpg" loading="lazy" alt="Clóvis Malta"></span>
               <span>
                 <strong>Clóvis Malta</strong>
-                <small>ClóvisMalta21@gmail.com</small>
               </span>
             </div>
           </article>
@@ -449,12 +482,11 @@
               <span class="testimonial-card__quote">&#10077;</span>
               <span class="testimonial-card__stars" aria-label="5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
-            <p class="testimonial-card__text">Quando cheguei, Fiquei impressionada quando vi a estrutura do lugar! Achei incrivél.</p>
+            <p class="testimonial-card__text">Local Excelente para toda a família,festas, confras e muito lazer.</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/FeedBack5.png" loading="lazy" alt="Eduarda Campelo"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Celso_Murilo.jpg" loading="lazy" alt="Celso Murilo"></span>
               <span>
-                <strong>Eduarda Campelo</strong>
-                <small>Eduardacamp@gmail.com</small>
+                <strong>Celso Murilo</strong>
               </span>
             </div>
           </article>
@@ -466,10 +498,9 @@
             </div>
             <p class="testimonial-card__text">Lugar muito organizado, estrutura excelente e ambiente muito agradável. Fui com a galera para jogar e todo mundo curtiu bastante. Com certeza vamos voltar!</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/FeedBack4.png" loading="lazy" alt="Arthur Bezerra"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Rayane_Pugliesi.jpg" loading="lazy" alt="Rayane Pugliesi"></span>
               <span>
-                <strong>Arthur Bezerra</strong>
-                <small>arthurb@gmail.com</small>
+                <strong>Rayane Pugliesi</strong>
               </span>
             </div>
           </article>
@@ -479,12 +510,11 @@
               <span class="testimonial-card__quote">&#10077;</span>
               <span class="testimonial-card__stars" aria-label="5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
-            <p class="testimonial-card__text">Uma das melhores arenas que já conheci. Os espaços são muito bons, tudo bem cuidado e o atendimento foi excelente. Dá vontade de marcar outro jogo assim que termina!</p>
+            <p class="testimonial-card__text">Espaço muito bom, segurança é muita qualidade. Principalmente o gramado society.</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/FeedBack6.png" loading="lazy" alt="Laryssa Campos"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Bruno_FF_fut.jpg" loading="lazy" alt="Bruno FF /fut"></span>
               <span>
-                <strong>Laryssa Campos</strong>
-                <small>laryssacampos@gmail.com</small>
+                <strong>Bruno FF /fut</strong>
               </span>
             </div>
           </article>
@@ -563,5 +593,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/localizacao-usuario.js"></script>
 </body>
 </html>
