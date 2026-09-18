@@ -229,6 +229,15 @@
     width: 100%;
     text-align: center;
   }
+  .location__map.reveal--left,
+  .location__info.reveal--right {
+    transform: translateY(28px);
+  }
+
+  .location__map.reveal--left.is-visible,
+  .location__info.reveal--right.is-visible {
+    transform: translateY(0);
+  }
 
   /* ---------- Por dentro da arena: 1 coluna ---------- */
   .spaces {
