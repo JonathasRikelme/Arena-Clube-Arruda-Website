@@ -524,14 +524,36 @@
   .taias__panel { min-height: 720px; }
   .taias__content { padding: 72px; }
   .taias__subtitle { font-size: 1.45rem; }
-  .taias__product-number { font-size: 1.35rem; }
+  .taias__product-number { font-size: 2.35rem; }
   .taias__product-name { font-size: 3rem; }
-  .taias__product-description { font-size: 1.25rem; }
-  .taias__product-price { font-size: 2.1rem; }
-  .taias__social-link { width: 46px; height: 46px; }
-  .taias__social-link svg { width: 22px; height: 22px; }
+  .taias__product-description { font-size: 1.38rem; }
+  .taias__product-price { font-size: 2.8rem; }
   .taias__carousel { padding: 52px; }
   .taias__arrow { font-size: 2.3rem; }
+  #taiasBuyBtn {
+    font-size: 1.5rem;
+    padding: 10px 58px;
+  }
+  #taiasLocationBtn {
+    font-size: 1.15rem;
+    padding: 10px 30px;
+  }
+  .taias__viewport {   
+    max-height: 590px;
+    max-width: 590px;
+  }
+  .taias__socials {
+    gap: 15px;
+  }
+  .taias__social-link svg {
+    width: 30px;
+    height: 30px;
+  }
+  .taias__social-link {
+    width: 52px;
+    height: 52px;
+    border: 2px solid var(--color-green-dark);
+  }
   /*=================EVENTOS E TORNEIOS=================*/
   .events__divider {
     margin: 32px 0 56px;
@@ -786,15 +808,43 @@
     /*=================HAMBURGUERIA TAIAS=================*/
   .taias__panel { min-height: 820px; }
   .taias__content { padding: 86px; }
-  .taias__subtitle { font-size: 1.7rem; }
-  .taias__product-number { font-size: 1.5rem; }
-  .taias__product-name { font-size: 3.5rem; }
-  .taias__product-description { font-size: 1.45rem; }
-  .taias__product-price { font-size: 2.5rem; }
+  .taias__subtitle { font-size: 1.8rem; }
+  .taias__product-number { font-size: 2.9rem; }
+  .taias__product-name { font-size: 4.5rem; }
+  .taias__product-description { font-size: 1.9rem; max-width: 750px; }
+  .taias__product-price { font-size: 3.5rem; }
   .taias__social-link { width: 52px; height: 52px; }
   .taias__social-link svg { width: 25px; height: 25px; }
   .taias__carousel { padding: 64px; }
-  .taias__arrow { font-size: 2.6rem; }
+  .taias__arrow { font-size: 3.5rem; }
+  #taiasBuyBtn {
+    font-size: 2rem;
+    padding: 15px 68px;
+  }
+  #taiasLocationBtn {
+    font-size: 2rem;
+    padding: 15px 40px;
+  }
+  .taias__viewport {   
+    max-height: 790px;
+    max-width: 790px;
+  }
+  .taias__dot {
+    width: 15px;
+    height: 15px;
+  }
+  .taias__socials {
+    gap: 15px;
+  }
+  .taias__social-link svg {
+    width: 40px;
+    height: 40px;
+  }
+  .taias__social-link {
+    width: 72px;
+    height: 72px;
+    border: 2px solid var(--color-green-dark);
+  }
   /*=================EVENTOS E TORNEIOS=================*/
   .events__divider {
     margin: 40px 0 72px;
@@ -910,7 +960,7 @@
     font-size: 2rem;
   }
   .FeedBack__rail .testimonial-card { /*Aqui eu defino que quero 4 cards aparecendo por vez na tela, aj que a tela é mairo*/
-    flex-basis: calc((var(--feedback-track-width, 100%) - 72px) / 4);
+    flex-basis: calc((var(--feedback-track-width, 100%) - 72px) / 3);
   }
   /*=================CTA FINAL=================*/
   .cta__title {
@@ -1042,14 +1092,48 @@
     /*=================HAMBURGUERIA TAIAS=================*/
   .taias__panel { min-height: 980px; }
   .taias__content { padding: 104px; }
-  .taias__subtitle { font-size: 2rem; }
-  .taias__product-number { font-size: 1.8rem; }
-  .taias__product-name { font-size: 4.4rem; }
-  .taias__product-description { font-size: 1.75rem; line-height: 1.7; }
-  .taias__product-price { font-size: 3rem; }
+  .taias__subtitle { font-size: 2.6rem; max-width: 920px; }
+  .taias__product-number { font-size: 4.8rem; }
+  .taias__product-name { font-size: 6.4rem; }
+  .taias__product-description { font-size: 2.6rem; line-height: 1.7; max-width: 920px; }
+  .taias__product-price { font-size: 5rem; }
   .taias__carousel { padding: 78px; }
-  .taias__arrow { font-size: 3rem; }
-  /*=================EVENTOS E TORNEIOS=================*/
+  .taias__arrow { font-size: 4rem; }
+  #taiasBuyBtn {
+    font-size: 2.7rem;
+    padding: 20px 88px;
+  }
+  #taiasLocationBtn {
+    font-size: 2.7rem;
+    padding: 20px 60px;
+  }
+  .taias__viewport {   
+    max-height: 990px;
+    max-width: 990px;
+  }
+  .taias__dot {
+    width: 20px;
+    height: 20px;
+  }
+  .taias__dots {
+    gap: 20px;
+  }
+  .taias__container{
+    width: 80%;
+  }
+  .taias__socials {
+    gap: 30px;
+  }
+  .taias__social-link svg {
+    width: 70px;
+    height: 60px;
+  }
+  .taias__social-link {
+    width: 102px;
+    height: 102px;
+    border: 4px solid var(--color-green-dark);
+  }
+  /*================EVENTOS E TORNEIOS=================*/
   .events__divider {
     margin: 56px 0 100px;
     background-image: radial-gradient(circle, var(--color-green) 6px, transparent 6px);

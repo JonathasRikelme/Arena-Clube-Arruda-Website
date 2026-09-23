@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Histórico de Eventos | Arena Clube Arruda</title>
+
+<!-- Ajuste esses caminhos de favicon quando integrar essa página ao projeto principal -->
+<link rel="icon" type="image/x-icon" href="Assets/Favicons/favicon.ico">
+<meta name="theme-color" content="#18181B">
+
+<!-- Mesmas fontes do resto do site: Oswald para títulos / Barlow para textos -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/historico-eventos.css">
+</head>
+<body>
+
+  <!-- ===================== CABEÇALHO DA PÁGINA ===================== -->
+  <!-- Reaproveita literalmente as classes do header real do site (site-header,
+       header__inner, brand, brand__logo, brand__name) só que sem a nav — o
+       header__inner já é display:flex + justify-content:space-between, então
+       com só 2 filhos o botão de voltar fica à esquerda e a marca à direita. -->
+  <header class="site-header">
+    <div class="header__inner">
+      <a href="../index.html" class="brand">
+        <span class="brand__logo" aria-hidden="true">
+          <img src="../Assets/Images/Logo-arena-200px.png" alt="Logo da Arena Clube Arruda">
+        </span>
+        <span class="brand__name">ARENA CLUBE ARRUDA</span>
+      </a>
+
+      <a href="../index.html" class="h-back-btn">&#8592;  Voltar pro site</a>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO DA PÁGINA ===================== -->
+    <section class="h-hero">
+      <div class="container">
+        <p class="section-eyebrow section-eyebrow--green">Arena Clube Arruda</p>
+        <h1 class="section-title section-title--light">Histórico de eventos.</h1>
+        <p class="h-hero__subtitle">Reviva os torneios, aniversários e confraternizações que já rolaram na arena.</p>
+
+        <!-- ---------- Linha do tempo por ano ---------- -->
+        <div class="h-years" id="yearTabs" role="tablist" aria-label="Filtrar por ano">
+          <span class="h-years__indicator" id="yearIndicator" aria-hidden="true"></span>
+          <!-- Os botões de ano são gerados pelo JS a partir de historicoData, do mais recente pro mais antigo -->
+        </div>
+
+        <!-- ---------- Filtro por categoria ---------- -->
+        <div class="h-filters" id="categoryFilters" role="tablist" aria-label="Filtrar por categoria">
+          <button class="h-filter is-active" type="button" data-category="todos">Todos</button>
+          <button class="h-filter" type="button" data-category="aniversario">Aniversários</button>
+          <button class="h-filter" type="button" data-category="torneio">Torneios</button>
+          <button class="h-filter" type="button" data-category="confraternizacao">Confraternizações</button>
+        </div>
+
+        <!-- ---------- Contador do ano selecionado ---------- -->
+        <div class="h-stats" id="yearStats">
+          <div class="h-stats__item">
+            <span class="h-stats__number" id="statEvents">0</span>
+            <span class="h-stats__label">eventos</span>
+          </div>
+          <div class="h-stats__item">
+            <span class="h-stats__number" id="statPhotos">0</span>
+            <span class="h-stats__label">fotos</span>
+          </div>
+          <div class="h-stats__item">
+            <span class="h-stats__number" id="statVideos">0</span>
+            <span class="h-stats__label">vídeos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GRID DE EVENTOS ===================== -->
+    <section class="h-gallery">
+      <div class="container">
+        <div class="historico__grid" id="historicoGrid">
+          <!-- Cards gerados pelo JS (renderHistorico) a partir de historicoData -->
+        </div>
+
+        <p class="h-empty" id="emptyState" hidden>Nenhum evento encontrado com esse filtro.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== LIGHTBOX (aberto ao clicar num card) ===================== -->
+  <div class="h-lightbox" id="lightbox" hidden>
+    <div class="h-lightbox__backdrop" id="lightboxBackdrop"></div>
+
+    <div class="h-lightbox__panel">
+      <div class="h-lightbox__header">
+        <div>
+          <p class="h-lightbox__title" id="lightboxTitle">Nome do evento</p>
+          <p class="h-lightbox__date" id="lightboxDate">00 mmm 0000</p>
+        </div>
+        <button class="h-lightbox__close" id="lightboxClose" type="button" aria-label="Fechar">&#10005;</button>
+      </div>
+
+      <p class="h-lightbox__desc" id="lightboxDesc">Descrição detalhada do evento.</p>
+
+      <div class="h-lightbox__stage">
+        <button class="h-lightbox__arrow h-lightbox__arrow--prev" id="lightboxPrev" type="button" aria-label="Mídia anterior">&#10094;</button>
+
+        <div class="h-lightbox__media" id="lightboxMedia"></div>
+
+        <button class="h-lightbox__arrow h-lightbox__arrow--next" id="lightboxNext" type="button" aria-label="Próxima mídia">&#10095;</button>
+      </div>
+
+      <div class="h-lightbox__thumbs" id="lightboxThumbs"></div>
+    </div>
+  </div>
+
+  <script src="../js/historico-eventos.js"></script>
+</body>
+</html>
