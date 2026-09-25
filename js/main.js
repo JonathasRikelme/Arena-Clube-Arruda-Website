@@ -77,19 +77,19 @@ var spacesData = {
       image: 'Assets/Images/Spaces/Unidade 1/Quadra-Coberta.webp',
       alt: 'Quadra Coberta',
       title: 'Quadra Coberta',
-      description: 'Chova ou faça sol, o jogo não para. Estrutura coberta com iluminação de LED, pronta pra qualquer horário e qualquer clima.'
+      description: 'Choveu? Sem problema. A quadra é coberta e o jogo continua.'
     },
     {
       image: 'Assets/Images/Spaces/Unidade 1/Espaço-Society.webp',
       alt: 'Society',
       title: 'Society',
-      description: 'Quadra de grama sintética no tamanho ideal pra reunir o time e rolar a bola em qualquer dia da semana.'
+      description: 'Gramado sintético pronto pra reunir a galera, treinar ou jogar aquele amistoso.'
     },
     {
       image: 'Assets/Images/Spaces/Unidade 1/Lazer-Lanchonete.webp',
       alt: 'Lanchonete e Espaço de Lazer',
       title: 'Lanchonete e Espaço de Lazer',
-      description: 'Pra matar a fome depois do jogo ou esperar sua vez com conforto, um cantinho pra socializar antes, durante e depois da partida.'
+      description: 'Terminou o jogo? Agora é hora de comer, conversar e ficar por aqui.'
     }
   ],
   2: [
@@ -591,45 +591,45 @@ if (prefersReducedMotion) {
 
 var taiasProducts = [
   {
-    name: 'X-Tudo',
-    description: 'Pão macio, hambúrguer artesanal, queijo, presunto, ovo, bacon, calabresa, salada e molho da casa.',
-    price: 'R$ 28,90',
+    name: 'Taias X-Tudo',
+    description: 'Pão brioche, blend 120g, ovo, bacon, calabresa, mussarela, salada, molho especial e cebola caramelizada.',
+    price: 'R$ 29,90',
     image: 'Assets/Images/Hamburguers/hamburguer-taias-x-tudo.webp'
   },
   {
-    name: 'Duplo',
-    description: 'Dois hambúrgueres artesanais, queijo derretido, cebola, salada e molho especial no pão macio.',
-    price: 'R$ 31,90',
+    name: 'Taias Duplo',
+    description: 'Pão brioche, 2 blends 120g, mussarela, salada, molho especial e cebola caramelizada.',
+    price: 'R$ 27,90',
     image: 'Assets/Images/Hamburguers/hamburguer-taias-duplo.webp'
   },
   {
-    name: 'Cheddar',
-    description: 'Hambúrguer artesanal coberto com cheddar cremoso, cebola caramelizada e molho da casa.',
-    price: 'R$ 27,90',
+    name: 'Taias Cheddar',
+    description: 'Pão brioche, blend 120g, cheddar, salada, molho especial e cebola caramelizada.',
+    price: 'R$ 24,90',
     image: 'Assets/Images/Hamburguers/hamburguer-taias-cheddar.webp'
   },
   {
-    name: 'Bacon',
-    description: 'Hambúrguer artesanal, queijo, bacon crocante, salada fresca e molho especial.',
-    price: 'R$ 29,90',
+    name: 'Taias Bacon',
+    description: 'Pão brioche, blend 120g, mussarela, bacon, salada, molho especial e cebola caramelizada.',
+    price: 'R$ 26,90',
     image: 'Assets/Images/Hamburguers/hamburguer-taias-bacon.webp'
   },
   {
-    name: 'Calabresa',
-    description: 'Hambúrguer artesanal com calabresa dourada, queijo, cebola, salada e molho da casa.',
-    price: 'R$ 28,90',
+    name: 'Taias Calabresa',
+    description: 'Pão brioche, blend 120g, calabresa, mussarela, salada, molho especial e cebola caramelizada.',
+    price: 'R$ 22,90',
     image: 'Assets/Images/Hamburguers/hamburguer-taias-calabresa.webp'
   },
   {
-    name: 'Sertanejo',
-    description: 'Hambúrguer artesanal com queijo, bacon, cebola caramelizada e um molho especial da casa.',
-    price: 'R$ 30,90',
+    name: 'Taias Sertanejo',
+    description: 'Pão brioche, blend 120g, carne de sol desfiada, queijo coalho, mussarela, salada, molho especial e cebola caramelizada.',
+    price: 'R$ 32,90',
     image: 'Assets/Images/Hamburguers/hamburguer-taias-sertanejo.webp'
   },
   {
-    name: 'Burger',
-    description: 'O clássico para quem prefere o essencial: hambúrguer artesanal, queijo, salada e molho da casa.',
-    price: 'R$ 24,90',
+    name: 'Taias Burger',
+    description: 'Pão brioche, blend 120g, mussarela, salada, molho especial e cebola caramelizada.',
+    price: 'R$ 19,90',
     image: 'Assets/Images/Hamburguers/hamburguer-taias-burger.webp'
   }
 ];
@@ -821,46 +821,3 @@ if (taiasTrack && taiasProducts.length) {
   renderTaiasProduct();
   resetTaiasTimer();
 }
-
-/* ---------- Vídeos dos cards de eventos (lazy load no clique) ---------- */
-//Cada card com vídeo só carrega o arquivo de vídeo de verdade quando
-//o usuário clica na capa , só a imagem de capa (leve)
-//é exibida. Isso evita baixar todos os vídeos só por carregar a página.
-var videoMediaBoxes = document.querySelectorAll('.event-card--video .event-card__media');
-
-videoMediaBoxes.forEach(function (mediaBox) {
-  mediaBox.addEventListener('click', function () {
-    var videoSrc = mediaBox.dataset.video;
-    if (!videoSrc) return; // proteção: sem caminho de vídeo, não faz nada
-
-    // Pausa qualquer outro vídeo que já esteja tocando, pra não ter audio duplicado de dois videos rodando
-    document.querySelectorAll('.event-card__media video').forEach(function (v) {
-      v.pause();
-    });
-
-    // Cria o elemento <video> de verdade e substitui a capa por ele.
-    // Usamos duas <source>: mp4 (compatibilidade universal, essencial
-    // pro Safari/iOS, que não entende webm) e webm (arquivo menor,
-    // usado pelos navegadores que suportam). O navegador escolhe
-    // sozinho qual consegue tocar — se um formato não existir, ele
-    // simplesmente ignora e tenta o próximo, sem quebrar nada.
-    var video = document.createElement('video');
-    video.controls = true;
-    video.autoplay = true;
-    video.playsInline = true; // evita abrir em tela cheia sozinho no iOS
-
-    var sourceMp4 = document.createElement('source');
-    sourceMp4.src = videoSrc;
-    sourceMp4.type = 'video/mp4';
-    video.appendChild(sourceMp4);
-
-    var sourceWebm = document.createElement('source');
-    sourceWebm.src = videoSrc.replace(/\.mp4$/i, '.webm');
-    sourceWebm.type = 'video/webm';
-    video.appendChild(sourceWebm);
-
-    mediaBox.innerHTML = ''; // remove a imagem de capa, a tag "Vídeo" e o botão de play
-    mediaBox.appendChild(video);
-    video.play();
-  });
-});

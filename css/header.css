@@ -148,3 +148,105 @@
   height: 2px;
   background-color: var(--color-white);
 }
+
+/*=====================Aqui é só sobre o botão de bora jgoar do header e sua animação=====================*/
+.main-nav__cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  animation: cta-breathe 4.5s ease-in-out infinite;
+}
+
+/* Brilho que atravessa o botão */
+.main-nav__cta::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -140%;
+
+  width: 70%;
+  height: 300%;
+
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+
+  transform: translateX(0) rotate(12deg);
+  pointer-events: none;
+
+  animation: cta-shine 4.5s ease-in-out infinite;
+}
+
+/* Mantém o texto acima do brilho */
+.main-nav__cta {
+  z-index: 1;
+}
+
+.main-nav__cta::before {
+  z-index: -1;
+}
+
+/* Pequena variação de sombra/escala */
+@keyframes cta-breathe {
+  0%,
+  82%,
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+
+  88% {
+    transform: translateY(-1px) scale(1.015);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+  }
+
+  94% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/* Passada de brilho */
+@keyframes cta-shine {
+  0%,
+  72% {
+    transform: translateX(0) rotate(12deg);
+    opacity: 0;
+  }
+
+  76% {
+    opacity: 1;
+  }
+
+  88% {
+    transform: translateX(390%) rotate(12deg);
+    opacity: 1;
+  }
+
+  92%,
+  100% {
+    transform: translateX(390%) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+/* Hover: dá uma pequena resposta, mas sem exagero */
+.main-nav__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .main-nav__cta,
+  .main-nav__cta::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}

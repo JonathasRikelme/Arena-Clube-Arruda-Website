@@ -10,10 +10,14 @@
 }
 
 .podium__grid {
+  --podium-gap: 24px;
+  --podium-card-width: calc((100% - (2 * var(--podium-gap))) / 3);
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--podium-gap);
   margin-top: 16px;
+  justify-content: center;
 }
 
 .podium-card {
@@ -52,6 +56,8 @@
 .podium-card__media img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center;
   border: 2px dashed var(--color-dark);
 }
 
@@ -82,4 +88,140 @@
   font-family: var(--font-body);
   color: var(--color-text-muted);
   font-size: 0.82rem;
+}
+
+
+/* =====================================================
+   PÓDIO — FILTROS MASCULINO / FEMININO
+   ===================================================== */
+.podium__filters {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 30px 0 34px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.podium__filter {
+  position: relative;
+  flex: 0 0 auto;
+  min-height: 46px;
+  padding: 9px 18px 13px;
+  color: rgba(255, 255, 255, 0.62);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: color var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+
+.podium__filter::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: -10px;
+  height: 3px;
+  background: var(--color-green);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 360ms var(--ease-out);
+}
+
+.podium__filter.is-active {
+  color: var(--color-green-hover);
+}
+
+.podium__filter.is-active::after {
+  transform: scaleX(1);
+}
+
+@media (hover: hover) {
+  .podium__filter:hover {
+    color: var(--color-white);
+    transform: translateY(-2px);
+  }
+
+  .podium__filter.is-active:hover {
+    color: var(--color-green-hover);
+  }
+}
+
+.podium__grid {
+  transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out);
+}
+
+.podium__grid.is-podium-switching {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Quando o filtro feminino está ativo, os dois cards mantêm exatamente
+   a largura de um card masculino e ficam centralizados na área do pódio. */
+.podium__grid.is-feminino {
+  grid-template-columns: repeat(2, minmax(0, var(--podium-card-width)));
+  justify-content: center;
+}
+
+.podium-card[hidden] {
+  display: none;
+}
+
+.podium-card.is-podium-entering {
+  animation: podiumCardEnter 420ms var(--ease-out) both;
+}
+
+@keyframes podiumCardEnter {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 640px) {
+  .podium__grid.is-feminino {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .podium__filters {
+    width: 100%;
+    gap: 4px;
+    margin-top: 26px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .podium__filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .podium__filter {
+    min-height: 44px;
+    padding: 9px 16px 12px;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .podium__filter::after {
+    left: 14px;
+    right: 14px;
+    height: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .podium__filter,
+  .podium__filter::after,
+  .podium__grid,
+  .podium-card.is-podium-entering {
+    animation: none !important;
+    transition: none !important;
+  }
 }
