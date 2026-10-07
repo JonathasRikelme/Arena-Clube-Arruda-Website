@@ -116,7 +116,7 @@
   transition: opacity var(--dur-base) var(--ease-out);
 }
 
-/* Aplicado pelo JS (main.js) por uma fração de segundo antes de
+/* Aplicado pelo JS (site.js) por uma fração de segundo antes de
    trocar a foto/nome/texto pelos dados do próximo membro clicado */
 .team__photo.is-fading,
 .team__bio.is-fading {

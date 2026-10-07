@@ -46,8 +46,18 @@ Arena-Clube-Arruda/
 │   ├── footer.css
 │   └── responsive.css
 ├── js/
-│   └── main.js
+│   ├── site.js
+│   ├── navegacao.js
+│   ├── unidades.js
+│   ├── depoimentos.js
+│   ├── hamburgueria.js
+│   ├── eventos.js
+│   ├── podium.js
+│   └── localizacao-usuario.js
 ├── index.html
+├── 404.html
+├── robots.txt
+├── DEPLOY.md
 └── README.md
 ```
 
@@ -63,9 +73,9 @@ Apresentação das modalidades oferecidas pela Arena, incluindo Vôlei, Futebol 
 
 ### Localização / Unidades
 
-Sistema de seleção entre as duas unidades. Os dados ficam centralizados em `unitsData` no `main.js`, incluindo endereço, mapa, quadras, comodidades, horários, aplicativo de replay e link de direções.
+Sistema de seleção entre as duas unidades. Os dados ficam centralizados em `unitsData` no `js/unidades.js`, incluindo endereço, mapa, quadras, comodidades, horários e aplicativo de replay.
 
-A troca de unidade utiliza crossfade e o indicador verde acompanha a aba ativa.
+A troca de unidade utiliza crossfade e o indicador verde acompanha a aba ativa. O link de rota acompanha a unidade selecionada e não solicita geolocalização automaticamente.
 
 ### Espaços
 
@@ -95,7 +105,7 @@ A seção utiliza um carrossel com:
 - loop infinito sem salto visual;
 - sincronização entre imagem, nome, descrição e preço.
 
-Os dados dos produtos ficam centralizados no `main.js`, facilitando futuras alterações.
+Os dados dos produtos ficam centralizados em `js/hamburgueria.js`, facilitando futuras alterações.
 
 O botão **Comprar** possui um `TODO` diretamente no HTML para inserção manual do link externo de vendas da Taias. O botão **Localização** reutiliza o link da Unidade 2 já existente em `unitsData`.
 
@@ -123,7 +133,7 @@ A responsividade é centralizada principalmente em `css/responsive.css`.
 
 Breakpoints utilizados no projeto:
 
-- até `1024px` — tablet;
+- até `1199px` — tablet e notebook compacto;
 - até `640px` — mobile;
 - a partir de `1920px` — Full HD;
 - a partir de `2560px` — 2K;
@@ -155,23 +165,18 @@ O projeto possui, entre outros recursos:
 
 ## JavaScript
 
-O `js/main.js` centraliza a lógica interativa da página e é organizado por blocos de comentários, mantendo a estrutura existente do projeto.
+Os scripts são separados por responsabilidade e carregados na ordem necessária pelo `index.html`, mantendo JavaScript Vanilla e sem framework.
 
 Entre suas responsabilidades estão:
 
-- menu mobile;
-- dados e troca de unidades;
-- indicador das unidades;
-- crossfade;
-- carrossel de feedback;
-- autoplay e interação dos feedbacks;
-- carrossel da Hamburgueria Taias;
-- autoplay e swipe da Taias;
-- sincronização dos dados dos produtos;
-- localização da Taias baseada na Unidade 2;
-- lazy load dos vídeos de eventos;
-- reprodução dos vídeos;
-- reveal on scroll.
+- `navegacao.js`: menu mobile e fechamento com Escape;
+- `unidades.js`: dados e troca de unidades, indicador, crossfade e renderização dos espaços;
+- `depoimentos.js`: carrossel, autoplay e gestos dos feedbacks;
+- `hamburgueria.js`: carrossel, autoplay, swipe e dados dos produtos Taias;
+- `site.js`: header e reveal on scroll;
+- `eventos.js`: filtros, expansão/recolhimento dos eventos e reprodução dos vídeos após interação;
+- `podium.js`: alternância das categorias do pódio;
+- `localizacao-usuario.js`: proteção do link de rota enquanto a unidade é renderizada.
 
 ## Boas práticas
 
@@ -202,6 +207,12 @@ Depois, acessar:
 ```text
 http://localhost:8000
 ```
+
+## Publicação na internet
+
+O projeto é um site estático e pode ser hospedado em um serviço de hospedagem estática ou servidor web. O guia de publicação está em `DEPLOY.md`. URL canônica, imagem absoluta para compartilhamento e sitemap devem ser preenchidos depois que o domínio final estiver definido.
+
+O botão **Comprar** da Hamburgueria ainda precisa do URL real de vendas antes da publicação; ele está marcado no HTML com `TODO`.
 
 ## Desenvolvedor
 

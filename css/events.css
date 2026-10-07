@@ -387,6 +387,27 @@
     font-size: 0.68rem;
   }
 
+  /* No mobile, o caractere Unicode do play pode deformar em fontes/telas
+     menores. Substituímos apenas a representação visual por um triângulo
+     CSS, mantendo o mesmo botão e o mesmo comportamento de vídeo. */
+  .event-card__play {
+    font-size: 0;
+    line-height: 0;
+  }
+
+  .event-card__play::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 13px solid currentColor;
+    transform: translate(-38%, -50%);
+  }
+
   .event-card__body {
     padding: 20px 18px 22px;
   }

@@ -16,6 +16,11 @@ html {
   scroll-behavior: smooth;
 }
 
+main[id],
+main > section[id] {
+  scroll-margin-top: clamp(4rem, 5vw, 12rem);
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -169,6 +174,11 @@ h1, h2, h3, h4 {
   transform: translateY(-1px);
 }
 
+:where(a, button, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-green-bright);
+  outline-offset: 3px;
+}
+
 .btn--primary {
   background-color: var(--color-green);
   color: var(--color-white);
@@ -195,7 +205,7 @@ h1, h2, h3, h4 {
    REVEAL ON SCROLL
    Motor genérico de animação de entrada usado em várias seções.
    Basta adicionar a classe .reveal em qualquer elemento do HTML.
-   O main.js observa a tela (IntersectionObserver) e adiciona
+   O site.js observa a tela (IntersectionObserver) e adiciona
    .is-visible quando o elemento aparece — uma única vez.
    ===================================================== */
 .reveal {

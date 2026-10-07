@@ -22,7 +22,7 @@
     filters.forEach(function (filter) {
       var active = filter === activeFilter;
       filter.classList.toggle('is-active', active);
-      filter.setAttribute('aria-selected', String(active));
+      filter.setAttribute('aria-pressed', String(active));
     });
   }
 

@@ -126,29 +126,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 4px;
 }
 
 .FeedBack__dot {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.FeedBack__dot::before {
+  content: '';
   width: 9px;
   height: 9px;
-  padding: 0;
   border: 1px solid var(--color-green);
   border-radius: 50%;
   background: transparent;
   opacity: 0.55;
-  cursor: pointer;
   transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
 }
 
-.FeedBack__dot.is-active {
+.FeedBack__dot.is-active::before {
   background-color: var(--color-green);
   opacity: 1;
   transform: scale(1.25);
 }
 
-.FeedBack__dot:hover,
-.FeedBack__dot:focus-visible {
+.FeedBack__dot:hover::before,
+.FeedBack__dot:focus-visible::before {
   opacity: 1;
   transform: scale(1.2);
 }
@@ -199,7 +210,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .FeedBack__rail {
+  .FeedBack__rail,
+  .FeedBack__dot::before {
     transition-duration: 0.01ms;
   }
 }

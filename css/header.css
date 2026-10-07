@@ -9,15 +9,6 @@
   width: 100%;
   top: 0;
   z-index: 100;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* base "invisível" pra poder animar a sombra depois */
-  transition: box-shadow var(--dur-base) var(--ease-out);
-}
-
-/* Estado adicionado pelo JS (main.js) quando o usuário rola a página
-   além de ~80px: o header ganha uma sombra sutil pra se destacar
-   do conteúdo, reforçando que ele "flutua" por cima da página. */
-.site-header.is-scrolled {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .header__inner { /*Div que encobre todo o header, aqui defino coisas como o espaço entre os elementos */

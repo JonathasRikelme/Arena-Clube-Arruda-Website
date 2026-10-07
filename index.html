@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arena Clube Arruda | Vôlei, Futevôlei, Futebol Society e Beach Tennis</title>
+<meta name="description" content="Jogue vôlei, futevôlei, futebol society e beach tennis na Arena Clube Arruda, em Recife. Conheça as unidades, espaços, eventos e reserve seu horário.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Arena Clube Arruda">
+<meta property="og:title" content="Arena Clube Arruda | Esporte, lazer e bons momentos">
+<meta property="og:description" content="Conheça as unidades da Arena Clube Arruda, confira os esportes e reserve seu horário em Recife.">
 <!-- favicons do site -->
 <link rel="icon" type="image/x-icon" href="Assets/Favicons/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="Assets/Favicons/favicon-32x32.png">
@@ -44,7 +50,7 @@
       <span class="brand__name">ARENA CLUBE ARRUDA</span>
     </a>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><!--Botão de hamburguer que aparece depois que a tela fica muito pequena-->
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><!--Botão de hamburguer que aparece depois que a tela fica muito pequena-->
       <span class="nav-toggle__bar"></span>
       <span class="nav-toggle__bar"></span>
       <span class="nav-toggle__bar"></span>
@@ -60,7 +66,7 @@
       </ul>
     </nav><!--Btn levando para o zapzap-->
     <a
-      href="https://wa.me/5581999867874?text=Ol%C3%A1%2C%20boa%20tarde%21%20Gostaria%20de%20reservar%20um%20hor%C3%A1rio%20com%20voc%C3%AAs%21"
+      href="https://wa.me/558194373230?text=Ol%C3%A1%2C%20boa%20tarde%21%20Gostaria%20de%20reservar%20um%20hor%C3%A1rio%20com%20voc%C3%AAs%21"
       target="_blank" rel="noopener noreferrer" class="btn btn--primary main-nav__cta">
       <span>Bora jogar</span>
     </a>
@@ -135,7 +141,7 @@
 
         <article class="sport-card reveal">
           <div class="sport-card__media">
-            <img src="Assets/Images/Sports/Sports-Beach-Tennis.png" alt="Imagem representativa de futevôlei na arena"><!-- Imagem backgound do card de futevôlei -->
+            <img src="Assets/Images/Sports/Sports-Beach-Tennis.webp" alt="Jogadores praticando beach tennis na arena">
           </div>
           <div class="sport-card__body">
             <h3 class="sport-card__title">Entre na quadra<br>e aproveite o jogo.</h3>
@@ -154,14 +160,14 @@
     <h2 class="section-title section-title--light">Escolha a unidade mais perto de você.</h2>
 
     <div class="location__content">
-      <div class="location__tabs" role="tablist">
-        <button class="location__tab is-active" role="tab" aria-selected="true" data-unit="1">Unidade 1</button>
-        <button class="location__tab" role="tab" aria-selected="false" data-unit="2">Unidade 2</button>
-        <!-- Pill verde criada/posicionada pelo JS (main.js), desliza entre as abas -->
+      <div class="location__tabs" role="tablist" aria-label="Selecionar unidade">
+        <button class="location__tab is-active" id="unitTab1" type="button" role="tab" aria-selected="true" aria-controls="locationPanel" tabindex="0" data-unit="1">Unidade 1</button>
+        <button class="location__tab" id="unitTab2" type="button" role="tab" aria-selected="false" aria-controls="locationPanel" tabindex="-1" data-unit="2">Unidade 2</button>
+        <!-- Pill verde criada/posicionada pelo JS (unidades.js), desliza entre as abas -->
         <span class="location__tab-indicator" id="locationTabIndicator" aria-hidden="true"></span>
       </div>
 
-      <div class="location__grid">
+      <div class="location__grid" id="locationPanel" role="tabpanel" aria-labelledby="unitTab1" tabindex="0">
         <!-- id adicionado: o innerHTML deste div é trocado pelo JS -->
         <div class="location__map reveal reveal--left" id="locationMap" aria-label="Mapa do Google Maps"></div>
 
@@ -172,7 +178,7 @@
           <h4 class="location__courts-label">Quadras:</h4>
           <ul class="location__courts" id="locationCourts">
             <li><span>Vôlei / Futevôlei</span><strong>3</strong></li>
-            <li><span>Futebol Socity</span><strong>1</strong></li>
+            <li><span>Futebol Society</span><strong>1</strong></li>
           </ul>
 
           <h4 class="location__hours-label">Horários:</h4>
@@ -231,7 +237,7 @@
         </article>
 
         <article class="space-card reveal">
-          <div class="space-card__media"><img src="Assets/Images/Spaces/Unidade 1/Lazer-Lanchonete.webp" loading="lazy" alt="Lanchonete e Espaço de Lazer"></div>
+          <div class="space-card__media"><img src="Assets/Images/Spaces/Unidade 1/Espaco-Lazer.webp" loading="lazy" alt="Lanchonete e Espaço de Lazer"></div>
           <div class="space-card__tag">
             <h3>Lanchonete e Espaço de Lazer</h3>
             <p>Terminou o jogo? Agora é hora de comer, conversar e ficar por aqui.</p>
@@ -306,7 +312,7 @@
           </div>
           <div class="taias__controls" aria-label="Navegação do cardápio">
             <button class="taias__arrow taias__arrow--prev" id="taiasPrev" type="button" aria-label="Hambúrguer anterior">&#10094;</button>
-            <div class="taias__dots" id="taiasDots" role="tablist" aria-label="Hambúrgueres"></div>
+            <div class="taias__dots" id="taiasDots" role="group" aria-label="Selecionar hambúrguer"></div>
             <button class="taias__arrow taias__arrow--next" id="taiasNext" type="button" aria-label="Próximo hambúrguer">&#10095;</button>
           </div>
         </div>
@@ -324,17 +330,17 @@
 
       <div class="events__divider" aria-hidden="true"></div>
 
-      <div class="events__filters" id="eventsFilters" role="tablist" aria-label="Filtrar eventos">
-        <button class="events__filter is-active" type="button" role="tab" aria-selected="true" data-filter="todos">
+      <div class="events__filters" id="eventsFilters" role="group" aria-label="Filtrar eventos">
+        <button class="events__filter is-active" type="button" aria-pressed="true" data-filter="todos">
           Todos
         </button>
-        <button class="events__filter" type="button" role="tab" aria-selected="false" data-filter="aniversarios">
+        <button class="events__filter" type="button" aria-pressed="false" data-filter="aniversarios">
           Aniversários
         </button>
-        <button class="events__filter" type="button" role="tab" aria-selected="false" data-filter="torneios">
+        <button class="events__filter" type="button" aria-pressed="false" data-filter="torneios">
           Torneios
         </button>
-        <button class="events__filter" type="button" role="tab" aria-selected="false" data-filter="outros">
+        <button class="events__filter" type="button" aria-pressed="false" data-filter="outros">
           Outros
         </button>
       </div>
@@ -347,90 +353,90 @@
             <span class="event-card__category">Torneio</span>
           </div>
           <div class="event-card__body">
-            <p class="event-card__meta"><span>28 de Jun 2026</span> / <span>Unidade Rua do Machado</span></p>
+            <p class="event-card__meta"><span>28 de junho de 2026</span> / <span>Unidade Rua do Machado</span></p>
             <h3 class="event-card__title">Torneio de Vôlei Feminino - Etapa de Junho</h3>
             <p class="event-card__text">Mais uma etapa emocionante do torneio de vôlei feminino interno na Arena Clube Arruda.</p>
           </div>
         </article>
 
         <article class="event-card event-card--video reveal" data-category="outros">
-          <div class="event-card__media" data-video="Assets/Videos/Video1.mp4">
+          <div class="event-card__media" data-video="Assets/Videos/Video1.mp4" role="button" tabindex="0" aria-label="Reproduzir vídeo: disputa de pênaltis">
             <img src="Assets/Images/Capas De Videos/Capa-Video-Society.webp" loading="lazy" alt="Capa do vídeo da disputa de pênaltis">
             <span class="event-card__category">Outro</span>
             <span class="event-card__video-tag">Vídeo</span>
             <span class="event-card__play" aria-hidden="true">&#9658;</span>
           </div>
           <div class="event-card__body">
-            <p class="event-card__meta"><span>05 de Set 2025</span> / <span>Unidade Rua do Machado</span></p>
+            <p class="event-card__meta"><span>5 de setembro de 2025</span> / <span>Unidade Rua do Machado</span></p>
             <h3 class="event-card__title">Disputa de Pênaltis</h3>
-            <p class="event-card__text">Tivemos uma aula/disputa entre nossas turmas de alunos society infantil. Aqui, cada treino é uma oportunidade para crescer dentro e fora de campo.</p>
+            <p class="event-card__text">Alunos da Arena se reuniram para uma disputa de pênaltis. Cada treino é uma oportunidade para aprender e se divertir dentro e fora de campo.</p>
           </div>
         </article>
 
-        <article class="event-card event-card--video reveal" data-category="outros">
-          <div class="event-card__media" data-video="Assets/Videos/Copa-Pernambuco-Futevolei.mp4">
-            <img src="Assets/Images/Capas De Videos/Capa-Video-Copa-Pernambuco.webp" loading="lazy" alt="Capa do vídeo da disputa de pênaltis">
+        <article class="event-card event-card--video reveal" data-category="torneios">
+          <div class="event-card__media" data-video="Assets/Videos/Copa-Pernambuco-Futevolei.mp4" role="button" tabindex="0" aria-label="Reproduzir vídeo: Copa Pernambuco de Futevôlei">
+            <img src="Assets/Images/Capas De Videos/Capa-Video-Copa-Pernambuco.webp" loading="lazy" alt="Capa do vídeo da Copa Pernambuco de Futevôlei">
             <span class="event-card__category">Torneio</span>
             <span class="event-card__video-tag">Vídeo</span>
             <span class="event-card__play" aria-hidden="true">&#9658;</span>
           </div>
           <div class="event-card__body">
-            <p class="event-card__meta"><span>03 de Ago 2026</span> / <span>Unidade Rua da Regeneração</span></p>
-            <h3 class="event-card__title">1° Copa Pernambuco de Futevôlei de clubes</h3>
-            <p class="event-card__text">Tivemos uma aula/disputa entre nossas turmas de alunos society infantil. Aqui, cada treino é uma oportunidade para crescer dentro e fora de campo.</p>
+            <p class="event-card__meta"><span>3 de agosto de 2026</span> / <span>Unidade Rua da Regeneração</span></p>
+            <h3 class="event-card__title">1ª Copa Pernambuco de Futevôlei de Clubes</h3>
+            <p class="event-card__text">A Arena recebeu equipes de futevôlei em uma competição entre clubes, com disputas na areia e muita torcida.</p>
           </div>
         </article>
 
         <article class="event-card event-card--video reveal" data-category="torneios">
-          <div class="event-card__media" data-video="Assets/Videos/Video2.mp4">
+          <div class="event-card__media" data-video="Assets/Videos/Video2.mp4" role="button" tabindex="0" aria-label="Reproduzir vídeo: Copa L6S Cup">
             <img src="Assets/Images/Capas De Videos/Capa-Video.webp" loading="lazy" alt="Capa do vídeo da Copa L6S Cup">
             <span class="event-card__category">Torneio</span>
             <span class="event-card__video-tag">Vídeo</span>
             <span class="event-card__play" aria-hidden="true">&#9658;</span>
           </div>
           <div class="event-card__body">
-            <p class="event-card__meta"><span>18 de Abril 2025</span> / <span>Unidade Rua do Machado</span></p>
+            <p class="event-card__meta"><span>18 de abril de 2025</span> / <span>Unidade Rua do Machado</span></p>
             <h3 class="event-card__title">Copa L6S Cup</h3>
             <p class="event-card__text">Um torneio feito por e para as mulheres que amam o futevôlei. Incentivando, fortalecendo e mostrando que lugar de mulher é onde ela quiser, inclusive na areia!</p>
           </div>
         </article>
 
-        <article class="event-card event-card--extra" data-category="outros">
+        <article class="event-card event-card--extra reveal" data-category="outros">
           <div class="event-card__media">
-            <img src="Assets/Images/Eventos/Events-Natal2.webp" loading="lazy" alt="Natal Solidario">
+            <img src="Assets/Images/Eventos/Events-Natal2.webp" loading="lazy" alt="Crianças durante a tarde de Natal Solidário na Arena">
             <span class="event-card__category">Outro</span>
           </div>
           <div class="event-card__body">
-            <p class="event-card__meta"><span>23 de Dez 2025</span> / <span>Unidade Rua do Machado</span></p>
+            <p class="event-card__meta"><span>23 de dezembro de 2025</span> / <span>Unidade Rua do Machado</span></p>
             <h3 class="event-card__title">Natal Solidário</h3>
             <p class="event-card__text">Tarde de sol, música e nossas crianças se divertindo na Arena.</p>
           </div>
         </article>
 
         <article class="event-card event-card--video reveal" data-category="aniversarios">
-          <div class="event-card__media" data-video="Assets/Videos/Aniversario1.mp4">
-            <img src="Assets/Images/Capas De Videos/Capa-Video-Aniversario1.webp" loading="lazy" alt="Capa do vídeo da disputa de pênaltis">
+          <div class="event-card__media" data-video="Assets/Videos/Aniversario1.mp4" role="button" tabindex="0" aria-label="Reproduzir vídeo: aniversário de Allef">
+            <img src="Assets/Images/Capas De Videos/Capa-Video-Aniversario1.webp" loading="lazy" alt="Capa do vídeo do aniversário de Allef">
             <span class="event-card__category">Aniversário</span>
             <span class="event-card__video-tag">Vídeo</span>
             <span class="event-card__play" aria-hidden="true">&#9658;</span>
           </div>
           <div class="event-card__body">
-            <p class="event-card__meta"><span>30 de Nov 2025</span> / <span>Unidade Rua do Machado</span></p>
+            <p class="event-card__meta"><span>30 de novembro de 2025</span> / <span>Unidade Rua do Machado</span></p>
             <h3 class="event-card__title">Aniversário de Allef</h3>
-            <p class="event-card__text">Nosso primeiro torneio de futevôlei na Arena Clube, com direito a churrasco no final.</p>
+            <p class="event-card__text">Recebemos Allef, sua família e seus convidados para comemorar o aniversário na Arena.</p>
           </div>
         </article>
 
         <!-- Mais eventos inicialmente ficam ocultos pelo eventos.js e são revelados em blocos. -->
         <article class="event-card event-card--video reveal" data-category="aniversarios">
-          <div class="event-card__media" data-video="Assets/Videos/Aniversario2.mp4">
-            <img src="Assets/Images/Capas De Videos/Capa-Video-Aniversario2.webp" loading="lazy" alt="Capa do vídeo da disputa de pênaltis">
+          <div class="event-card__media" data-video="Assets/Videos/Aniversario2.mp4" role="button" tabindex="0" aria-label="Reproduzir vídeo: aniversário de Davi">
+            <img src="Assets/Images/Capas De Videos/Capa-Video-Aniversario2.webp" loading="lazy" alt="Capa do vídeo do aniversário de Davi">
             <span class="event-card__category">Aniversário</span>
             <span class="event-card__video-tag">Vídeo</span>
             <span class="event-card__play" aria-hidden="true">&#9658;</span>
           </div>
           <div class="event-card__body">
-            <p class="event-card__meta"><span>19 de Jul 2025</span> / <span>Unidade Rua do Machado</span></p>
+            <p class="event-card__meta"><span>19 de julho de 2025</span> / <span>Unidade Rua do Machado</span></p>
             <h3 class="event-card__title">Aniversário de Davi</h3>
             <p class="event-card__text">Uma das coisas que mais amamos é receber convidados para comemorar seus aniversários, Feliz 11 anos Davi!</p>
           </div>
@@ -442,7 +448,7 @@
             <span class="event-card__category">Torneio</span>
           </div>
           <div class="event-card__body">
-            <p class="event-card__meta"><span>28 de Jun 2026</span> / <span>Unidade Rua do Machado</span></p>
+            <p class="event-card__meta"><span>28 de junho de 2026</span> / <span>Unidade Rua do Machado</span></p>
             <h3 class="event-card__title">Torneio de Vôlei Etapa de Junho</h3>
             <p class="event-card__text">Duplas de vôlei disputando ponto a ponto em um torneio interno na Arena clube Arruda.</p>
           </div>
@@ -454,7 +460,7 @@
             <span class="event-card__category">Torneio</span>
           </div>
           <div class="event-card__body">
-            <p class="event-card__meta"><span>10 de Jan 2026</span> / <span>Unidade Rua do Machado</span></p>
+            <p class="event-card__meta"><span>10 de janeiro de 2026</span> / <span>Unidade Rua do Machado</span></p>
             <h3 class="event-card__title">Mini Torneio Infantil - Alunos x Alunos</h3>
             <p class="event-card__text">Mini torneio para as nossas crianças, com premiação em medalhas e destaque da partida.</p>
           </div>
@@ -483,9 +489,9 @@
       <p class="section-eyebrow section-eyebrow--green">Quem levou o título.</p>
       <h2 class="section-title section-title--light">Confira os campeões que já passaram pela Arena.</h2>
 
-      <div class="podium__filters" id="podiumFilters" role="tablist" aria-label="Categorias do pódio">
-        <button class="podium__filter is-active" type="button" role="tab" aria-selected="true" data-podium-category="masculino">Masculino</button>
-        <button class="podium__filter" type="button" role="tab" aria-selected="false" data-podium-category="feminino">Feminino</button>
+      <div class="podium__filters" id="podiumFilters" role="group" aria-label="Categorias do pódio">
+        <button class="podium__filter is-active" type="button" aria-pressed="true" data-podium-category="masculino">Masculino</button>
+        <button class="podium__filter" type="button" aria-pressed="false" data-podium-category="feminino">Feminino</button>
       </div>
 
       <div class="podium__grid" id="podiumGrid">
@@ -548,7 +554,7 @@
             </div>
             <p class="testimonial-card__text">O espaço é bem cuidado, organizado e com uma estrutura excelente. A quadra coberta é um grande diferencial perfeita para jogar. Achei ótimo também ter uma lanchonete por perto, super conveniente. Os funcionários foram atenciosos e prestativos durante toda a visita. Com certeza, recomendo!</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Aryanna_Gonzaga.png" loading="lazy" alt="Aryanna Gonzaga"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Aryanna_Gonzaga.webp" loading="lazy" alt="Aryanna Gonzaga"></span>
               <span>
                 <strong>Aryanna Gonzaga</strong>
               </span>
@@ -562,7 +568,7 @@
             </div>
             <p class="testimonial-card__text">Recomendo demais!<br>Espaço limpo e agradável para a festa de meu filho.</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Camila_Omayra.jpg" loading="lazy" alt="Camila Omayra"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Camila_Omayra.webp" loading="lazy" alt="Camila Omayra"></span>
               <span>
                 <strong>Camila Omayra</strong>
               </span>
@@ -576,7 +582,7 @@
             </div>
             <p class="testimonial-card__text">Excelente lugar para praticar vôlei, Futevolei, futebol, uma quadra coberta muito boa, Ambiente super agradável, limpos, estrutura excelente e professores maravilhosos.</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Clovis_Malta.jpg" loading="lazy" alt="Clóvis Malta"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Clovis_Malta.webp" loading="lazy" alt="Clóvis Malta"></span>
               <span>
                 <strong>Clóvis Malta</strong>
               </span>
@@ -590,7 +596,7 @@
             </div>
             <p class="testimonial-card__text">Local Excelente para toda a família,festas, confras e muito lazer.</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Celso_Murilo.jpg" loading="lazy" alt="Celso Murilo"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Celso_Murilo.webp" loading="lazy" alt="Celso Murilo"></span>
               <span>
                 <strong>Celso Murilo</strong>
               </span>
@@ -604,7 +610,7 @@
             </div>
             <p class="testimonial-card__text">Lugar muito organizado, estrutura excelente e ambiente muito agradável. Fui com a galera para jogar e todo mundo curtiu bastante. Com certeza vamos voltar!</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Rayane_Pugliesi.jpg" loading="lazy" alt="Rayane Pugliesi"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Rayane_Pugliesi.webp" loading="lazy" alt="Rayane Pugliesi"></span>
               <span>
                 <strong>Rayane Pugliesi</strong>
               </span>
@@ -618,7 +624,7 @@
             </div>
             <p class="testimonial-card__text">Espaço muito bom, segurança é muita qualidade. Principalmente o gramado society.</p>
             <div class="testimonial-card__author">
-              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Bruno_FF_fut.jpg" loading="lazy" alt="Bruno FF /fut"></span>
+              <span class="testimonial-card__avatar" aria-hidden="true"><img src="Assets/Images/FeedBack/Bruno_FF_FUT.webp" loading="lazy" alt="Bruno FF /fut"></span>
               <span>
                 <strong>Bruno FF /fut</strong>
               </span>
@@ -630,13 +636,13 @@
         <div class="FeedBack__controls" aria-label="Navegação dos depoimentos">
           <button class="FeedBack__arrow FeedBack__arrow--prev" aria-label="Depoimento anterior">&#10094;</button>
 
-          <div class="FeedBack__dots" role="tablist" aria-label="Depoimentos">
-            <button class="FeedBack__dot is-active" type="button" role="tab" aria-label="Ir para o depoimento 1" aria-selected="true"></button>
-            <button class="FeedBack__dot" type="button" role="tab" aria-label="Ir para o depoimento 2" aria-selected="false"></button>
-            <button class="FeedBack__dot" type="button" role="tab" aria-label="Ir para o depoimento 3" aria-selected="false"></button>
-            <button class="FeedBack__dot" type="button" role="tab" aria-label="Ir para o depoimento 4" aria-selected="false"></button>
-            <button class="FeedBack__dot" type="button" role="tab" aria-label="Ir para o depoimento 5" aria-selected="false"></button>
-            <button class="FeedBack__dot" type="button" role="tab" aria-label="Ir para o depoimento 6" aria-selected="false"></button>
+          <div class="FeedBack__dots" role="group" aria-label="Selecionar depoimento">
+            <button class="FeedBack__dot is-active" type="button" aria-label="Ir para o depoimento 1" aria-pressed="true"></button>
+            <button class="FeedBack__dot" type="button" aria-label="Ir para o depoimento 2" aria-pressed="false"></button>
+            <button class="FeedBack__dot" type="button" aria-label="Ir para o depoimento 3" aria-pressed="false"></button>
+            <button class="FeedBack__dot" type="button" aria-label="Ir para o depoimento 4" aria-pressed="false"></button>
+            <button class="FeedBack__dot" type="button" aria-label="Ir para o depoimento 5" aria-pressed="false"></button>
+            <button class="FeedBack__dot" type="button" aria-label="Ir para o depoimento 6" aria-pressed="false"></button>
           </div>
 
           <button class="FeedBack__arrow FeedBack__arrow--next" aria-label="Próximo depoimento">&#10095;</button>
@@ -698,7 +704,11 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/site.js"></script>
+<script src="js/navegacao.js"></script>
+<script src="js/unidades.js"></script>
+<script src="js/depoimentos.js"></script>
+<script src="js/hamburgueria.js"></script>
 <script src="js/localizacao-usuario.js"></script>
 <script src="js/eventos.js"></script>
 <script src="js/podium.js"></script>
