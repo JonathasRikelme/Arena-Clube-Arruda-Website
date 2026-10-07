@@ -38,13 +38,12 @@ var unitsData = {
       { label: 'Vôlei / Futevôlei', count: 3 }, //informação de quantas quadras tem de cada tipo na unidade 1 (Rua do Machado)
       { label: 'Futebol Socity', count: 1 }
     ],
-    amenities: ['Vestiarios com chuveiros', 'Lanchonete', 'Espaço para lazer'], // Destaques da unidade 1 (Rua do Machado)
-    appName: 'Recplay', // APP DE REPLAY
-    appCourts: ['Quadra 1 - 018187c', 'Quadra 2 - 018453b', 'Quadra 3 - 019452a'],// Código das quadras no app de replay
+    amenities: ['<strong>Destaques:</strong>','Quadra Coberta', 'Lanchonete', 'Espaço para lazer', 'Vestiários com chuveiros'], // Destaques da unidade 1 (Rua do Machado)
+    appName: 'Replay Sports', // APP DE REPLAY
+    appCourts: ['Quadra Coberta - Quadra 1 ou 18181a','Campo câmera 1 - Quadra 2 ou 18181b', 'Campo câmera 2 - Quadra 3 ou 18181c', 'Quadra do treiler - Quadra 4 ou 18181d', 'Quadra do treiler 2 -Quadra 5 ou 18181c'],// Código das quadras no app de replay
     hours: [
-      { day: 'Seg - Sex', time: '06:00 - 23:00' }, // Horarios da unidade 1 (Rua do Machado)
-      { day: 'Sábado', time: '07:00 - 00:00' },
-      { day: 'Domingo', time: 'DayUse' }
+      { day: 'Domingo - Domingo', time: '06:00 - 00:00' }, // Horarios da unidade 1 (Rua do Machado)
+      { day: 'Dayuse', time: 'Consultar quadras disponiveis' }
     ]
   },
   2: { //==========================
@@ -59,13 +58,12 @@ var unitsData = {
     courts: [
       { label: 'Vôlei / Futevôlei', count: 2 } //informação de quantas quadras tem de cada tipo na unidade 2 (Rua da Regeneração)
     ],
-    amenities: ['Vestiarios com chuveiros', 'Hamburgueria', 'Espaço para lazer'], // Destaques da unidade confirmar
-    appName: 'Thow', // APP DE REPLAY
-    appCourts: ['Quadra 1 - 000000a', 'Quadra 2 - 000000b'], // Código das quadras no app de replay
+    amenities: ['<strong>Destaques:</strong>','Hamburgueria', 'Estacionamento'], // Destaques da unidade confirmar
+    appName: 'Recplay', // APP DE REPLAY
+    appCourts: ['Pesquisar por Arena Clube Arruda'], // Código das quadras no app de replay
     hours: [
-      { day: 'Seg - Sex', time: '06:00 - 22:00' }, // Horarios da unidade
-      { day: 'Sábado', time: '08:00 - 18:00' },
-      { day: 'Domingo', time: 'DayUse' }
+      { day: 'Domingo - Domingo', time: '06:00 - 00:00' }, // Horarios da unidade
+      { day: 'Dayuse', time: 'Consultar quadras disponiveis' }
     ]
   }
 };
@@ -80,13 +78,13 @@ var spacesData = {
       description: 'Choveu? Sem problema. A quadra é coberta e o jogo continua.'
     },
     {
-      image: 'Assets/Images/Spaces/Unidade 1/Espaço-Society.webp',
+      image: 'Assets/Images/Spaces/Unidade 1/Espaco-Society.webp',
       alt: 'Society',
       title: 'Society',
       description: 'Gramado sintético pronto pra reunir a galera, treinar ou jogar aquele amistoso.'
     },
     {
-      image: 'Assets/Images/Spaces/Unidade 1/Lazer-Lanchonete.webp',
+      image: 'Assets/Images/Spaces/Unidade 1/Espaco-Lazer.webp',
       alt: 'Lanchonete e Espaço de Lazer',
       title: 'Lanchonete e Espaço de Lazer',
       description: 'Terminou o jogo? Agora é hora de comer, conversar e ficar por aqui.'
@@ -94,19 +92,19 @@ var spacesData = {
   ],
   2: [
     {
-      image: 'Assets/Images/Spaces/Unidade 2/quadra-1-unindade2.png',
+      image: 'Assets/Images/Spaces/Unidade 2/quadra-1-unindade2.webp',
       alt: 'Quadra 1 da Unidade 2',
       title: 'Quadra 1',
       description: 'Espaço de areia preparado para reunir a galera, treinar e aproveitar a partida com toda a estrutura da Unidade 2.'
     },
     {
-      image: 'Assets/Images/Spaces/Unidade 2/quadra-2-unidade2.png',
+      image: 'Assets/Images/Spaces/Unidade 2/quadra-2-unidade2.webp',
       alt: 'Quadra 2 da Unidade 2',
       title: 'Quadra 2',
       description: 'Mais uma opção de quadra de areia para jogar, competir e curtir o esporte em um ambiente pensado para a sua experiência.'
     },
     {
-      image: 'Assets/Images/Spaces/Unidade 2/lanchonete-hamburgueria.png',
+      image: 'Assets/Images/Spaces/Unidade 2/lanchonete-hamburgueria.webp',
       alt: 'Hamburgueria e Espaço de Lazer da Unidade 2',
       title: 'Hamburgueria e Espaço de Lazer',
       description: 'Depois da partida, é hora de relaxar, reunir a galera e aproveitar a hamburgueria, o bar e o espaço de lazer da Unidade 2.'
