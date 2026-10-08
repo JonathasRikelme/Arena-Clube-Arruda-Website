@@ -372,6 +372,7 @@
   }
 
   .taias__actions .btn {
+    flex: 0px;
     width: 100%;
   }
 
