@@ -19,7 +19,7 @@ var unitsData = {
     appCourts: ['Quadra Coberta - Quadra 1 ou 18181a','Campo câmera 1 - Quadra 2 ou 18181b', 'Campo câmera 2 - Quadra 3 ou 18181c', 'Quadra do treiler - Quadra 4 ou 18181d', 'Quadra do treiler 2 -Quadra 5 ou 18181c'],// Código das quadras no app de replay
     hours: [
       { day: 'Todos os dias', time: '06:00 - 00:00' },
-      { day: 'Day use', time: 'Consulte a disponibilidade das quadras' }
+      { day: 'Day use', time: 'Consulte disponibilidade das quadras' }
     ]
   },
   2: { //==========================
@@ -38,7 +38,7 @@ var unitsData = {
     appCourts: ['Pesquisar por Arena Clube Arruda'], // Código das quadras no app de replay
     hours: [
       { day: 'Todos os dias', time: '06:00 - 00:00' },
-      { day: 'Day use', time: 'Consulte a disponibilidade das quadras' }
+      { day: 'Day use', time: 'Consulte disponibilidade das quadras' }
     ]
   }
 };
