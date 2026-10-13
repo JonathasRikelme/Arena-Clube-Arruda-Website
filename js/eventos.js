@@ -1,9 +1,5 @@
 /* =====================================================
-   EVENTOS.JS
-   Filtros, expansão de cards e vídeos da seção de Eventos.
-
-   O estado de expansão fica em visibleCount. Assim, resize,
-   F11 e fullscreen nativo de vídeo não fazem os cards sumirem.
+   EVENTOS.JS Filtros, expansão de cards e vídeos da seção de Eventos.
    ===================================================== */
 (function () {
   'use strict';

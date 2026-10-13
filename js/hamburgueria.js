@@ -3,7 +3,7 @@
     Dados, carrossel, autoplay e sincronização do produto
     ====================================================*/
 
-var taiasProducts = [
+var taiasProducts = [ /* Dados dos produtos da hamburgueria Taias Só adicioar novos itens no final seguindo o mesmo padrão*/
   {
     name: 'Taias X-Tudo',
     description: 'Pão brioche, blend 120g, ovo, bacon, calabresa, mussarela, salada, molho especial e cebola caramelizada.',
@@ -47,7 +47,7 @@ var taiasProducts = [
     image: 'Assets/Images/Hamburguers/hamburguer-taias-burger.webp'
   }
 ];
-
+/* Dados dos produtos da hamburgueria Taias pegando o elemento DOM */
 var taiasTrack = document.getElementById('taiasTrack');
 var taiasPrev = document.getElementById('taiasPrev');
 var taiasNext = document.getElementById('taiasNext');

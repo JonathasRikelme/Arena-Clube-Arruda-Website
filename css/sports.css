@@ -16,13 +16,8 @@
 .sport-card {
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
-  /* min-width:0 evita que o item force a coluna do grid a
-     crescer além do espaço disponível (comportamento padrão
-     do CSS Grid é usar min-content como largura mínima). */
   min-width: 0;
-  /* opacity entra aqui só pra não sobrescrever a transição que o .reveal
-     (base.css) já declara nesse mesmo elemento — mesma especificidade,
-     e este arquivo carrega depois, então venceria sem o opacity aqui */
+
   transition: opacity var(--dur-slow) var(--ease-out),
               transform var(--dur-base) var(--ease-out),
               box-shadow var(--dur-base) var(--ease-out);

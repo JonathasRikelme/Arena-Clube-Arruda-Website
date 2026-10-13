@@ -88,7 +88,7 @@
 }
 
 /* Linha que "cresce" da esquerda pra direita no hover, em vez de
-   simplesmente trocar a cor do link */
+  simplesmente trocar a cor do link */
 .main-nav__list a::after {
   content: "";
   position: absolute;

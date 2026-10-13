@@ -104,9 +104,7 @@
 
 /* ---------- Entrada em cascata do hero ----------
    Cada bloco (eyebrow -> título -> texto -> botões) entra em
-   sequência assim que a página carrega, com "fill-mode: both"
-   pra já nascer invisível (opacity:0) antes da animação começar,
-   sem precisar de nenhuma classe adicionada por JS. */
+   sequência assim que a página carrega. */
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }

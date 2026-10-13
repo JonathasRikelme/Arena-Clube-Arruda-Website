@@ -158,11 +158,7 @@ h1, h2, h3, h4 {
 }
 
 /* Hover padrão pra QUALQUER botão do site (mesmo os que ainda não
-   tinham um hover próprio definido, como os de "Como Chegar?" e
-   "Reservar Nesta Unidade"). Onde já existe um hover mais específico
-   (ex: .hero__actions .btn--primary:hover em hero.css), ele continua
-   valendo por cima disso, já que scale é uma propriedade separada
-   de transform e os dois efeitos somam. */
+   tinham um hover próprio definido. */
 @media (hover: hover) {
   .btn:hover {
     transform: translateY(-3px);
@@ -203,11 +199,8 @@ h1, h2, h3, h4 {
 
 /* =====================================================
    REVEAL ON SCROLL
-   Motor genérico de animação de entrada usado em várias seções.
-   Basta adicionar a classe .reveal em qualquer elemento do HTML.
-   O site.js observa a tela (IntersectionObserver) e adiciona
-   .is-visible quando o elemento aparece — uma única vez.
-   ===================================================== */
+   Motor de animação de entrada usado em várias seções.
+   Basta adicionar a classe .reveal em qualquer elemento do HTML. */
 .reveal {
   opacity: 0;
   transform: translateY(28px);

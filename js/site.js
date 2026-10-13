@@ -26,8 +26,6 @@ if (siteHeaderEl) {
 /*====================================================
     Reveal on scroll: anima a entrada de qualquer elemento
     com a classe .reveal quando ele aparece na tela.
-    Usado nos cards de esporte, "por dentro da arena",
-    hamburgueria, eventos, pódio, depoimentos e CTA.
     ====================================================*/
 var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var revealElements = document.querySelectorAll('.reveal');

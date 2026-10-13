@@ -29,8 +29,7 @@
 }
 
 /* Pulso sutil e contínuo só no botão de WhatsApp (o CTA principal
-   do site) — pausa no hover pra não brigar com o efeito de elevação
-   que .btn:hover já aplica (definido em base.css) */
+   do site)*/
 .cta__buttons .btn--bright {
   animation: ctaWhatsappPulse 2.6s ease-in-out infinite;
 }
