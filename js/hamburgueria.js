@@ -61,36 +61,20 @@ var taiasLocationBtn = document.getElementById('taiasLocationBtn');
 /* ---------- Como chegar à Taias (mesmo destino da Unidade 2) ---------- */
 if (taiasLocationBtn) {
   var taiasUnit2Address = 'R. da Regeneração, 1241 - Arruda, Recife - PE, 52120-335';
-  var taiasUserCoords = null;
   var taiasFallbackUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(taiasUnit2Address);
 
   // O botão já aponta para o fallback enquanto a localização está pendente.
   taiasLocationBtn.href = taiasFallbackUrl;
   taiasLocationBtn.addEventListener('click', function () {
-    if (taiasUserCoords) {
-      var taiasOrigin = taiasUserCoords.latitude + ',' + taiasUserCoords.longitude;
+    var locationState = window.arenaGeolocationState;
+    if (locationState && locationState.status === 'available' && locationState.coords) {
+      var taiasOrigin = locationState.coords.latitude + ',' + locationState.coords.longitude;
       taiasLocationBtn.href = 'https://www.google.com/maps/dir/?api=1&origin=' +
         encodeURIComponent(taiasOrigin) + '&destination=' + encodeURIComponent(taiasUnit2Address);
     } else {
       taiasLocationBtn.href = taiasFallbackUrl;
     }
   });
-
-  // Captura uma vez antes do clique; a resposta nunca navega por conta própria.
-  if (navigator.geolocation && typeof navigator.geolocation.getCurrentPosition === 'function') {
-    try {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        var coords = position && position.coords;
-        if (coords && Number.isFinite(coords.latitude) && Number.isFinite(coords.longitude)) {
-          taiasUserCoords = { latitude: coords.latitude, longitude: coords.longitude };
-        }
-      }, function () {
-        taiasUserCoords = null;
-      }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 });
-    } catch (error) {
-      taiasUserCoords = null;
-    }
-  }
 }
 
 if (taiasTrack && taiasProducts.length) {

@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
 var unitsData = {
   1: {
     name: 'Unidade Rua do Machado', //Nome da unidade
-    address: 'R. do Machado, 312 - Arruda, Recife - PE', //Endereço da unidade
+    address: 'R. do Machado, 312 - Arruda, Recife - PE, 52120-250', //Endereço da unidade
+    directionsDestination: '-8.0231025,-34.8895545', //Coordenadas exatas do local no Google Maps
+    mapLocationUrl: 'https://maps.app.goo.gl/3QUUH7qtVJm7E2Hm7', //Ficha da Unidade 1 no Google Maps
     mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.7655180535558!2d-34.892129425594106!3d-8.02309718008273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab190052afd05b%3A0xb6b749f7075a0b21!2sArena%20clube%20Arruda!5e0!3m2!1spt-BR!2sbr!4v1788634782089!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>',
     //Mapa incorporado da unidade 1 (Rua do Machado)
     //URL do Google Maps para direções da unidade 1 (Rua do Machado)
@@ -150,7 +152,11 @@ function renderUnit(unitId) {
 
   // Botão "Como chegar?"
   var directionsBtn = document.getElementById('locationDirectionsBtn');
-  if (directionsBtn) directionsBtn.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(data.address);
+  if (directionsBtn) {
+    directionsBtn.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(data.directionsDestination || data.address);
+    if (data.mapLocationUrl) directionsBtn.dataset.mapLocationUrl = data.mapLocationUrl;
+    else delete directionsBtn.dataset.mapLocationUrl;
+  }
 
   // Lista de quadras (label + quantidade)
   document.getElementById('locationCourts').innerHTML = data.courts.map(function (c) {
