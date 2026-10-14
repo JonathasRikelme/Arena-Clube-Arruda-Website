@@ -57,7 +57,7 @@ Arena-Clube-Arruda/
 ├── index.html
 ├── 404.html
 ├── robots.txt
-├── DEPLOY.md
+├── sitemap.xml
 └── README.md
 ```
 
@@ -107,7 +107,7 @@ A seção utiliza um carrossel com:
 
 Os dados dos produtos ficam centralizados em `js/hamburgueria.js`, facilitando futuras alterações.
 
-O botão **Comprar** possui um `TODO` diretamente no HTML para inserção manual do link externo de vendas da Taias. O botão **Localização** reutiliza o link da Unidade 2 já existente em `unitsData`.
+O botão **Localização** reutiliza o link da Unidade 2 já existente em `unitsData`.
 
 As imagens dos hambúrgueres utilizadas no carrossel foram convertidas para **WebP** e redimensionadas para reduzir o peso dos assets e melhorar o carregamento.
 
@@ -210,9 +210,9 @@ http://localhost:8000
 
 ## Publicação na internet
 
-O projeto é um site estático e pode ser hospedado em um serviço de hospedagem estática ou servidor web. O guia de publicação está em `DEPLOY.md`. URL canônica, imagem absoluta para compartilhamento e sitemap devem ser preenchidos depois que o domínio final estiver definido.
+O projeto é um site estático e pode ser hospedado em um serviço de hospedagem estática ou servidor web. Publique a raiz do projeto preservando as pastas `Assets/`, `css/` e `js/`, junto com `index.html`, `404.html`, `robots.txt` e `sitemap.xml`.
 
-O botão **Comprar** da Hamburgueria ainda precisa do URL real de vendas antes da publicação; ele está marcado no HTML com `TODO`.
+O domínio público configurado é `https://arenaclubearruda.com.br/`. Canonical, metadados de compartilhamento e sitemap usam esse domínio.
 
 ## Desenvolvedor
 
