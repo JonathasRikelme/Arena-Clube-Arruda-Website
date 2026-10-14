@@ -58,6 +58,41 @@ var taiasDescription = document.getElementById('taiasProductDescription');
 var taiasPrice = document.getElementById('taiasProductPrice');
 var taiasLocationBtn = document.getElementById('taiasLocationBtn');
 
+/* ---------- Como chegar à Taias (mesmo destino da Unidade 2) ---------- */
+if (taiasLocationBtn) {
+  var taiasUnit2Address = 'R. da Regeneração, 1241 - Arruda, Recife - PE, 52120-335';
+  var taiasUserCoords = null;
+  var taiasFallbackUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(taiasUnit2Address);
+
+  // O botão já aponta para o fallback enquanto a localização está pendente.
+  taiasLocationBtn.href = taiasFallbackUrl;
+  taiasLocationBtn.addEventListener('click', function () {
+    if (taiasUserCoords) {
+      var taiasOrigin = taiasUserCoords.latitude + ',' + taiasUserCoords.longitude;
+      taiasLocationBtn.href = 'https://www.google.com/maps/dir/?api=1&origin=' +
+        encodeURIComponent(taiasOrigin) + '&destination=' + encodeURIComponent(taiasUnit2Address);
+    } else {
+      taiasLocationBtn.href = taiasFallbackUrl;
+    }
+  });
+
+  // Captura uma vez antes do clique; a resposta nunca navega por conta própria.
+  if (navigator.geolocation && typeof navigator.geolocation.getCurrentPosition === 'function') {
+    try {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var coords = position && position.coords;
+        if (coords && Number.isFinite(coords.latitude) && Number.isFinite(coords.longitude)) {
+          taiasUserCoords = { latitude: coords.latitude, longitude: coords.longitude };
+        }
+      }, function () {
+        taiasUserCoords = null;
+      }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 });
+    } catch (error) {
+      taiasUserCoords = null;
+    }
+  }
+}
+
 if (taiasTrack && taiasProducts.length) {
   var taiasIndex = 0;
   var taiasPhysicalIndex = 1; // primeiro produto real; índice 0 é o clone do último
@@ -223,16 +258,46 @@ if (taiasTrack && taiasProducts.length) {
 
   function finishTaiasDrag() {
     if (!taiasDragging) return;
-    var deltaX = taiasDragCurrentX - taiasDragStartX;
     taiasDragging = false;
 
-    if (Math.abs(deltaX) > 50) {
-      goToTaias(taiasIndex + (deltaX < 0 ? 1 : -1), true);
-    } else {
-      taiasTrack.style.transition = 'transform ' + taiasTransitionMs + 'ms cubic-bezier(0.16, 1, 0.3, 1)';
+    // Seleciona o slide mais próximo pela posição visual atual do track.
+    // Isso também funciona quando o arraste atravessa mais de um slide ou
+    // quando a largura muda entre celular, tablet e desktop.
+    var viewport = taiasTrack.parentElement;
+    var slideWidth = taiasTrack.children[0] && taiasTrack.children[0].getBoundingClientRect().width;
+    if (!viewport || !slideWidth) return;
+
+    var viewportLeft = viewport.getBoundingClientRect().left;
+    var trackLeft = taiasTrack.getBoundingClientRect().left;
+    var currentOffset = viewportLeft - trackLeft;
+    var targetPhysicalIndex = Math.round((viewportLeft - trackLeft) / slideWidth);
+    targetPhysicalIndex = Math.max(0, Math.min(taiasProducts.length + 1, targetPhysicalIndex));
+    taiasPhysicalIndex = targetPhysicalIndex;
+    taiasIndex = (targetPhysicalIndex - 1 + taiasProducts.length) % taiasProducts.length;
+    renderTaiasProduct();
+
+    var targetOffset = targetPhysicalIndex * slideWidth;
+    if (Math.abs(currentOffset - targetOffset) < 0.5) {
+      // Sem movimento visual a concluir, não aguarde um transitionend inexistente.
+      if (targetPhysicalIndex === 0) {
+        taiasPhysicalIndex = taiasProducts.length;
+        taiasIndex = taiasProducts.length - 1;
+      } else if (targetPhysicalIndex === taiasProducts.length + 1) {
+        taiasPhysicalIndex = 1;
+        taiasIndex = 0;
+      }
+      taiasAnimating = false;
+      taiasTrack.style.transition = 'none';
       taiasTrack.style.transform = 'translate3d(-' + (taiasPhysicalIndex * 100) + '%, 0, 0)';
+      renderTaiasProduct();
       resetTaiasTimer();
+      return;
     }
+
+    taiasAnimating = true;
+    taiasTrack.style.transition = 'transform ' + taiasTransitionMs + 'ms cubic-bezier(0.16, 1, 0.3, 1)';
+    taiasTrack.style.transform = 'translate3d(-' + (targetPhysicalIndex * 100) + '%, 0, 0)';
+    resetTaiasTimer();
   }
 
   taiasTrack.addEventListener('pointerup', finishTaiasDrag);
